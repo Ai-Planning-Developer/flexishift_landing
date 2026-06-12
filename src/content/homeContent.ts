@@ -1,0 +1,153 @@
+export const homeContent = {
+  en: {
+    heroBadge: 'Now live in UK & Norway',
+    heroH1_1: 'The ',
+    heroH1_em: 'smarter',
+    heroH1_2: ' way to connect drivers and hauliers.',
+    heroSub: 'FlexiShift is the freight staffing marketplace that removes the overhead from traditional logistics staffing. Hauliers post jobs. Verified drivers bid and deliver. Payments are secured automatically — from booking to delivery confirmation.',
+    heroMarkets: 'Available now: UK and Norway · Nordics launching soon',
+    heroCtaPrimary: 'Get started free',
+    heroCtaSecondary: 'Watch the intro',
+    heroScroll: 'Scroll to explore',
+
+    whatEyebrow: 'The platform',
+    whatTitle: 'One platform. The whole job.',
+    whatLead: 'FlexiShift brings hauliers and professional drivers together on one secure platform — where every step of the job lifecycle is handled digitally, from posting to payment.',
+    whatCards: [
+      { icon: '🖥️', title: 'Haulier web dashboard', body: 'Create jobs, specify cargo, set access codes, and review driver bids — all from a full web interface. Real-time GPS tracking keeps you updated throughout the delivery.' },
+      { icon: '📱', title: 'Driver mobile app', body: 'Find jobs nearby, submit quotes, complete digital vehicle checklists, and confirm delivery — all from a single app. Available on iOS and Android.' },
+      { icon: '🔒', title: 'Escrow-secured payments', body: 'Every transaction is escrow-secured. Funds are locked at the point of booking and released automatically when the job is confirmed complete. No invoices. No chasing. No disputes.' },
+      { icon: '✅', title: 'Verified compliance', body: 'Drivers pass mandatory credential verification before accessing the platform. Load codes, dual digital sign-off, and immutable delivery records close every job with a complete audit trail.' },
+    ],
+
+    pillarsEyebrow: 'Core principles',
+    pillarsTitle: 'Built on three foundations.',
+    pillarsLead: 'Every feature on FlexiShift exists to serve one of three commitments — to security, to compliance, and to removing friction from logistics.',
+    pillars: [
+      { num: '01', accent: 'Secured', rest: ' funds', body: 'Every job payment is held in escrow from the moment a booking is accepted. Funds are released to the driver automatically on delivery confirmation — protecting both parties throughout the entire job lifecycle.' },
+      { num: '02', accent: 'Verified', rest: ' drivers', body: 'All drivers pass mandatory credential verification before accessing the platform — including driving licence validation, ADR certification for hazardous goods, and YKB professional competence documentation for the Nordic markets. Hauliers remain responsible for physical checks at handover.' },
+      { num: '03', accent: 'Automated', rest: ' fulfilment', body: 'Dual digital sign-off at pickup and delivery creates an immutable record of every job. Load codes, access codes, GPS tracking, and electronic proof of delivery close the loop automatically — no manual approval required, and 100% automated financial settlement.' },
+    ],
+
+    howEyebrow: 'How it works',
+    howTitle: 'Simple for both sides.',
+    howLead: 'Whether you\'re posting a job or picking one up, every step is handled through the platform — clearly, quickly, and without paperwork.',
+    haulierBadge: 'For hauliers',
+    haulierTitle: 'Post and manage jobs',
+    haulierSteps: [
+      { title: 'Define the job', body: 'Specify route, cargo type, tonnage, vehicle requirements, and any special handling. For fuel loads, enter compartment-wise litre allocation for compliance and safety.' },
+      { title: 'Set security codes', body: 'Enter access codes for secure site entry and load codes for terminal pickup. Load codes remain hidden from the driver until booking is confirmed — a built-in security gate.' },
+      { title: 'Review quotes — fees visible upfront', body: 'Driver bids arrive in your dashboard. The full 12.5% platform surcharge (10% platform fee + 2.5% Stripe) is shown at this stage — complete transparency, no surprises at checkout.' },
+      { title: 'Track in real time', body: 'Live GPS tracking gives you an asymmetric view of progress. Once delivery is confirmed with dual sign-off, payment releases from escrow automatically.' },
+    ],
+    driverBadge: 'For drivers',
+    driverTitle: 'Find and complete jobs',
+    driverSteps: [
+      { title: 'Get verified once', body: 'Complete credential verification — driving licence, ADR certification where required, and YKB for Nordic markets. Once active, you\'re ready to work across the platform.' },
+      { title: 'Browse and quote', body: 'Find jobs by distance, load weight, and pay in your local currency — GBP, NOK, or SEK. Submit your quote and wait for the haulier to accept.' },
+      { title: 'Complete the vehicle checklist', body: 'A digital pre-job checklist lets you document any pre-existing vehicle damage — protecting you from liability for prior scratches or wear before the job begins.' },
+      { title: 'Deliver and get paid', body: 'Use the access code at the delivery site. Capture the digital signature and proof of delivery in the app. Confirm the job — and payment is released to you automatically.' },
+    ],
+
+    marketsEyebrow: 'Where we operate',
+    marketsTitle: 'Live now. Growing fast.',
+    marketsLead: 'FlexiShift is currently live in the United Kingdom and Norway, with Sweden and the wider Nordic region launching imminently. The platform supports multi-currency payouts with VAT and tax compliance handled at checkout for each jurisdiction.',
+    markets: [
+      { flag: '🇬🇧', name: 'United Kingdom', status: 'Live now', live: true, detail: 'Full platform available. UK GDPR and HMRC compliant.', currency: 'GBP £' },
+      { flag: '🇳🇴', name: 'Norway', status: 'Live now', live: true, detail: 'Full platform available. Norwegian MVA tax compliant.', currency: 'NOK kr' },
+      { flag: '🇸🇪', name: 'Sweden & Nordics', status: 'Launching soon', live: false, detail: 'Swedish MOMS and Skatteverket compliant. YKB certification supported.', currency: 'SEK kr' },
+    ],
+
+    noticeTitle: 'Before you register — please read our Terms & Conditions.',
+    noticeP1: 'FlexiShift operates as a technology marketplace and introduction platform. We are not a haulage company, carrier, or employer. All drivers and hauliers are independent parties who contract directly with each other.',
+    noticeP2: 'By creating an account, you agree to be legally bound by our Terms. Key obligations include your own insurance, driving licence compliance, VAT registration and reporting, and legal registration to operate in your jurisdiction.',
+    noticeLink: 'Read the T&Cs →',
+
+    ctaEyebrow: 'Get started',
+    ctaTitle: 'Ready to move freight smarter?',
+    ctaLead: 'Join hauliers and drivers already using FlexiShift across the UK and Norway. Registration takes minutes.',
+    ctaHaulier: 'I\'m a haulier — post a job →',
+    ctaDriver: 'I\'m a driver — download the app →',
+
+    footerCopy: '© 2026 AI Planning Ltd · FlexiShift is a trading name of AI Planning Ltd · Registered in England & Wales',
+    footerPrivacy: 'Privacy Policy',
+    footerTerms: 'Terms & Conditions',
+    footerContact: 'Contact',
+  },
+
+  no: {
+    heroBadge: 'Nå tilgjengelig i Storbritannia og Norge',
+    heroH1_1: 'Den ',
+    heroH1_em: 'smartere',
+    heroH1_2: ' måten å koble sjåfører og transportører.',
+    heroSub: 'FlexiShift er markedsplassen for fraktbemanning som fjerner overhead fra tradisjonell logistikkbemanning. Transportører legger ut oppdrag. Verifiserte sjåfører gir bud og leverer. Betalinger sikres automatisk — fra bestilling til leveringsbekreftelse.',
+    heroMarkets: 'Tilgjengelig nå: Storbritannia og Norge · Lanseres snart i hele Norden',
+    heroCtaPrimary: 'Kom i gang gratis',
+    heroCtaSecondary: 'Se introduksjonsvideoen',
+    heroScroll: 'Bla ned for å utforske',
+
+    whatEyebrow: 'Plattformen',
+    whatTitle: 'Én plattform. Hele oppdraget.',
+    whatLead: 'FlexiShift bringer transportører og profesjonelle sjåfører sammen på én sikker plattform — der hvert steg i oppdragets livssyklus håndteres digitalt, fra publisering til betaling.',
+    whatCards: [
+      { icon: '🖥️', title: 'Webdashboard for transportører', body: 'Opprett oppdrag, spesifiser last, angi adgangskoder og se over sjåførbud — alt fra et komplett nettgrensesnitt. GPS-sporing i sanntid holder deg oppdatert gjennom hele leveransen.' },
+      { icon: '📱', title: 'Mobilapp for sjåfører', body: 'Finn oppdrag i nærheten, gi bud, gjennomfør digital kjøretøysjekk og bekreft levering — alt fra én app. Tilgjengelig på iOS og Android.' },
+      { icon: '🔒', title: 'Escrow-sikrede betalinger', body: 'Alle transaksjoner sikres i escrow. Midlene låses ved bestillingsbekreftelse og frigjøres automatisk når oppdraget er bekreftet fullført. Ingen fakturaer. Ingen purringer. Ingen tvister.' },
+      { icon: '✅', title: 'Verifisert samsvar', body: 'Alle sjåfører gjennomgår obligatorisk dokumentverifisering før de får tilgang til plattformen. Lastekoder, dobbel digital signatur og uforanderlige leveringsregistreringer lukker hvert oppdrag med fullstendig revisjonsspor.' },
+    ],
+
+    pillarsEyebrow: 'Kjerneverdier',
+    pillarsTitle: 'Bygget på tre grunnpilarer.',
+    pillarsLead: 'Hver funksjon på FlexiShift tjener én av tre forpliktelser — sikkerhet, etterlevelse og friksjonsfri logistikk.',
+    pillars: [
+      { num: '01', accent: 'Sikrede', rest: ' midler', body: 'Alle oppdragsbetalinger holdes i escrow fra det øyeblikket en bestilling bekreftes. Midlene frigjøres til sjåføren automatisk ved leveringsbekreftelse — og beskytter begge parter gjennom hele oppdragets livssyklus.' },
+      { num: '02', accent: 'Verifiserte', rest: ' sjåfører', body: 'Alle sjåfører gjennomgår obligatorisk kredentialverifisering — inkludert validering av førerkort, ADR-sertifisering for farlig gods og YKB yrkeskompetansebevis for de nordiske markedene. Transportører er fortsatt ansvarlige for fysisk kontroll ved overlevering.' },
+      { num: '03', accent: 'Automatisert', rest: ' gjennomføring', body: 'Dobbel digital signatur ved henting og levering skaper en uforanderlig registrering av hvert oppdrag. Lastekoder, adgangskoder, GPS-sporing og elektronisk leveringsbevis lukker løkken automatisk — ingen manuell godkjenning kreves, og 100 % automatisert finansielt oppgjør.' },
+    ],
+
+    howEyebrow: 'Slik fungerer det',
+    howTitle: 'Enkelt for begge parter.',
+    howLead: 'Enten du publiserer et oppdrag eller tar ett, håndteres hvert steg via plattformen — tydelig, raskt og uten papirarbeid.',
+    haulierBadge: 'For transportører',
+    haulierTitle: 'Publiser og administrer oppdrag',
+    haulierSteps: [
+      { title: 'Definer oppdraget', body: 'Spesifiser rute, lasttype, tonnasje, kjøretøykrav og eventuelle spesialhensyn. For drivstofflaster angis litertildeling per rom for samsvar og sikkerhet.' },
+      { title: 'Angi sikkerhetskoder', body: 'Legg inn adgangskoder for sikker ankomst til anlegget og lastekoder for terminalavhenting. Lastekoden er skjult for sjåføren frem til bestillingen bekreftes — en innebygd sikkerhetssperre.' },
+      { title: 'Se over bud — gebyrer vises tydelig', body: 'Sjåførbud vises i dashboardet ditt. Det totale platformpåslaget på 12,5 % (10 % plattformgebyr + 2,5 % Stripe) vises på dette stadiet — full åpenhet, ingen overraskelser ved betaling.' },
+      { title: 'Spor i sanntid', body: 'Sanntids GPS-sporing gir deg oversikt over fremdriften. Når leveringen bekreftes med dobbel signatur, frigjøres betalingen fra escrow automatisk.' },
+    ],
+    driverBadge: 'For sjåfører',
+    driverTitle: 'Finn og fullfør oppdrag',
+    driverSteps: [
+      { title: 'Bli verifisert én gang', body: 'Fullfør dokumentverifisering — førerkort, ADR-sertifisering der det kreves, og YKB for de nordiske markedene. Når du er aktiv, er du klar til å jobbe på plattformen.' },
+      { title: 'Finn oppdrag og gi bud', body: 'Finn oppdrag etter avstand, lastvekt og betaling i din lokale valuta — GBP, NOK eller SEK. Send inn budet ditt og vent på at transportøren godkjenner det.' },
+      { title: 'Gjennomfør kjøretøysjekk', body: 'En digital sjekkliste lar deg dokumentere eventuelle forhåndseksisterende skader på kjøretøyet — og beskytter deg mot ansvar for riper eller slitasje som allerede var der.' },
+      { title: 'Lever og få betalt', body: 'Bruk adgangskoden ved leveringsstedet. Ta imot digital signatur og leveringsbevis i appen. Bekreft oppdraget — og betalingen frigjøres til deg automatisk.' },
+    ],
+
+    marketsEyebrow: 'Hvor vi opererer',
+    marketsTitle: 'Tilgjengelig nå. Vokser raskt.',
+    marketsLead: 'FlexiShift er for øyeblikket tilgjengelig i Storbritannia og Norge, med Sverige og resten av Norden som lanseres snart. Plattformen støtter utbetalinger i flere valutaer med MVA og skatteoverholdelse håndtert ved kassen for hvert marked.',
+    markets: [
+      { flag: '🇬🇧', name: 'Storbritannia', status: 'Tilgjengelig nå', live: true, detail: 'Full plattform tilgjengelig. UK GDPR og HMRC-kompatibel.', currency: 'GBP £' },
+      { flag: '🇳🇴', name: 'Norge', status: 'Tilgjengelig nå', live: true, detail: 'Full plattform tilgjengelig. Norsk MVA-kompatibel. Skatteetaten-rapportering støttet.', currency: 'NOK kr' },
+      { flag: '🇸🇪', name: 'Sverige og Norden', status: 'Lanseres snart', live: false, detail: 'Svensk MOMS og Skatteverket-kompatibel. YKB-sertifisering støttet.', currency: 'SEK kr' },
+    ],
+
+    noticeTitle: 'Før du registrerer deg — les vilkårene og betingelsene våre.',
+    noticeP1: 'FlexiShift opererer som en teknologisk markedsplass og introduksjonsplattform. Vi er ikke et transportselskap, speditør eller arbeidsgiver. Alle sjåfører og transportører er uavhengige parter som inngår kontrakter direkte med hverandre.',
+    noticeP2: 'Ved å opprette en konto, godtar du å være juridisk bundet av vilkårene våre. Viktige forpliktelser inkluderer ditt eget forsikringsansvar, etterlevelse av førerkortregler, MVA-registrering og rapportering, samt lovpålagt registrering for å operere i din jurisdiksjon.',
+    noticeLink: 'Les vilkårene →',
+
+    ctaEyebrow: 'Kom i gang',
+    ctaTitle: 'Klar til å flytte gods på en smartere måte?',
+    ctaLead: 'Bli med transportørene og sjåførene som allerede bruker FlexiShift i Storbritannia og Norge. Registreringen tar noen minutter.',
+    ctaHaulier: 'Jeg er transportør — legg ut oppdrag →',
+    ctaDriver: 'Jeg er sjåfør — last ned appen →',
+
+    footerCopy: '© 2026 AI Planning Ltd · FlexiShift er et handelsnavn for AI Planning Ltd · Registrert i England og Wales',
+    footerPrivacy: 'Personvernpolicy',
+    footerTerms: 'Vilkår og betingelser',
+    footerContact: 'Kontakt',
+  },
+};
