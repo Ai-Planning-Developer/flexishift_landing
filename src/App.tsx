@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import ROPAPage from './pages/ROPAPage';
+import ContactPage from './pages/ContactPage';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/terms"          element={<TermsPage />} />
           <Route path="/privacy-policy" element={<PrivacyPage />} />
           <Route path="/ropa"           element={<ROPAPage />} />
+          <Route path="/contact"        element={<ContactPage />} />
           <Route path="*"               element={<HomePage />} />
         </Routes>
       </main>

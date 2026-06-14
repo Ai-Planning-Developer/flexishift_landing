@@ -3,8 +3,26 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 const navLabels = {
-  en: { howItWorks: 'How it works', markets: 'Markets', terms: 'Terms', privacy: 'Privacy Policy', lang: 'NO', getStarted: 'Get Started' },
-  no: { howItWorks: 'Slik fungerer det', markets: 'Markeder', terms: 'Vilkår', privacy: 'Personvern', lang: 'EN', getStarted: 'Kom i gang' },
+  en: {
+    howItWorks: 'How it works',
+    markets: 'Markets',
+    terms: 'Terms',
+    privacy: 'Privacy Policy',
+    ropa: 'ROPA',
+    contact: 'Contact',
+    lang: 'NO',
+    getStarted: 'Get Started',
+  },
+  no: {
+    howItWorks: 'Slik fungerer det',
+    markets: 'Markeder',
+    terms: 'Vilkår',
+    privacy: 'Personvern',
+    ropa: 'ROPA',
+    contact: 'Kontakt',
+    lang: 'EN',
+    getStarted: 'Kom i gang',
+  },
 };
 
 function FlexiShiftLogo() {
@@ -30,8 +48,18 @@ export default function Navbar() {
 
   const isActive = (path: string) => location.pathname === path;
 
-  const goHome = () => { setMenuOpen(false); navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-  const goPage = (path: string) => { setMenuOpen(false); navigate(path); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goHome = () => {
+    setMenuOpen(false);
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goPage = (path: string) => {
+    setMenuOpen(false);
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const scrollToSection = (path: string, id: string) => {
     setMenuOpen(false);
     if (location.pathname !== '/') {
@@ -45,10 +73,9 @@ export default function Navbar() {
 
   const linkStyle = (active?: boolean): React.CSSProperties => ({
     background: 'none', border: 'none', cursor: 'pointer',
-    fontSize: 14, fontWeight: 500, padding: 0,
+    fontSize: 13, fontWeight: 500, padding: 0,
     color: active ? 'white' : 'rgba(255,255,255,0.65)',
-    transition: 'color 0.15s',
-    whiteSpace: 'nowrap',
+    transition: 'color 0.15s', whiteSpace: 'nowrap',
   });
 
   return (
@@ -56,45 +83,46 @@ export default function Navbar() {
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 5%', height: 64,
+        padding: '0 4%', height: 64,
         background: 'rgba(15,52,96,0.97)',
         backdropFilter: 'blur(8px)',
       }}>
         {/* Logo */}
-        <button onClick={goHome} style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'none', border: 'none', cursor: 'pointer' }}>
+        <button onClick={goHome} style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'none', border: 'none', cursor: 'pointer', flexShrink: 0 }}>
           <FlexiShiftLogo />
-          <span style={{ fontSize: 21, fontWeight: 700, letterSpacing: '-0.3px', lineHeight: 1 }}>
+          <span style={{ fontSize: 20, fontWeight: 700, letterSpacing: '-0.3px', lineHeight: 1 }}>
             <span style={{ color: 'white' }}>flexi</span>
             <span style={{ color: '#8B7FF5' }}>shift</span>
           </span>
         </button>
 
         {/* Desktop nav links */}
-        <div className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+        <div className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           <button onClick={() => scrollToSection('/how-it-works', 'how')} style={linkStyle(isActive('/how-it-works'))}>{t.howItWorks}</button>
           <button onClick={() => scrollToSection('/markets', 'markets')} style={linkStyle(isActive('/markets'))}>{t.markets}</button>
           <button onClick={() => goPage('/terms')} style={linkStyle(isActive('/terms'))}>{t.terms}</button>
           <button onClick={() => goPage('/privacy-policy')} style={linkStyle(isActive('/privacy-policy'))}>{t.privacy}</button>
+          <button onClick={() => goPage('/ropa')} style={linkStyle(isActive('/ropa'))}>{t.ropa}</button>
+          <button onClick={() => goPage('/contact')} style={linkStyle(isActive('/contact'))}>{t.contact}</button>
         </div>
 
-        {/* Right side */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        {/* Right: lang + CTA + hamburger */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
           <button
             onClick={() => setLang(lang === 'en' ? 'no' : 'en')}
             style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.22)', borderRadius: 6, padding: '4px 10px', background: 'none', cursor: 'pointer' }}
           >{t.lang}</button>
 
-          {/* Desktop CTA */}
           <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer"
             className="hide-mobile"
-            style={{ fontSize: 14, fontWeight: 600, color: 'white', background: 'var(--teal)', borderRadius: 8, padding: '8px 18px', textDecoration: 'none', display: 'inline-block' }}
+            style={{ fontSize: 13, fontWeight: 600, color: 'white', background: 'var(--teal)', borderRadius: 8, padding: '7px 16px', textDecoration: 'none', display: 'inline-block' }}
           >{t.getStarted}</a>
 
-          {/* Hamburger — mobile only */}
+          {/* Hamburger */}
           <button
             className="show-mobile"
             onClick={() => setMenuOpen(o => !o)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'white', alignItems: 'center', justifyContent: 'center' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             aria-label="Menu"
           >
             {menuOpen ? (
@@ -110,13 +138,15 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile dropdown */}
       {menuOpen && (
         <div className="mobile-menu">
           <button className="mobile-menu-link" onClick={() => scrollToSection('/how-it-works', 'how')}>{t.howItWorks}</button>
           <button className="mobile-menu-link" onClick={() => scrollToSection('/markets', 'markets')}>{t.markets}</button>
           <button className="mobile-menu-link" onClick={() => goPage('/terms')}>{t.terms}</button>
           <button className="mobile-menu-link" onClick={() => goPage('/privacy-policy')}>{t.privacy}</button>
+          <button className="mobile-menu-link" onClick={() => goPage('/ropa')}>{t.ropa}</button>
+          <button className="mobile-menu-link" onClick={() => goPage('/contact')}>{t.contact}</button>
           <div style={{ paddingTop: 20 }}>
             <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer"
               style={{ display: 'block', textAlign: 'center', padding: '14px', background: 'var(--teal)', borderRadius: 10, color: 'white', fontWeight: 700, fontSize: 16, textDecoration: 'none' }}

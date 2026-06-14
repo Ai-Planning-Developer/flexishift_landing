@@ -9,6 +9,13 @@ export const homeContent = {
     heroCtaPrimary: 'Get started free',
     heroCtaSecondary: 'Watch the intro',
     heroScroll: 'Scroll to explore',
+    youtubeEyebrow: 'See it in action',
+    youtubeTitle: 'Watch FlexiShift work.',
+    youtubeLead: 'See how drivers and hauliers use FlexiShift — from posting a job to confirmed delivery and automatic payment.',
+    youtubeVideos: [
+      { id: 'Y7EDwGv9joY', title: 'FlexiShift for Hauliers', desc: 'How to post a job, set access codes, track your driver in real time, and release payment automatically.' },
+      { id: 'IFXvlVW27kg', title: 'FlexiShift for Drivers', desc: 'How to find jobs, submit quotes, complete the vehicle checklist, deliver, and get paid — all in the app.' },
+    ],
 
     whatEyebrow: 'The platform',
     whatTitle: 'One platform. The whole job.',
@@ -85,6 +92,13 @@ export const homeContent = {
     heroCtaPrimary: 'Kom i gang gratis',
     heroCtaSecondary: 'Se introduksjonsvideoen',
     heroScroll: 'Bla ned for å utforske',
+    youtubeEyebrow: 'Se det i aksjon',
+    youtubeTitle: 'Se FlexiShift i praksis.',
+    youtubeLead: 'Se hvordan sjåfører og transportører bruker FlexiShift — fra publisering av oppdrag til bekreftet levering og automatisk betaling.',
+    youtubeVideos: [
+      { id: 'Y7EDwGv9joY', title: 'FlexiShift for transportører', desc: 'Slik legger du ut oppdrag, angir adgangskoder, sporer sjåføren i sanntid og frigjør betaling automatisk.' },
+      { id: 'IFXvlVW27kg', title: 'FlexiShift for sjåfører', desc: 'Slik finner du oppdrag, gir bud, gjennomfører kjøretøysjekk, leverer og får betalt — alt i appen.' },
+    ],
 
     whatEyebrow: 'Plattformen',
     whatTitle: 'Én plattform. Hele oppdraget.',

@@ -1,39 +1,48 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { ropaHTML } from '../content/ropaContent';
+import { ropaHTML, ropaStyles } from '../content/ropaContent';
 import HybridBanner from '../components/HybridBanner';
 
 export default function ROPAPage() {
   const { lang } = useLanguage();
   const navigate = useNavigate();
+
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, []);
 
+  useEffect(() => {
+    const styleId = 'ropa-styles';
+    let el = document.getElementById(styleId) as HTMLStyleElement | null;
+    if (!el) { el = document.createElement('style'); el.id = styleId; document.head.appendChild(el); }
+    const scoped = ropaStyles.split('\n').map(line => {
+      if (line.trim().startsWith(':root') || line.trim().startsWith('html') || line.trim().startsWith('body')) return '';
+      return line;
+    }).join('\n');
+    el.textContent = `.ropa-document { ${scoped} }`;
+    return () => { el?.remove(); };
+  }, []);
+
   return (
-    <div style={{ paddingTop: 64 }}>
-      <div style={{ background: 'var(--pale)', padding: '32px 5% 0', borderBottom: '1px solid #E5ECF5' }}>
-        <div style={{ maxWidth: 980, margin: '0 auto', paddingBottom: 24, display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
-          <button
-            onClick={() => navigate('/')}
-            style={{ fontSize: 13, color: 'var(--mid)', background: 'none', border: 'none', cursor: 'pointer' }}
-          >
+    <div style={{ paddingTop: 64, background: 'var(--pale)', minHeight: '100vh' }}>
+      <div style={{ maxWidth: 980, margin: '0 auto', padding: '20px 24px 0' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+          <button onClick={() => navigate('/')}
+            style={{ fontSize: 13, color: 'var(--mid)', background: 'none', border: 'none', cursor: 'pointer' }}>
             ← {lang === 'no' ? 'Tilbake til hjem' : 'Back to home'}
           </button>
-          <span style={{ fontSize: 12, fontWeight: 600, padding: '3px 10px', background: '#FEF3C7', borderRadius: 20, color: '#92400E' }}>
-            ⚠ Confidential — Internal document
-          </span>
+
         </div>
       </div>
-      <div style={{ padding: '48px 5% 96px', background: 'white' }}>
-        <div style={{ maxWidth: 980, margin: '0 auto' }}>
+      {lang === 'no' && (
+        <div style={{ maxWidth: 980, margin: '12px auto 0', padding: '0 24px' }}>
           <HybridBanner docName="Record of Processing Activities (ROPA)" />
-          <div className="prose-legal" dangerouslySetInnerHTML={{ __html: ropaHTML }} />
         </div>
-      </div>
-      <footer style={{ background: 'var(--navy)', padding: '24px 5%' }}>
+      )}
+      <div className="ropa-document" dangerouslySetInnerHTML={{ __html: ropaHTML }} />
+      <footer style={{ background: '#080F1C', padding: '28px 5%' }}>
         <div style={{ maxWidth: 980, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: 13 }}>© 2026 AI Planning Ltd · FlexiShift · ROPA v1.0</span>
-          <button onClick={() => navigate('/')} style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, background: 'none', border: 'none', cursor: 'pointer' }}>
+          <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>© 2026 AI Planning Ltd · FlexiShift · ROPA v1.0</span>
+          <button onClick={() => navigate('/')} style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, background: 'none', border: 'none', cursor: 'pointer' }}>
             {lang === 'no' ? '← Tilbake' : '← Back'}
           </button>
         </div>

@@ -136,6 +136,36 @@ export default function HomePage({ scrollTo }: HomePageProps) {
         </div>
       </section>
 
+
+      {/* ── YOUTUBE VIDEOS ── */}
+      <section style={{ padding: 'clamp(56px,8vw,96px) 5%', background: 'var(--pale)' }}>
+        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 12 }}>{t.youtubeEyebrow}</div>
+          <h2 style={{ fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 16 }}>{t.youtubeTitle}</h2>
+          <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, marginBottom: 'clamp(32px,5vw,48px)' }}>{t.youtubeLead}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))', gap: 'clamp(20px,3vw,36px)' }}>
+            {t.youtubeVideos.map((video, i) => (
+              <div key={i} style={{ background: 'white', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid #E5ECF5', boxShadow: '0 2px 12px rgba(15,52,96,0.06)' }}>
+                <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%', background: '#000' }}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.id}`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                  />
+                </div>
+                <div style={{ padding: 'clamp(16px,2.5vw,24px)' }}>
+                  <h3 style={{ fontSize: 'clamp(15px,1.5vw,17px)', fontWeight: 700, color: 'var(--dark)', marginBottom: 8 }}>{video.title}</h3>
+                  <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.6 }}>{video.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       {/* ── MARKETS ── */}
       <section id="markets" style={{ padding: 'clamp(56px,8vw,96px) 5%', background: 'var(--pale)' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
@@ -193,7 +223,7 @@ export default function HomePage({ scrollTo }: HomePageProps) {
             {[{ label: t.footerPrivacy, path: '/privacy-policy' }, { label: t.footerTerms, path: '/terms' }].map(({ label, path }) => (
               <button key={path} onClick={() => navigate(path)} style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, background: 'none', border: 'none', cursor: 'pointer' }}>{label}</button>
             ))}
-            <a href="mailto:privacy@flexishift.com" style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, textDecoration: 'none' }}>{t.footerContact}</a>
+            <button onClick={() => navigate('/contact')} style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, background: 'none', border: 'none', cursor: 'pointer' }}>{t.footerContact}</button>
           </div>
         </div>
       </footer>
