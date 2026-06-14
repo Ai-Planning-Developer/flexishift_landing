@@ -12,7 +12,6 @@ app.use(
   express.static(DIST, {
     maxAge: '1y',
     etag: true,
-    // Never cache index.html so new deploys take effect immediately
     setHeaders(res, filePath) {
       if (filePath.endsWith('index.html')) {
         res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
@@ -21,8 +20,8 @@ app.use(
   })
 );
 
-// SPA fallback — all unmatched routes return index.html
-app.get('*', (_req, res) => {
+// SPA fallback — express v5 requires explicit wildcard syntax
+app.get('/{*path}', (_req, res) => {
   res.sendFile(join(DIST, 'index.html'));
 });
 

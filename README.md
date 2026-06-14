@@ -1,32 +1,73 @@
-# FlexiShift – Freight Staffing, Reimagined
+# React + TypeScript + Vite
 
-**FlexiShift** is a modern freight staffing marketplace that connects hauliers (freight operators) with verified drivers. The platform eliminates traditional logistics overhead: hauliers post jobs, drivers quote and deliver, and payments are secured via escrow – from booking to proof of delivery.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This repository contains the **React frontend** (web dashboard for hauliers and a public marketing site) built with TypeScript, Vite, and Tailwind CSS. The design faithfully recreates the look and feel of the original HTML/CSS prototypes (see `flexishift_homepage.html` and `flexishift_homepage_no.html`), including responsive layout, dark/light accents, and interactive components.
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 🌍 Live Markets & Languages
+## React Compiler
 
-- **Live now:** United Kingdom (GBP) and Norway (NOK)  
-- **Launching soon:** Sweden & wider Nordics (SEK)  
-- **Supported languages:** English (default) and Norwegian (Bokmål) with a language switcher in the navigation bar.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
----
+## Expanding the ESLint configuration
 
-## 🚀 Tech Stack
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-| Area               | Technology                                                                 |
-|--------------------|----------------------------------------------------------------------------|
-| Core framework     | [React 18](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
-| Build tool         | [Vite](https://vitejs.dev/)                                                |
-| Styling            | [Tailwind CSS](https://tailwindcss.com/) (with custom utility classes)     |
-| Routing            | React Router v6 (client‑side routing)                                      |
-| State management   | React Context (for language & auth) + local state                          |
-| HTTP client        | Fetch API / Axios (to be integrated)                                       |
-| Icons              | Lucide React / Heroicons (customizable)                                    |
-| Code quality       | ESLint (type‑aware rules), Prettier                                        |
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
----
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## 📁 Project Structure (Frontend)
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

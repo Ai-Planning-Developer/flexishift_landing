@@ -1,37 +1,16 @@
+import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import type { Page } from '../types';
-
-interface NavbarProps {
-  currentPage: Page;
-  setCurrentPage: (p: Page) => void;
-}
 
 const navLabels = {
-  en: {
-    howItWorks: 'How it works',
-    markets: 'Markets',
-    terms: 'Terms',
-    privacy: 'Privacy Policy',
-    lang: 'NO',
-    getStarted: 'Get Started',
-  },
-  no: {
-    howItWorks: 'Slik fungerer det',
-    markets: 'Markeder',
-    terms: 'Vilkår',
-    privacy: 'Personvern',
-    lang: 'EN',
-    getStarted: 'Kom i gang',
-  },
+  en: { howItWorks: 'How it works', markets: 'Markets', terms: 'Terms', privacy: 'Privacy Policy', lang: 'NO', getStarted: 'Get Started' },
+  no: { howItWorks: 'Slik fungerer det', markets: 'Markeder', terms: 'Vilkår', privacy: 'Personvern', lang: 'EN', getStarted: 'Kom i gang' },
 };
 
 function FlexiShiftLogo() {
   return (
-    <div style={{
-      width: 42, height: 42, background: 'white', borderRadius: 10,
-      padding: 5, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-    }}>
-      <svg width="32" height="32" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div style={{ width: 42, height: 42, background: 'white', borderRadius: 10, padding: 5, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+      <svg width="32" height="32" viewBox="0 0 80 80" fill="none">
         <rect x="4" y="6"  width="46" height="14" rx="7" fill="#00C2A8"/>
         <rect x="4" y="27" width="46" height="14" rx="7" fill="#7B6FE8"/>
         <rect x="4" y="48" width="46" height="14" rx="7" fill="#00C2A8"/>
@@ -42,91 +21,109 @@ function FlexiShiftLogo() {
   );
 }
 
-function NavLink({ label, active, onClick }: { label: string; active?: boolean; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      style={{
-        background: 'none', border: 'none', cursor: 'pointer',
-        fontSize: 14, fontWeight: 500, padding: 0,
-        color: active ? 'white' : 'rgba(255,255,255,0.65)',
-        transition: 'color 0.15s',
-      }}
-      onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.color = 'white'; }}
-      onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.color = active ? 'white' : 'rgba(255,255,255,0.65)'; }}
-    >
-      {label}
-    </button>
-  );
-}
-
-export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
+export default function Navbar() {
   const { lang, setLang } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
   const t = navLabels[lang];
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const scrollToSection = (id: string) => {
-    if (currentPage !== 'home') {
-      setCurrentPage('home');
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-      }, 80);
+  const isActive = (path: string) => location.pathname === path;
+
+  const goHome = () => { setMenuOpen(false); navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goPage = (path: string) => { setMenuOpen(false); navigate(path); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const scrollToSection = (path: string, id: string) => {
+    setMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate(path);
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 120);
     } else {
+      navigate(path);
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  const linkStyle = (active?: boolean): React.CSSProperties => ({
+    background: 'none', border: 'none', cursor: 'pointer',
+    fontSize: 14, fontWeight: 500, padding: 0,
+    color: active ? 'white' : 'rgba(255,255,255,0.65)',
+    transition: 'color 0.15s',
+    whiteSpace: 'nowrap',
+  });
+
   return (
-    <nav style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '0 5%', height: 64,
-      background: 'rgba(15,52,96,0.97)',
-      backdropFilter: 'blur(8px)',
-    }}>
-
-      {/* Logo */}
-      <button
-        onClick={() => setCurrentPage('home')}
-        style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'none', border: 'none', cursor: 'pointer' }}
-      >
-        <FlexiShiftLogo />
-        <span style={{ fontSize: 21, fontWeight: 700, letterSpacing: '-0.3px', lineHeight: 1 }}>
-          <span style={{ color: 'white' }}>flexi</span>
-          <span style={{ color: '#8B7FF5' }}>shift</span>
-        </span>
-      </button>
-
-      {/* Centre nav links */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
-        <NavLink label={t.howItWorks} onClick={() => scrollToSection('how')} />
-        <NavLink label={t.markets}    onClick={() => scrollToSection('markets')} />
-        <NavLink label={t.terms}      active={currentPage === 'terms'}   onClick={() => setCurrentPage('terms')} />
-        <NavLink label={t.privacy}    active={currentPage === 'privacy'} onClick={() => setCurrentPage('privacy')} />
-      </div>
-
-      {/* Right: lang toggle + CTA */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <button
-          onClick={() => setLang(lang === 'en' ? 'no' : 'en')}
-          style={{
-            fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.7)',
-            border: '1px solid rgba(255,255,255,0.22)', borderRadius: 6,
-            padding: '4px 10px', background: 'none', cursor: 'pointer',
-          }}
-        >
-          {t.lang}
+    <>
+      <nav style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        padding: '0 5%', height: 64,
+        background: 'rgba(15,52,96,0.97)',
+        backdropFilter: 'blur(8px)',
+      }}>
+        {/* Logo */}
+        <button onClick={goHome} style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'none', border: 'none', cursor: 'pointer' }}>
+          <FlexiShiftLogo />
+          <span style={{ fontSize: 21, fontWeight: 700, letterSpacing: '-0.3px', lineHeight: 1 }}>
+            <span style={{ color: 'white' }}>flexi</span>
+            <span style={{ color: '#8B7FF5' }}>shift</span>
+          </span>
         </button>
-        <button
-          onClick={() => scrollToSection('register')}
-          style={{
-            fontSize: 14, fontWeight: 600, color: 'white',
-            background: 'var(--teal)', borderRadius: 8,
-            padding: '8px 18px', border: 'none', cursor: 'pointer',
-          }}
-        >
-          {t.getStarted}
-        </button>
-      </div>
-    </nav>
+
+        {/* Desktop nav links */}
+        <div className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+          <button onClick={() => scrollToSection('/how-it-works', 'how')} style={linkStyle(isActive('/how-it-works'))}>{t.howItWorks}</button>
+          <button onClick={() => scrollToSection('/markets', 'markets')} style={linkStyle(isActive('/markets'))}>{t.markets}</button>
+          <button onClick={() => goPage('/terms')} style={linkStyle(isActive('/terms'))}>{t.terms}</button>
+          <button onClick={() => goPage('/privacy-policy')} style={linkStyle(isActive('/privacy-policy'))}>{t.privacy}</button>
+        </div>
+
+        {/* Right side */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <button
+            onClick={() => setLang(lang === 'en' ? 'no' : 'en')}
+            style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.22)', borderRadius: 6, padding: '4px 10px', background: 'none', cursor: 'pointer' }}
+          >{t.lang}</button>
+
+          {/* Desktop CTA */}
+          <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer"
+            className="hide-mobile"
+            style={{ fontSize: 14, fontWeight: 600, color: 'white', background: 'var(--teal)', borderRadius: 8, padding: '8px 18px', textDecoration: 'none', display: 'inline-block' }}
+          >{t.getStarted}</a>
+
+          {/* Hamburger — mobile only */}
+          <button
+            className="show-mobile"
+            onClick={() => setMenuOpen(o => !o)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'white', alignItems: 'center', justifyContent: 'center' }}
+            aria-label="Menu"
+          >
+            {menuOpen ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+              </svg>
+            )}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile dropdown menu */}
+      {menuOpen && (
+        <div className="mobile-menu">
+          <button className="mobile-menu-link" onClick={() => scrollToSection('/how-it-works', 'how')}>{t.howItWorks}</button>
+          <button className="mobile-menu-link" onClick={() => scrollToSection('/markets', 'markets')}>{t.markets}</button>
+          <button className="mobile-menu-link" onClick={() => goPage('/terms')}>{t.terms}</button>
+          <button className="mobile-menu-link" onClick={() => goPage('/privacy-policy')}>{t.privacy}</button>
+          <div style={{ paddingTop: 20 }}>
+            <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer"
+              style={{ display: 'block', textAlign: 'center', padding: '14px', background: 'var(--teal)', borderRadius: 10, color: 'white', fontWeight: 700, fontSize: 16, textDecoration: 'none' }}
+            >{t.getStarted}</a>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

@@ -20,11 +20,14 @@ jobs:
           node-version: '24'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install all dependencies (dev + prod for build)
         run: npm install
 
-      - name: Build
+      - name: Build Vite SPA
         run: npm run build
+
+      - name: Install production dependencies only
+        run: npm install --omit=dev
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3

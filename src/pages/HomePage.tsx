@@ -1,156 +1,133 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { homeContent } from '../content/homeContent';
-import type { Page } from '../types';
 
-interface HomePageProps {
-  setCurrentPage: (p: Page) => void;
-}
+interface HomePageProps { scrollTo?: string; }
 
-export default function HomePage({ setCurrentPage }: HomePageProps) {
+// Responsive style helper — applies mobile styles via a className approach
+
+export default function HomePage({ scrollTo }: HomePageProps) {
+  useEffect(() => {
+    if (scrollTo) {
+      setTimeout(() => document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth' }), 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [scrollTo]);
+
   const { lang } = useLanguage();
+  const navigate = useNavigate();
   const t = homeContent[lang];
 
   return (
     <div>
-      {/* HERO */}
+      {/* ── HERO ── */}
       <section style={{
         background: 'linear-gradient(135deg, #0B2545 0%, #0F3460 55%, #1a5494 100%)',
         minHeight: '100vh',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        padding: '120px 5% 80px',
+        padding: 'clamp(100px, 12vh, 140px) 5% clamp(60px, 8vh, 100px)',
         position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E")`,
-          pointerEvents: 'none',
-        }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E")`, pointerEvents: 'none' }} />
         <div style={{ maxWidth: 760, position: 'relative' }}>
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: 'rgba(0,168,150,0.15)', border: '1px solid rgba(0,168,150,0.3)',
-            color: '#5DDDD2', fontSize: 13, fontWeight: 600,
-            padding: '6px 14px', borderRadius: 20, marginBottom: 28,
-            letterSpacing: '.04em', textTransform: 'uppercase',
-          }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(0,168,150,0.15)', border: '1px solid rgba(0,168,150,0.3)', color: '#5DDDD2', fontSize: 12, fontWeight: 600, padding: '6px 14px', borderRadius: 20, marginBottom: 24, letterSpacing: '.04em', textTransform: 'uppercase' }}>
             <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--teal)', display: 'inline-block' }} />
             {t.heroBadge}
           </div>
-          <h1 style={{
-            fontSize: 'clamp(36px, 5vw, 62px)', fontWeight: 800, lineHeight: 1.1,
-            color: 'white', letterSpacing: '-1.5px', marginBottom: 24,
-          }}>
+          <h1 style={{ fontSize: 'clamp(32px, 5.5vw, 62px)', fontWeight: 800, lineHeight: 1.1, color: 'white', letterSpacing: '-1.5px', marginBottom: 20 }}>
             {t.heroH1_1}<em style={{ fontStyle: 'normal', color: 'var(--teal)' }}>{t.heroH1_em}</em>{t.heroH1_2}
           </h1>
-          <p style={{ fontSize: 19, color: 'rgba(255,255,255,0.75)', maxWidth: 580, marginBottom: 20, lineHeight: 1.65 }}>
-            {t.heroSub}
-          </p>
-          <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.55)', marginBottom: 40 }}>
+          <p style={{ fontSize: 'clamp(15px, 2vw, 19px)', color: 'rgba(255,255,255,0.75)', maxWidth: 560, marginBottom: 16, lineHeight: 1.65 }}>{t.heroSub}</p>
+          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', marginBottom: 36 }}>
             <strong style={{ color: 'rgba(255,255,255,0.85)' }}>{t.heroMarkets.split(':')[0]}:</strong>
             {' ' + t.heroMarkets.split(':')[1]}
           </p>
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
-            <a href="#" style={{
-              background: 'var(--teal)', color: 'white',
-              padding: '15px 30px', borderRadius: 10,
-              fontWeight: 700, fontSize: 16, textDecoration: 'none',
-              boxShadow: '0 4px 20px rgba(0,168,150,0.35)',
-            }}>{t.heroCtaPrimary}</a>
-            <a href="#" style={{
-              background: 'rgba(255,255,255,0.1)', color: 'white',
-              padding: '14px 28px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.2)',
-              fontWeight: 600, fontSize: 16, textDecoration: 'none',
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-            }}>
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+            <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--teal)', color: 'white', padding: 'clamp(12px,2vw,15px) clamp(20px,3vw,30px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', boxShadow: '0 4px 20px rgba(0,168,150,0.35)' }}>{t.heroCtaPrimary}</a>
+            <a href="https://youtube.com/shorts/bLNen-wmBPw" target="_blank" rel="noopener noreferrer" style={{ background: 'rgba(255,255,255,0.1)', color: 'white', padding: 'clamp(11px,2vw,14px) clamp(18px,2.5vw,28px)', borderRadius: 10, border: '1px solid rgba(255,255,255,0.2)', fontWeight: 600, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               <span style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, paddingLeft: 2 }}>▶</span>
               {t.heroCtaSecondary}
             </a>
           </div>
         </div>
-        <div style={{ position: 'absolute', bottom: 40, left: '5%', display: 'flex', alignItems: 'center', gap: 10, color: 'rgba(255,255,255,0.35)', fontSize: 13 }}>
-          <div style={{ width: 40, height: 1, background: 'rgba(255,255,255,0.2)' }} />
-          {t.heroScroll}
-        </div>
       </section>
 
-      {/* WHAT FLEXISHIFT DOES */}
-      <section style={{ padding: '96px 5%', background: 'var(--pale)' }}>
+      {/* ── WHAT FLEXISHIFT DOES ── */}
+      <section style={{ padding: 'clamp(56px,8vw,96px) 5%', background: 'var(--pale)' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 14 }}>{t.whatEyebrow}</div>
-          <h2 style={{ fontSize: 'clamp(28px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 20 }}>{t.whatTitle}</h2>
-          <p style={{ fontSize: 18, color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, marginBottom: 56 }}>{t.whatLead}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 12 }}>{t.whatEyebrow}</div>
+          <h2 style={{ fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 16 }}>{t.whatTitle}</h2>
+          <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, marginBottom: 'clamp(32px,5vw,56px)' }}>{t.whatLead}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 'clamp(16px,3vw,32px)' }}>
             {t.whatCards.map((card, i) => (
-              <div key={i} style={{ background: 'white', borderRadius: 'var(--radius)', padding: 36, border: '1px solid #E5ECF5' }}>
-                <div style={{ width: 48, height: 48, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, background: i % 2 === 0 ? 'var(--light)' : 'rgba(0,168,150,0.1)', fontSize: 22 }}>{card.icon}</div>
-                <h3 style={{ fontSize: 18, fontWeight: 700, color: 'var(--dark)', marginBottom: 10 }}>{card.title}</h3>
-                <p style={{ fontSize: 15, color: 'var(--muted)', lineHeight: 1.65 }}>{card.body}</p>
+              <div key={i} style={{ background: 'white', borderRadius: 'var(--radius)', padding: 'clamp(20px,3vw,36px)', border: '1px solid #E5ECF5' }}>
+                <div style={{ width: 48, height: 48, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18, background: i % 2 === 0 ? 'var(--light)' : 'rgba(0,168,150,0.1)', fontSize: 22 }}>{card.icon}</div>
+                <h3 style={{ fontSize: 'clamp(15px,1.5vw,18px)', fontWeight: 700, color: 'var(--dark)', marginBottom: 8 }}>{card.title}</h3>
+                <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.65 }}>{card.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* THREE PILLARS */}
-      <section style={{ padding: '96px 5%', background: 'var(--navy)' }}>
+      {/* ── THREE PILLARS ── */}
+      <section style={{ padding: 'clamp(56px,8vw,96px) 5%', background: 'var(--navy)' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 14 }}>{t.pillarsEyebrow}</div>
-          <h2 style={{ fontSize: 'clamp(28px,3.5vw,42px)', fontWeight: 800, color: 'white', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 20 }}>{t.pillarsTitle}</h2>
-          <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.6)', maxWidth: 600, lineHeight: 1.7, marginBottom: 56 }}>{t.pillarsLead}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 2 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 12 }}>{t.pillarsEyebrow}</div>
+          <h2 style={{ fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 800, color: 'white', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 16 }}>{t.pillarsTitle}</h2>
+          <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'rgba(255,255,255,0.6)', maxWidth: 600, lineHeight: 1.7, marginBottom: 'clamp(32px,5vw,56px)' }}>{t.pillarsLead}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 2 }}>
             {t.pillars.map((p, i) => (
-              <div key={i} style={{
-                background: 'rgba(255,255,255,0.04)', padding: '40px 36px',
-                border: '1px solid rgba(255,255,255,0.06)', position: 'relative',
-                borderRadius: i === 0 ? '12px 0 0 12px' : i === t.pillars.length - 1 ? '0 12px 12px 0' : 0,
-              }}>
+              <div key={i} style={{ background: 'rgba(255,255,255,0.04)', padding: 'clamp(24px,3vw,40px) clamp(20px,2.5vw,36px)', border: '1px solid rgba(255,255,255,0.06)', position: 'relative', borderRadius: 12 }}>
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--teal)', borderRadius: '12px 12px 0 0' }} />
-                <div style={{ fontSize: 56, fontWeight: 900, color: 'rgba(255,255,255,0.05)', lineHeight: 1, marginBottom: 20, letterSpacing: '-2px' }}>{p.num}</div>
-                <h3 style={{ fontSize: 20, fontWeight: 700, color: 'white', marginBottom: 14 }}>
+                <div style={{ fontSize: 'clamp(40px,5vw,56px)', fontWeight: 900, color: 'rgba(255,255,255,0.05)', lineHeight: 1, marginBottom: 16, letterSpacing: '-2px' }}>{p.num}</div>
+                <h3 style={{ fontSize: 'clamp(16px,1.8vw,20px)', fontWeight: 700, color: 'white', marginBottom: 12 }}>
                   <span style={{ color: 'var(--teal)' }}>{p.accent}</span>{p.rest}
                 </h3>
-                <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.65 }}>{p.body}</p>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.65 }}>{p.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section id="how" style={{ padding: '96px 5%', background: 'white' }}>
+      {/* ── HOW IT WORKS ── */}
+      <section id="how" style={{ padding: 'clamp(56px,8vw,96px) 5%', background: 'white' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 14 }}>{t.howEyebrow}</div>
-          <h2 style={{ fontSize: 'clamp(28px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 20 }}>{t.howTitle}</h2>
-          <p style={{ fontSize: 18, color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, marginBottom: 56 }}>{t.howLead}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 48 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 12 }}>{t.howEyebrow}</div>
+          <h2 style={{ fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 16 }}>{t.howTitle}</h2>
+          <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, marginBottom: 'clamp(32px,5vw,56px)' }}>{t.howLead}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 'clamp(32px,5vw,48px)' }}>
             {/* Hauliers */}
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32, paddingBottom: 20, borderBottom: '2px solid var(--light)' }}>
-                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', padding: '5px 12px', borderRadius: 6, background: 'var(--light)', color: 'var(--navy)' }}>{t.haulierBadge}</span>
-                <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--dark)' }}>{t.haulierTitle}</h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28, paddingBottom: 18, borderBottom: '2px solid var(--light)', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', padding: '5px 12px', borderRadius: 6, background: 'var(--light)', color: 'var(--navy)', whiteSpace: 'nowrap' }}>{t.haulierBadge}</span>
+                <h3 style={{ fontSize: 'clamp(18px,2vw,22px)', fontWeight: 800, color: 'var(--dark)' }}>{t.haulierTitle}</h3>
               </div>
               {t.haulierSteps.map((step, i) => (
-                <div key={i} style={{ display: 'flex', gap: 18, marginBottom: 24, padding: 20, borderRadius: 10 }}>
+                <div key={i} style={{ display: 'flex', gap: 16, marginBottom: 20, padding: 'clamp(14px,2vw,20px)', borderRadius: 10, background: 'var(--pale)' }}>
                   <div style={{ width: 28, height: 28, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, marginTop: 2, background: 'var(--navy)', color: 'white' }}>{i + 1}</div>
                   <div>
-                    <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--dark)', marginBottom: 5 }}>{step.title}</div>
-                    <div style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.6 }}>{step.body}</div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--dark)', marginBottom: 4 }}>{step.title}</div>
+                    <div style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.6 }}>{step.body}</div>
                   </div>
                 </div>
               ))}
             </div>
             {/* Drivers */}
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32, paddingBottom: 20, borderBottom: '2px solid var(--light)' }}>
-                <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', padding: '5px 12px', borderRadius: 6, background: 'rgba(0,168,150,0.12)', color: '#00766A' }}>{t.driverBadge}</span>
-                <h3 style={{ fontSize: 22, fontWeight: 800, color: 'var(--dark)' }}>{t.driverTitle}</h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28, paddingBottom: 18, borderBottom: '2px solid var(--light)', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', padding: '5px 12px', borderRadius: 6, background: 'rgba(0,168,150,0.12)', color: '#00766A', whiteSpace: 'nowrap' }}>{t.driverBadge}</span>
+                <h3 style={{ fontSize: 'clamp(18px,2vw,22px)', fontWeight: 800, color: 'var(--dark)' }}>{t.driverTitle}</h3>
               </div>
               {t.driverSteps.map((step, i) => (
-                <div key={i} style={{ display: 'flex', gap: 18, marginBottom: 24, padding: 20, borderRadius: 10 }}>
+                <div key={i} style={{ display: 'flex', gap: 16, marginBottom: 20, padding: 'clamp(14px,2vw,20px)', borderRadius: 10, background: 'var(--pale)' }}>
                   <div style={{ width: 28, height: 28, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, marginTop: 2, background: 'var(--teal)', color: 'white' }}>{i + 1}</div>
                   <div>
-                    <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--dark)', marginBottom: 5 }}>{step.title}</div>
-                    <div style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.6 }}>{step.body}</div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--dark)', marginBottom: 4 }}>{step.title}</div>
+                    <div style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.6 }}>{step.body}</div>
                   </div>
                 </div>
               ))}
@@ -159,95 +136,64 @@ export default function HomePage({ setCurrentPage }: HomePageProps) {
         </div>
       </section>
 
-      {/* MARKETS */}
-      <section id="markets" style={{ padding: '96px 5%', background: 'var(--pale)' }}>
+      {/* ── MARKETS ── */}
+      <section id="markets" style={{ padding: 'clamp(56px,8vw,96px) 5%', background: 'var(--pale)' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 14 }}>{t.marketsEyebrow}</div>
-          <h2 style={{ fontSize: 'clamp(28px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 20 }}>{t.marketsTitle}</h2>
-          <p style={{ fontSize: 18, color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, marginBottom: 56 }}>{t.marketsLead}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24, marginBottom: 40 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 12 }}>{t.marketsEyebrow}</div>
+          <h2 style={{ fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 16 }}>{t.marketsTitle}</h2>
+          <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, marginBottom: 'clamp(32px,5vw,56px)' }}>{t.marketsLead}</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 'clamp(14px,2.5vw,24px)', marginBottom: 40 }}>
             {t.markets.map((m, i) => (
-              <div key={i} style={{ background: 'white', borderRadius: 'var(--radius)', padding: 32, border: '1px solid #E5ECF5', textAlign: 'center' }}>
-                <div style={{ fontSize: 40, marginBottom: 14 }}>{m.flag}</div>
-                <div style={{ fontSize: 18, fontWeight: 700, color: 'var(--dark)', marginBottom: 6 }}>{m.name}</div>
-                <span style={{
-                  display: 'inline-block', fontSize: 12, fontWeight: 600,
-                  padding: '3px 10px', borderRadius: 20, marginBottom: 12,
-                  background: m.live ? 'rgba(0,168,150,0.12)' : 'var(--light)',
-                  color: m.live ? '#00766A' : 'var(--mid)',
-                }}>{m.status}</span>
-                <div style={{ fontSize: 14, color: 'var(--muted)', marginBottom: 10 }}>{m.detail}</div>
-                <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: 12, fontWeight: 600, padding: '3px 10px', background: 'var(--pale)', borderRadius: 20, color: 'var(--navy)' }}>{m.currency}</span>
-                </div>
+              <div key={i} style={{ background: 'white', borderRadius: 'var(--radius)', padding: 'clamp(20px,3vw,32px)', border: '1px solid #E5ECF5', textAlign: 'center' }}>
+                <div style={{ fontSize: 36, marginBottom: 12 }}>{m.flag}</div>
+                <div style={{ fontSize: 'clamp(15px,1.5vw,18px)', fontWeight: 700, color: 'var(--dark)', marginBottom: 6 }}>{m.name}</div>
+                <span style={{ display: 'inline-block', fontSize: 12, fontWeight: 600, padding: '3px 10px', borderRadius: 20, marginBottom: 10, background: m.live ? 'rgba(0,168,150,0.12)' : 'var(--light)', color: m.live ? '#00766A' : 'var(--mid)' }}>{m.status}</span>
+                <div style={{ fontSize: 13, color: 'var(--muted)', marginBottom: 10 }}>{m.detail}</div>
+                <span style={{ fontSize: 12, fontWeight: 600, padding: '3px 10px', background: 'var(--pale)', borderRadius: 20, color: 'var(--navy)' }}>{m.currency}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* T&C NOTICE */}
-      <div style={{ margin: '0 5%' }}>
-        <div style={{
-          background: 'linear-gradient(135deg, #0B2545, #0F3460)',
-          borderRadius: 'var(--radius)', padding: '48px',
-          display: 'grid', gridTemplateColumns: '1fr auto', gap: 32, alignItems: 'center',
-        }}>
+      {/* ── T&C NOTICE ── */}
+      <div style={{ margin: '0 5%', paddingBottom: 'clamp(40px,6vw,80px)' }}>
+        <div style={{ background: 'linear-gradient(135deg, #0B2545, #0F3460)', borderRadius: 'var(--radius)', padding: 'clamp(28px,4vw,48px)', display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div>
-            <h3 style={{ fontSize: 22, fontWeight: 800, color: 'white', marginBottom: 12 }}>{t.noticeTitle}</h3>
-            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, marginBottom: 10 }}>{t.noticeP1}</p>
-            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65 }}>{t.noticeP2}</p>
+            <h3 style={{ fontSize: 'clamp(17px,2vw,22px)', fontWeight: 800, color: 'white', marginBottom: 12 }}>{t.noticeTitle}</h3>
+            <p style={{ fontSize: 'clamp(13px,1.4vw,15px)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, marginBottom: 10 }}>{t.noticeP1}</p>
+            <p style={{ fontSize: 'clamp(13px,1.4vw,15px)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.65 }}>{t.noticeP2}</p>
           </div>
           <div>
-            <button
-              onClick={() => setCurrentPage('terms')}
-              style={{
-                display: 'inline-block', padding: '13px 26px',
-                border: '2px solid rgba(255,255,255,0.3)', borderRadius: 10,
-                color: 'white', fontWeight: 600, fontSize: 15, whiteSpace: 'nowrap',
-                background: 'transparent', cursor: 'pointer',
-              }}
-            >
+            <button onClick={() => navigate('/terms')} style={{ padding: '13px 26px', border: '2px solid rgba(255,255,255,0.3)', borderRadius: 10, color: 'white', fontWeight: 600, fontSize: 15, background: 'transparent', cursor: 'pointer', width: '100%', maxWidth: 260 }}>
               {t.noticeLink}
             </button>
           </div>
         </div>
       </div>
 
-      {/* FINAL CTA */}
-      <section id="register" style={{ padding: '96px 5%', background: 'white', textAlign: 'center' }}>
+      {/* ── FINAL CTA ── */}
+      <section id="register" style={{ padding: 'clamp(56px,8vw,96px) 5%', background: 'white', textAlign: 'center' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 14 }}>{t.ctaEyebrow}</div>
-          <h2 style={{ fontSize: 'clamp(28px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 14 }}>{t.ctaTitle}</h2>
-          <p style={{ fontSize: 18, color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, margin: '0 auto 48px', textAlign: 'center' }}>{t.ctaLead}</p>
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="#" style={{
-              padding: '16px 32px', borderRadius: 10, fontWeight: 700, fontSize: 15, textDecoration: 'none',
-              background: 'var(--navy)', color: 'white',
-            }}>{t.ctaHaulier}</a>
-            <a href="#" style={{
-              padding: '16px 32px', borderRadius: 10, fontWeight: 700, fontSize: 15, textDecoration: 'none',
-              background: 'var(--teal)', color: 'white',
-            }}>{t.ctaDriver}</a>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 12 }}>{t.ctaEyebrow}</div>
+          <h2 style={{ fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 12 }}>{t.ctaTitle}</h2>
+          <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'var(--muted)', maxWidth: 560, lineHeight: 1.7, margin: '0 auto clamp(32px,5vw,48px)', textAlign: 'center' }}>{t.ctaLead}</p>
+          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer" style={{ padding: 'clamp(13px,2vw,16px) clamp(20px,3vw,32px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(13px,1.4vw,15px)', textDecoration: 'none', background: 'var(--navy)', color: 'white', width: '100%', maxWidth: 280, textAlign: 'center', boxSizing: 'border-box' }}>{t.ctaHaulier}</a>
+            <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer" style={{ padding: 'clamp(13px,2vw,16px) clamp(20px,3vw,32px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(13px,1.4vw,15px)', textDecoration: 'none', background: 'var(--teal)', color: 'white', width: '100%', maxWidth: 280, textAlign: 'center', boxSizing: 'border-box' }}>{t.ctaDriver}</a>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{ background: 'var(--navy)', padding: '24px 5%' }}>
+      {/* ── FOOTER ── */}
+      <footer style={{ background: 'var(--navy)', padding: 'clamp(20px,3vw,24px) 5%' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-          <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: 13 }}>{t.footerCopy}</span>
-          <div style={{ display: 'flex', gap: 24 }}>
-            {[
-              { label: t.footerPrivacy, page: 'privacy' as Page },
-              { label: t.footerTerms, page: 'terms' as Page },
-            ].map(({ label, page }) => (
-              <button key={page} onClick={() => setCurrentPage(page)}
-                style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, background: 'none', border: 'none', cursor: 'pointer' }}>
-                {label}
-              </button>
+          <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: 12 }}>{t.footerCopy}</span>
+          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            {[{ label: t.footerPrivacy, path: '/privacy-policy' }, { label: t.footerTerms, path: '/terms' }].map(({ label, path }) => (
+              <button key={path} onClick={() => navigate(path)} style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, background: 'none', border: 'none', cursor: 'pointer' }}>{label}</button>
             ))}
-            <a href="#" style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, textDecoration: 'none' }}>{t.footerContact}</a>
+            <a href="mailto:privacy@flexishift.com" style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, textDecoration: 'none' }}>{t.footerContact}</a>
           </div>
         </div>
       </footer>

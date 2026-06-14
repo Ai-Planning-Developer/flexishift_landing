@@ -1,47 +1,237 @@
-// Auto-generated from uploaded HTML files
-export const tcEnHTML = `<div>
+// Auto-generated from uploaded TC HTML files — preserves original design
+export const tcStyles = `
+  :root {
+    --navy:  #0F3460;
+    --teal:  #00A896;
+    --light: #E8F1FB;
+    --pale:  #F5F8FC;
+    --dark:  #111827;
+    --body:  #374151;
+    --muted: #6B7280;
+    --border:#E5ECF5;
+    --white: #FFFFFF;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px; line-height: 1.75; color: var(--body);
+    background: var(--pale);
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(15,52,96,0.97);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 60px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-mark {
+    width: 32px; height: 32px; background: var(--teal);
+    border-radius: 7px; display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-mark svg { width: 18px; height: 18px; }
+  .nav-wordmark { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+  .nav-wordmark span { color: var(--teal); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .nav-right a {
+    font-size: 13px; color: rgba(255,255,255,0.7);
+    text-decoration: none; transition: color .2s;
+  }
+  .nav-right a:hover { color: #fff; }
+  .lang-active { color: #fff !important; font-weight: 600; }
+  .lang-divider { color: rgba(255,255,255,0.3); }
+
+  /* LAYOUT */
+  .page { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* HEADER BLOCK */
+  .doc-header {
+    background: var(--navy); border-radius: 14px;
+    padding: 48px 48px 40px; margin-bottom: 40px; position: relative; overflow: hidden;
+  }
+  .doc-header::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20h20v20H20zM0 0h20v20H0z'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .doc-header-inner { position: relative; }
+  .doc-badge {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    background: rgba(0,168,150,0.2); color: #5DDDD2;
+    border: 1px solid rgba(0,168,150,0.3);
+    padding: 4px 12px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .doc-header h1 {
+    font-size: 28px; font-weight: 800; color: #fff;
+    letter-spacing: -0.5px; margin-bottom: 16px;
+  }
+  .doc-meta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .doc-meta-item {
+    font-size: 12px; color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.08);
+    padding: 4px 12px; border-radius: 20px;
+  }
+  .doc-notice {
+    margin-top: 24px; padding: 16px 20px;
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid var(--teal); border-radius: 0 8px 8px 0;
+    font-size: 13px; color: rgba(255,255,255,0.8); font-style: italic;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 32px;
+  }
+  .toc-title {
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; color: var(--teal); margin-bottom: 16px;
+  }
+  .toc-list { list-style: none; columns: 2; gap: 24px; }
+  .toc-list li { margin-bottom: 6px; break-inside: avoid; }
+  .toc-list a {
+    font-size: 13px; color: var(--navy); text-decoration: none;
+    transition: color .15s;
+  }
+  .toc-list a:hover { color: var(--teal); }
+
+  /* SECTION */
+  .tc-section {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 36px 40px; margin-bottom: 20px;
+    scroll-margin-top: 80px;
+  }
+  .section-num {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .07em; color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .tc-section > h2 {
+    font-size: 20px; font-weight: 800; color: var(--dark);
+    letter-spacing: -0.3px; margin-bottom: 18px;
+    padding-bottom: 14px; border-bottom: 1.5px solid var(--border);
+  }
+  .tc-section h3 {
+    font-size: 15px; font-weight: 700; color: var(--navy);
+    margin: 24px 0 10px;
+  }
+  .tc-section p { margin-bottom: 14px; font-size: 14px; line-height: 1.8; }
+  .tc-section p:last-child { margin-bottom: 0; }
+  .tc-section ul { margin: 10px 0 14px 0; padding-left: 0; list-style: none; }
+  .tc-section ul li {
+    font-size: 14px; line-height: 1.8; padding: 5px 0 5px 20px;
+    position: relative; border-bottom: 0.5px solid var(--border);
+  }
+  .tc-section ul li:last-child { border-bottom: none; }
+  .tc-section ul li::before {
+    content: ''; position: absolute; left: 0; top: 14px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
+  }
+
+  /* SUB-ITEMS (lettered) */
+  .sub-list { list-style: none; margin: 8px 0 8px 0; padding: 0; }
+  .sub-list li {
+    font-size: 14px; line-height: 1.8; padding: 4px 0 4px 24px;
+    position: relative; border-bottom: none !important;
+  }
+  .sub-list li::before { display: none !important; }
+  .sub-list li .sub-label {
+    position: absolute; left: 0; font-weight: 600; color: var(--navy);
+  }
+
+  /* WARN BOX */
+  .warn-box {
+    background: #FEF3F2; border: 1px solid #FCA5A5;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+    font-size: 13px; line-height: 1.7; color: #7F1D1D; font-weight: 500;
+  }
+
+  /* INFO BOX */
+  .info-box {
+    background: var(--light); border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0; padding: 14px 18px;
+    margin: 14px 0; font-size: 13px; line-height: 1.7; color: var(--navy);
+  }
+
+  /* SIGNING BLOCK */
+  .signing-block {
+    background: var(--navy); border-radius: 12px;
+    padding: 36px 40px; text-align: center; margin-top: 32px;
+  }
+  .signing-block p {
+    font-size: 15px; color: rgba(255,255,255,0.85);
+    line-height: 1.7; margin-bottom: 20px; font-weight: 500; font-style: italic;
+  }
+  .signing-block .footer-detail {
+    font-size: 12px; color: rgba(255,255,255,0.45);
+    margin-top: 20px; margin-bottom: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #080F1C; color: rgba(255,255,255,0.4);
+    padding: 28px 5%; text-align: center; font-size: 12px; margin-top: 40px;
+  }
+  footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  .footer-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-links { display: flex; gap: 20px; }
+
+  @media (max-width: 640px) {
+    .page { padding: 24px 16px 60px; }
+    .doc-header { padding: 32px 24px; }
+    .tc-section { padding: 24px 20px; }
+    .toc { padding: 20px 20px; }
+    .toc-list { columns: 1; }
+    .signing-block { padding: 28px 24px; }
+  }
+`;
+export const tcEnHTML = `<div class="page">
 
   <!-- HEADER -->
-  <div>
-    <div>
-      <div>Legal document</div>
+  <div class="doc-header">
+    <div class="doc-header-inner">
+      <div class="doc-badge">Legal document</div>
       <h1>Terms and Conditions of Use</h1>
-      <div>
-        <span>Version 3.0</span>
-        <span>Effective: May 2026</span>
-        <span>🇬🇧 United Kingdom</span>
-        <span>🇳🇴 Norway</span>
-        <span>🇸🇪 Sweden</span>
+      <div class="doc-meta">
+        <span class="doc-meta-item">Version 3.0</span>
+        <span class="doc-meta-item">Effective: May 2026</span>
+        <span class="doc-meta-item">🇬🇧 United Kingdom</span>
+        <span class="doc-meta-item">🇳🇴 Norway</span>
+        <span class="doc-meta-item">🇸🇪 Sweden</span>
       </div>
-      <div>By registering or using the Platform in any capacity, you agree to be legally bound by these Terms. If you do not agree, you must not use the Platform.</div>
+      <div class="doc-notice">By registering or using the Platform in any capacity, you agree to be legally bound by these Terms. If you do not agree, you must not use the Platform.</div>
     </div>
   </div>
 
   <!-- TOC -->
-  <div>
-    <div>Contents</div>
-    <ul>
-      <li><a>1. Definitions</a></li>
-      <li><a>2. Acceptance &amp; Eligibility</a></li>
-      <li><a>3. FlexiShift's Role</a></li>
-      <li><a>4. Verification &amp; Identity</a></li>
-      <li><a>5. Job Contract Terms</a></li>
-      <li><a>6. Prohibited &amp; Restricted Goods</a></li>
-      <li><a>7. Liability Exclusions</a></li>
-      <li><a>8. Payments, Fees &amp; Tax</a></li>
-      <li><a>9. Disputes &amp; Escrow</a></li>
-      <li><a>10. Privacy &amp; Data</a></li>
-      <li><a>11. Platform Rules</a></li>
-      <li><a>12. Platform Changes</a></li>
-      <li><a>13. Intellectual Property</a></li>
-      <li><a>14. Liability &amp; Termination</a></li>
-      <li><a>16. General</a></li>
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#s1">1. Definitions</a></li>
+      <li><a href="#s2">2. Acceptance &amp; Eligibility</a></li>
+      <li><a href="#s3">3. FlexiShift's Role</a></li>
+      <li><a href="#s4">4. Verification &amp; Identity</a></li>
+      <li><a href="#s5">5. Job Contract Terms</a></li>
+      <li><a href="#s6">6. Prohibited &amp; Restricted Goods</a></li>
+      <li><a href="#s7">7. Liability Exclusions</a></li>
+      <li><a href="#s8">8. Payments, Fees &amp; Tax</a></li>
+      <li><a href="#s9">9. Disputes &amp; Escrow</a></li>
+      <li><a href="#s10">10. Privacy &amp; Data</a></li>
+      <li><a href="#s11">11. Platform Rules</a></li>
+      <li><a href="#s12">12. Platform Changes</a></li>
+      <li><a href="#s13">13. Intellectual Property</a></li>
+      <li><a href="#s14">14. Liability &amp; Termination</a></li>
+      <li><a href="#s16">16. General</a></li>
     </ul>
   </div>
 
   <!-- SECTION 1 -->
-  <div>
-    <span>Section 1</span>
+  <div class="tc-section" id="s1">
+    <span class="section-num">Section 1</span>
     <h2>Definitions</h2>
     <p>Key terms used in these Terms have the following meanings:</p>
     <ul>
@@ -67,15 +257,15 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 2 -->
-  <div>
-    <span>Section 2</span>
+  <div class="tc-section" id="s2">
+    <span class="section-num">Section 2</span>
     <h2>Acceptance, Eligibility, and Account Security</h2>
     <p>By using the Platform you confirm you are at least 18 years old, have legal capacity to contract, and (if acting on behalf of a company) have authority to bind that entity. You must comply with all Applicable Laws and keep your account credentials confidential. Notify us immediately of any suspected unauthorised access.</p>
   </div>
 
   <!-- SECTION 3 -->
-  <div>
-    <span>Section 3</span>
+  <div class="tc-section" id="s3">
+    <span class="section-num">Section 3</span>
     <h2>FlexiShift's Role – Marketplace Only</h2>
     <p>FlexiShift operates a digital marketplace and technology platform only. FlexiShift is not a haulage company, carrier, freight forwarder, transport operator, logistics provider, warehouse operator, custodian of goods, employment business, recruitment agency, worker engager or supplier of transport services.</p>
     <p>FlexiShift does not employ, engage, supervise, direct, control, manage or monitor Drivers, Firms or Hauliers and exercises no operational control over the performance of any Job.</p>
@@ -85,8 +275,8 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 4 -->
-  <div>
-    <span>Section 4</span>
+  <div class="tc-section" id="s4">
+    <span class="section-num">Section 4</span>
     <h2>Verification, Identity Checks, and Fraud Prevention</h2>
     <p>All Suppliers must complete mandatory verification before accepting any Job. Required documents include:</p>
     <ul>
@@ -129,15 +319,15 @@ export const tcEnHTML = `<div>
     </ul>
     <p>The Haulier acknowledges and agrees that it retains sole responsibility for the operational management, supervision and control of all Drivers engaged through the Platform once they attend the Job location and throughout the performance of the Job.</p>
     <p>FlexiShift acts solely as a technology platform facilitating introductions between Drivers and Hauliers. FlexiShift does not employ, supervise, direct, manage, assess, monitor or control Drivers during the performance of any Job and has no ability to verify a Driver's ongoing legal entitlement, competence, qualifications, fitness, suitability or conduct at the point of engagement or thereafter.</p>
-    <div>FlexiShift shall have no liability whatsoever for any loss, damage, injury, delay, regulatory breach, compliance failure, vehicle damage, cargo loss, personal injury, death, fines, penalties, claims or costs arising from: (i) the Haulier's failure to conduct appropriate verification, inspection or suitability assessments; (ii) the Haulier's decision to engage, permit or continue using a Driver; (iii) any inaccurate, incomplete or fraudulent information provided by a Driver; or (iv) any act, omission, negligence, misconduct or breach of law by a Driver.</div>
+    <div class="warn-box">FlexiShift shall have no liability whatsoever for any loss, damage, injury, delay, regulatory breach, compliance failure, vehicle damage, cargo loss, personal injury, death, fines, penalties, claims or costs arising from: (i) the Haulier's failure to conduct appropriate verification, inspection or suitability assessments; (ii) the Haulier's decision to engage, permit or continue using a Driver; (iii) any inaccurate, incomplete or fraudulent information provided by a Driver; or (iv) any act, omission, negligence, misconduct or breach of law by a Driver.</div>
     <p>The Haulier assumes all risks associated with permitting a Driver to undertake a Job and shall indemnify, defend and hold harmless FlexiShift, its officers, directors, employees and affiliates from and against any claims, actions, losses, liabilities, damages, penalties, costs and expenses (including reasonable legal fees) arising out of or connected with the Haulier's failure to comply with its obligations under this Clause or its engagement of a Driver whom it knew, or ought reasonably to have known, was not suitable for the Job.</p>
     <p>The Haulier shall be deemed the transport operator in operational control of the Job. The Haulier is solely responsible for compliance with all applicable transport legislation, driver hours requirements, tachograph requirements, working time requirements, health and safety obligations, vehicle compliance requirements and customer contractual obligations.</p>
     <p>Verification status displayed on the Platform is for administrative purposes only and should not be relied upon as evidence of competence, fitness, legality, insurance validity, suitability or trustworthiness.</p>
   </div>
 
   <!-- SECTION 5 -->
-  <div>
-    <span>Section 5</span>
+  <div class="tc-section" id="s5">
+    <span class="section-num">Section 5</span>
     <h2>Job Contract Terms (Incorporated into Every Booking)</h2>
     <p>These terms apply between Haulier and Supplier for every Job unless expressly varied in writing. FlexiShift is not a party to any Job Contract.</p>
     <p>The Job Contract exists exclusively between the Haulier and Supplier. FlexiShift is not a party to, beneficiary of, guarantor of or administrator of any Job Contract. FlexiShift shall not be responsible for interpreting, enforcing or adjudicating any rights or obligations arising under any Job Contract.</p>
@@ -156,10 +346,10 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 6 -->
-  <div>
-    <span>Section 6</span>
+  <div class="tc-section" id="s6">
+    <span class="section-num">Section 6</span>
     <h2>Prohibited and Restricted Goods</h2>
-    <div>Posting or transporting Prohibited Goods may result in immediate account suspension and referral to authorities. Suppliers may refuse any load they reasonably suspect to be prohibited, without penalty.</div>
+    <div class="warn-box">Posting or transporting Prohibited Goods may result in immediate account suspension and referral to authorities. Suppliers may refuse any load they reasonably suspect to be prohibited, without penalty.</div>
 
     <h3>6.1 Absolutely Prohibited (no exceptions)</h3>
     <ul>
@@ -187,8 +377,8 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 7 -->
-  <div>
-    <span>Section 7</span>
+  <div class="tc-section" id="s7">
+    <span class="section-num">Section 7</span>
     <h2>Liability Exclusions – Vehicles, Goods, Theft, and Cybersecurity</h2>
 
     <h3>7.1 Vehicle Damage</h3>
@@ -209,8 +399,8 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 8 -->
-  <div>
-    <span>Section 8</span>
+  <div class="tc-section" id="s8">
+    <span class="section-num">Section 8</span>
     <h2>Payments, Fees, Tax, and Invoicing</h2>
     <p>All transactions are processed exclusively by the Third-Party Payment Processor. FlexiShift does not store or handle payment card or banking credentials. Accepted payment channels include those published on the Platform (including UPI, credit card, and bank transfer where available). Payment Facilitation Services are locked on booking and released to the Supplier upon Haulier approval of Delivery Proof.</p>
     <ul>
@@ -229,8 +419,8 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 9 -->
-  <div>
-    <span>Section 9</span>
+  <div class="tc-section" id="s9">
+    <span class="section-num">Section 9</span>
     <h2>Disputes and Escrow Release</h2>
     <ul>
       <li>FlexiShift has no obligation to investigate, mediate, arbitrate, adjudicate or resolve disputes between Users. Any assistance provided by FlexiShift is voluntary, discretionary and provided solely as a customer service convenience.</li>
@@ -241,8 +431,8 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 10 -->
-  <div>
-    <span>Section 10</span>
+  <div class="tc-section" id="s10">
+    <span class="section-num">Section 10</span>
     <h2>Privacy, GPS Tracking, and Data Processing</h2>
     <p>FlexiShift processes personal data in accordance with its Privacy Policy (available on the Platform and incorporated by reference). By using the Platform, Users consent to data processing as described therein.</p>
 
@@ -270,8 +460,8 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 11 -->
-  <div>
-    <span>Section 11</span>
+  <div class="tc-section" id="s11">
+    <span class="section-num">Section 11</span>
     <h2>Platform Rules – Ratings, Reviews, and the Driver App</h2>
 
     <h3>11.1 Ratings and Reviews</h3>
@@ -300,24 +490,24 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 12 -->
-  <div>
-    <span>Section 12</span>
+  <div class="tc-section" id="s12">
+    <span class="section-num">Section 12</span>
     <h2>Platform Changes and Service Providers</h2>
     <p>FlexiShift reserves the right at any time to modify, enhance, discontinue, or replace any feature or functionality; change or terminate any third-party service provider (including the Third-Party Payment Processor); and update pricing or commission structures with reasonable notice. FlexiShift shall not be liable for any loss arising from such changes. Material changes to these Terms will be notified by email or in-platform notification; continued use constitutes acceptance.</p>
     <p>FlexiShift may suspend, restrict or discontinue the Platform or any feature at any time and for any reason without liability.</p>
   </div>
 
   <!-- SECTION 13 -->
-  <div>
-    <span>Section 13</span>
+  <div class="tc-section" id="s13">
+    <span class="section-num">Section 13</span>
     <h2>Intellectual Property</h2>
     <p>All intellectual property in the Platform (software, design, algorithms, branding, trademarks, and content) is owned by or licensed to AI Planning Ltd UK. Users receive a limited, non-exclusive, non-transferable licence to use the Platform for its intended purpose only. Users may not copy, reverse-engineer, modify, or distribute any Platform element without prior written consent.</p>
     <p>All platform algorithms, machine learning models, scoring systems, analytics outputs, performance metrics, derived data and platform intelligence belong exclusively to FlexiShift.</p>
   </div>
 
   <!-- SECTION 14 -->
-  <div>
-    <span>Section 14</span>
+  <div class="tc-section" id="s14">
+    <span class="section-num">Section 14</span>
     <h2>Limitation of Liability, Indemnity, and Termination</h2>
 
     <h3>14.1 Limitation of Liability</h3>
@@ -335,8 +525,8 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SECTION 16 -->
-  <div>
-    <span>Section 16</span>
+  <div class="tc-section" id="s16">
+    <span class="section-num">Section 16</span>
     <h2>General</h2>
     <ul>
       <li><strong>Entire Agreement:</strong> These Terms constitute the entire agreement between FlexiShift and each User regarding use of the Platform.</li>
@@ -353,53 +543,53 @@ export const tcEnHTML = `<div>
   </div>
 
   <!-- SIGNING BLOCK -->
-  <div>
+  <div class="signing-block">
     <p>By registering for or continuing to use the FlexiShift Platform, you confirm that you have read, understood, and agree to be bound by these Terms and Conditions in their entirety.</p>
-    <p>FlexiShift Ltd · Registered in England and Wales · Version 3.0 · May 2026 · UK • Norway • Sweden<br>These Terms are available in Norwegian and Swedish on request.</p>
+    <p class="footer-detail">FlexiShift Ltd · Registered in England and Wales · Version 3.0 · May 2026 · UK • Norway • Sweden<br>These Terms are available in Norwegian and Swedish on request.</p>
   </div>
 
 </div>`;
-export const tcNoHTML = `<div>
+export const tcNoHTML = `<div class="page">
 
-  <div>
-    <div>
-      <div>Juridisk dokument</div>
+  <div class="doc-header">
+    <div class="doc-header-inner">
+      <div class="doc-badge">Juridisk dokument</div>
       <h1>Vilkår og betingelser for bruk</h1>
-      <div>
-        <span>Versjon 3.0</span>
-        <span>Gjelder fra: mai 2026</span>
-        <span>🇬🇧 Storbritannia</span>
-        <span>🇳🇴 Norge</span>
-        <span>🇸🇪 Sverige</span>
+      <div class="doc-meta">
+        <span class="doc-meta-item">Versjon 3.0</span>
+        <span class="doc-meta-item">Gjelder fra: mai 2026</span>
+        <span class="doc-meta-item">🇬🇧 Storbritannia</span>
+        <span class="doc-meta-item">🇳🇴 Norge</span>
+        <span class="doc-meta-item">🇸🇪 Sverige</span>
       </div>
-      <div>Ved å registrere deg eller bruke Plattformen i noen kapasitet, godtar du å være juridisk bundet av disse Vilkårene. Dersom du ikke godtar dem, må du ikke bruke Plattformen.</div>
+      <div class="doc-notice">Ved å registrere deg eller bruke Plattformen i noen kapasitet, godtar du å være juridisk bundet av disse Vilkårene. Dersom du ikke godtar dem, må du ikke bruke Plattformen.</div>
     </div>
   </div>
 
-  <div>
-    <div>Innhold</div>
-    <ul>
-      <li><a>1. Definisjoner</a></li>
-      <li><a>2. Aksept og kvalifikasjon</a></li>
-      <li><a>3. FlexiShifts rolle</a></li>
-      <li><a>4. Verifisering og identitet</a></li>
-      <li><a>5. Oppdragskontrakt</a></li>
-      <li><a>6. Forbudte og begrensede varer</a></li>
-      <li><a>7. Ansvarsfraskrivelser</a></li>
-      <li><a>8. Betalinger, gebyrer og skatt</a></li>
-      <li><a>9. Tvister og escrow</a></li>
-      <li><a>10. Personvern og data</a></li>
-      <li><a>11. Plattformregler</a></li>
-      <li><a>12. Plattformendringer</a></li>
-      <li><a>13. Immaterielle rettigheter</a></li>
-      <li><a>14. Ansvar og oppsigelse</a></li>
-      <li><a>16. Generelt</a></li>
+  <div class="toc">
+    <div class="toc-title">Innhold</div>
+    <ul class="toc-list">
+      <li><a href="#s1">1. Definisjoner</a></li>
+      <li><a href="#s2">2. Aksept og kvalifikasjon</a></li>
+      <li><a href="#s3">3. FlexiShifts rolle</a></li>
+      <li><a href="#s4">4. Verifisering og identitet</a></li>
+      <li><a href="#s5">5. Oppdragskontrakt</a></li>
+      <li><a href="#s6">6. Forbudte og begrensede varer</a></li>
+      <li><a href="#s7">7. Ansvarsfraskrivelser</a></li>
+      <li><a href="#s8">8. Betalinger, gebyrer og skatt</a></li>
+      <li><a href="#s9">9. Tvister og escrow</a></li>
+      <li><a href="#s10">10. Personvern og data</a></li>
+      <li><a href="#s11">11. Plattformregler</a></li>
+      <li><a href="#s12">12. Plattformendringer</a></li>
+      <li><a href="#s13">13. Immaterielle rettigheter</a></li>
+      <li><a href="#s14">14. Ansvar og oppsigelse</a></li>
+      <li><a href="#s16">16. Generelt</a></li>
     </ul>
   </div>
 
   <!-- § 1 -->
-  <div>
-    <span>Seksjon 1</span>
+  <div class="tc-section" id="s1">
+    <span class="section-num">Seksjon 1</span>
     <h2>Definisjoner</h2>
     <p>Nøkkelbegreper brukt i disse Vilkårene har følgende betydning:</p>
     <ul>
@@ -425,15 +615,15 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 2 -->
-  <div>
-    <span>Seksjon 2</span>
+  <div class="tc-section" id="s2">
+    <span class="section-num">Seksjon 2</span>
     <h2>Aksept, kvalifikasjon og kontosikkerhet</h2>
     <p>Ved å bruke Plattformen bekrefter du at du er minst 18 år gammel, har rettslig handleevne til å inngå kontrakt, og (dersom du opptrer på vegne av et selskap) har fullmakt til å binde det selskapet. Du må overholde all Gjeldende lov og holde kontolegitimasjonen din konfidensiell. Varsle oss umiddelbart om enhver mistanke om uautorisert tilgang.</p>
   </div>
 
   <!-- § 3 -->
-  <div>
-    <span>Seksjon 3</span>
+  <div class="tc-section" id="s3">
+    <span class="section-num">Seksjon 3</span>
     <h2>FlexiShifts rolle – kun markedsplass</h2>
     <p>FlexiShift driver utelukkende en digital markedsplass og teknologiplattform. FlexiShift er ikke et transportselskap, speditør, fraktmegler, transportoperatør, logistikkleverandør, lageroperatør, varevokter, bemanningsbyrå, rekrutteringsbyrå, arbeidsformidler eller leverandør av transporttjenester.</p>
     <p>FlexiShift ansetter, engasjerer, overvåker, leder, kontrollerer, administrerer eller overvåker ikke Sjåfører, Firmaer eller Transportører og utøver ingen operasjonell kontroll over utførelsen av noe Oppdrag.</p>
@@ -443,8 +633,8 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 4 -->
-  <div>
-    <span>Seksjon 4</span>
+  <div class="tc-section" id="s4">
+    <span class="section-num">Seksjon 4</span>
     <h2>Verifisering, identitetskontroll og svindelforebygging</h2>
     <p>Alle Leverandører må gjennomføre obligatorisk verifisering før de aksepterer noe Oppdrag. Påkrevde dokumenter inkluderer:</p>
     <ul>
@@ -486,14 +676,14 @@ export const tcNoHTML = `<div>
       <li>Nekte tilgang til enhver Sjåfør som Transportøren med rimelighet mener ikke oppfyller Oppdragets krav eller utgjør en sikkerhets-, juridisk-, operasjonell eller samsvarsrisiko</li>
     </ul>
     <p>Transportøren erkjenner og godtar at de beholder eneansvar for den operasjonelle ledelsen, tilsynet og kontrollen av alle Sjåfører som er engasjert gjennom Plattformen fra det øyeblikk de møter opp på Oppdragsstedet og gjennom hele utførelsen av Oppdraget.</p>
-    <div>FlexiShift skal ikke ha noe ansvar for tap, skade, personskade, forsinkelse, regulatorisk brudd, samsvarssvikt, kjøretøyskade, lastebortfall, personskade, død, bøter, straffer, krav eller kostnader som oppstår fra: (i) Transportørens manglende gjennomføring av hensiktsmessig verifisering, inspeksjon eller egnethetsanalyse; (ii) Transportørens beslutning om å engasjere, tillate eller fortsette å bruke en Sjåfør; (iii) unøyaktig, ufullstendig eller sviksom informasjon gitt av en Sjåfør; eller (iv) handlinger, unnlatelser, uaktsomhet, mislighold eller lovbrudd fra en Sjåfør.</div>
+    <div class="warn-box">FlexiShift skal ikke ha noe ansvar for tap, skade, personskade, forsinkelse, regulatorisk brudd, samsvarssvikt, kjøretøyskade, lastebortfall, personskade, død, bøter, straffer, krav eller kostnader som oppstår fra: (i) Transportørens manglende gjennomføring av hensiktsmessig verifisering, inspeksjon eller egnethetsanalyse; (ii) Transportørens beslutning om å engasjere, tillate eller fortsette å bruke en Sjåfør; (iii) unøyaktig, ufullstendig eller sviksom informasjon gitt av en Sjåfør; eller (iv) handlinger, unnlatelser, uaktsomhet, mislighold eller lovbrudd fra en Sjåfør.</div>
     <p>Transportøren påtar seg alle risikoer forbundet med å tillate en Sjåfør å utføre et Oppdrag og skal holde FlexiShift, dets ledere, direktører, ansatte og tilknyttede selskaper skadesløse fra og mot alle krav, handlinger, tap, forpliktelser, skader, straffer, kostnader og utgifter (inkludert rimelige advokatgebyrer) som oppstår fra Transportørens manglende overholdelse av sine forpliktelser i henhold til denne klausulen.</p>
     <p>Transportøren skal anses som transportoperatøren med operasjonell kontroll over Oppdraget og er eneansvarlig for overholdelse av all gjeldende transportlovgivning, krav til kjøretid, takografregler, arbeidstidskrav, helse- og sikkerhetsforpliktelser og kundekontraktsmessige forpliktelser.</p>
   </div>
 
   <!-- § 5 -->
-  <div>
-    <span>Seksjon 5</span>
+  <div class="tc-section" id="s5">
+    <span class="section-num">Seksjon 5</span>
     <h2>Oppdragskontraktvilkår (innlemmet i hver bestilling)</h2>
     <p>Disse vilkårene gjelder mellom Transportøren og Leverandøren for hvert Oppdrag med mindre annet er uttrykkelig avtalt skriftlig. FlexiShift er ikke part i noen Oppdragskontrakt.</p>
     <p>Oppdraskontrakten eksisterer utelukkende mellom Transportøren og Leverandøren. FlexiShift er ikke part i, begunstiget av, garantist for eller administrator av noen Oppdragskontrakt.</p>
@@ -512,10 +702,10 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 6 -->
-  <div>
-    <span>Seksjon 6</span>
+  <div class="tc-section" id="s6">
+    <span class="section-num">Seksjon 6</span>
     <h2>Forbudte og begrensede varer</h2>
-    <div>Å legge ut eller transportere Forbudte varer kan resultere i umiddelbar kontosuspensjon og anmeldelse til myndighetene. Leverandører kan avslå enhver last de med rimelighet mistenker å være forbudt, uten straff.</div>
+    <div class="warn-box">Å legge ut eller transportere Forbudte varer kan resultere i umiddelbar kontosuspensjon og anmeldelse til myndighetene. Leverandører kan avslå enhver last de med rimelighet mistenker å være forbudt, uten straff.</div>
 
     <h3>6.1 Absolutt forbudt (ingen unntak)</h3>
     <ul>
@@ -542,8 +732,8 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 7 -->
-  <div>
-    <span>Seksjon 7</span>
+  <div class="tc-section" id="s7">
+    <span class="section-num">Seksjon 7</span>
     <h2>Ansvarsfraskrivelser – kjøretøy, gods, tyveri og cybersikkerhet</h2>
 
     <h3>7.1 Kjøretøyskade</h3>
@@ -564,8 +754,8 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 8 -->
-  <div>
-    <span>Seksjon 8</span>
+  <div class="tc-section" id="s8">
+    <span class="section-num">Seksjon 8</span>
     <h2>Betalinger, gebyrer, skatt og fakturering</h2>
     <p>Alle transaksjoner behandles utelukkende av Tredjeparts betalingsbehandler. FlexiShift lagrer eller håndterer ikke betalingskort- eller banklegitimasjon. Betalingstjenester låses ved bestilling og frigjøres til Leverandøren ved Transportørens godkjenning av Leveringsbeviset.</p>
     <ul>
@@ -583,8 +773,8 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 9 -->
-  <div>
-    <span>Seksjon 9</span>
+  <div class="tc-section" id="s9">
+    <span class="section-num">Seksjon 9</span>
     <h2>Tvister og escrow-frigjøring</h2>
     <ul>
       <li>FlexiShift har ingen plikt til å etterforske, mekle, megle, avgjøre eller løse tvister mellom Brukere. Eventuell bistand fra FlexiShift er frivillig, skjønnsmessig og gitt utelukkende som en kundeservicetjeneste.</li>
@@ -595,8 +785,8 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 10 -->
-  <div>
-    <span>Seksjon 10</span>
+  <div class="tc-section" id="s10">
+    <span class="section-num">Seksjon 10</span>
     <h2>Personvern, GPS-sporing og databehandling</h2>
     <p>FlexiShift behandler personopplysninger i samsvar med sin Personvernpolicy (tilgjengelig på Plattformen og innlemmet ved referanse). Ved å bruke Plattformen samtykker Brukere til databehandling som beskrevet der.</p>
 
@@ -622,8 +812,8 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 11 -->
-  <div>
-    <span>Seksjon 11</span>
+  <div class="tc-section" id="s11">
+    <span class="section-num">Seksjon 11</span>
     <h2>Plattformregler – vurderinger, anmeldelser og sjåførappen</h2>
 
     <h3>11.1 Vurderinger og anmeldelser</h3>
@@ -649,23 +839,23 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 12 -->
-  <div>
-    <span>Seksjon 12</span>
+  <div class="tc-section" id="s12">
+    <span class="section-num">Seksjon 12</span>
     <h2>Plattformendringer og tjenesteleverandører</h2>
     <p>FlexiShift forbeholder seg retten til når som helst å modifisere, forbedre, avvikle eller erstatte funksjoner; endre eller avslutte tjenesteleverandører (inkludert Tredjeparts betalingsbehandler); og oppdatere priser eller provisjonsstrukturer med rimelig varsel. Vesentlige endringer i disse Vilkårene vil bli varslet via e-post eller in-plattform-varsling; fortsatt bruk utgjør aksept. FlexiShift kan suspendere, begrense eller avvikle Plattformen eller enhver funksjon når som helst og av enhver grunn uten ansvar.</p>
   </div>
 
   <!-- § 13 -->
-  <div>
-    <span>Seksjon 13</span>
+  <div class="tc-section" id="s13">
+    <span class="section-num">Seksjon 13</span>
     <h2>Immaterielle rettigheter</h2>
     <p>All immateriell eiendom i Plattformen (programvare, design, algoritmer, merkevarebygging, varemerker og innhold) eies av eller er lisensiert til AI Planning Ltd UK. Brukere mottar en begrenset, ikke-eksklusiv, ikke-overførbar lisens til å bruke Plattformen kun for dens tiltenkte formål. Brukere kan ikke kopiere, revers-engineere, modifisere eller distribuere noen Plattformelement uten forhåndssamtykke.</p>
     <p>Alle plattformalgoritmer, maskinlæringsmodeller, poengsettingssystemer, analyseresultater, ytelsesmålinger, avledede data og plattformintelligens tilhører utelukkende FlexiShift.</p>
   </div>
 
   <!-- § 14 -->
-  <div>
-    <span>Seksjon 14</span>
+  <div class="tc-section" id="s14">
+    <span class="section-num">Seksjon 14</span>
     <h2>Ansvarsbegrensning, erstatning og oppsigelse</h2>
 
     <h3>14.1 Ansvarsbegrensning</h3>
@@ -682,8 +872,8 @@ export const tcNoHTML = `<div>
   </div>
 
   <!-- § 16 -->
-  <div>
-    <span>Seksjon 16</span>
+  <div class="tc-section" id="s16">
+    <span class="section-num">Seksjon 16</span>
     <h2>Generelt</h2>
     <ul>
       <li><strong>Hele avtalen:</strong> Disse Vilkårene utgjør hele avtalen mellom FlexiShift og hver Bruker vedrørende bruk av Plattformen.</li>
@@ -699,9 +889,9 @@ export const tcNoHTML = `<div>
     </ul>
   </div>
 
-  <div>
+  <div class="signing-block">
     <p>Ved å registrere deg eller fortsette å bruke FlexiShift-plattformen bekrefter du at du har lest, forstått og godtar å være bundet av disse vilkårene og betingelsene i sin helhet.</p>
-    <p>FlexiShift Ltd · Registrert i England og Wales · Versjon 3.0 · Mai 2026 · Storbritannia • Norge • Sverige<br>Disse Vilkårene er tilgjengelige på norsk og svensk på forespørsel.</p>
+    <p class="footer-detail">FlexiShift Ltd · Registrert i England og Wales · Versjon 3.0 · Mai 2026 · Storbritannia • Norge • Sverige<br>Disse Vilkårene er tilgjengelige på norsk og svensk på forespørsel.</p>
   </div>
 
 </div>`;
