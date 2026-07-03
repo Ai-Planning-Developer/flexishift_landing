@@ -210,7 +210,7 @@ export default function HomePage({ scrollTo }: HomePageProps) {
           <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'var(--muted)', maxWidth: 560, lineHeight: 1.7, margin: '0 auto clamp(32px,5vw,48px)', textAlign: 'center' }}>{t.ctaLead}</p>
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer" style={{ padding: 'clamp(13px,2vw,16px) clamp(20px,3vw,32px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(13px,1.4vw,15px)', textDecoration: 'none', background: 'var(--navy)', color: 'white', width: '100%', maxWidth: 280, textAlign: 'center', boxSizing: 'border-box' }}>{t.ctaHaulier}</a>
-            <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer" style={{ padding: 'clamp(13px,2vw,16px) clamp(20px,3vw,32px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(13px,1.4vw,15px)', textDecoration: 'none', background: 'var(--teal)', color: 'white', width: '100%', maxWidth: 280, textAlign: 'center', boxSizing: 'border-box' }}>{t.ctaDriver}</a>
+            <a href="https://play.google.com/store/apps/details?id=io.flexishift" target="_blank" rel="noopener noreferrer" style={{ padding: 'clamp(13px,2vw,16px) clamp(20px,3vw,32px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(13px,1.4vw,15px)', textDecoration: 'none', background: 'var(--teal)', color: 'white', width: '100%', maxWidth: 280, textAlign: 'center', boxSizing: 'border-box' }}>{t.ctaDriver}</a>
           </div>
         </div>
       </section>
