@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { ropaEnHTML, ropaNoHTML, ropaSvHTML, ropaStyles } from '../content/ropaContent';
+import { ropaEnHTML, ropaStyles } from '../content/ropaContent';
+import HybridBanner from '../components/HybridBanner';
 
 const backLabels = {
   en: { home: 'Back to home', back: '← Back' },
@@ -13,7 +14,6 @@ export default function ROPAPage() {
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const t = backLabels[lang];
-  const html = lang === 'no' ? ropaNoHTML : lang === 'sv' ? ropaSvHTML : ropaEnHTML;
 
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, []);
 
@@ -39,7 +39,12 @@ export default function ROPAPage() {
           </button>
         </div>
       </div>
-      <div className="ropa-document" dangerouslySetInnerHTML={{ __html: html }} />
+      {lang !== 'en' && (
+        <div style={{ maxWidth: 980, margin: '12px auto 0', padding: '0 24px' }}>
+          <HybridBanner docName="Record of Processing Activities (ROPA)" />
+        </div>
+      )}
+      <div className="ropa-document" dangerouslySetInnerHTML={{ __html: ropaEnHTML }} />
       <footer style={{ background: '#080F1C', padding: '28px 5%' }}>
         <div style={{ maxWidth: 980, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>© 2026 AI Planning Ltd · FlexiShift · ROPA v1.0</span>

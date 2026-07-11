@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { privacyEnHTML, privacyNoHTML, privacySvHTML, privacyStyles } from '../content/privacyContent';
+import { privacyEnHTML, privacyStyles } from '../content/privacyContent';
+import HybridBanner from '../components/HybridBanner';
 
 const backLabels = {
   en: { home: 'Back to home', back: '← Back' },
@@ -13,7 +14,6 @@ export default function PrivacyPage() {
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const t = backLabels[lang];
-  const html = lang === 'no' ? privacyNoHTML : lang === 'sv' ? privacySvHTML : privacyEnHTML;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -54,9 +54,15 @@ export default function PrivacyPage() {
         </button>
       </div>
 
+      {lang !== 'en' && (
+        <div style={{ maxWidth: 900, margin: '12px auto 0', padding: '0 24px' }}>
+          <HybridBanner docName="Privacy Policy" />
+        </div>
+      )}
+
       <div
         className="pp-document"
-        dangerouslySetInnerHTML={{ __html: html }}
+        dangerouslySetInnerHTML={{ __html: privacyEnHTML }}
       />
 
       <footer style={{ background: '#080F1C', padding: '28px 5%' }}>
