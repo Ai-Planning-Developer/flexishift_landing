@@ -1,6 +1,6 @@
 // Auto-generated from uploaded TC HTML files — preserves original design
 export const tcStyles = `
-  :root {
+:root {
     --navy:  #0F3460;
     --teal:  #00A896;
     --light: #E8F1FB;
@@ -189,7 +189,9 @@ export const tcStyles = `
     .signing-block { padding: 28px 24px; }
   }
 `;
-export const tcEnHTML = `<div class="page">
+
+export const tcEnHTML = `
+<div class="page">
 
   <!-- HEADER -->
   <div class="doc-header">
@@ -225,6 +227,7 @@ export const tcEnHTML = `<div class="page">
       <li><a href="#s12">12. Platform Changes</a></li>
       <li><a href="#s13">13. Intellectual Property</a></li>
       <li><a href="#s14">14. Liability &amp; Termination</a></li>
+      <li><a href="#s15">15. Jurisdiction-Specific Provisions</a></li>
       <li><a href="#s16">16. General</a></li>
     </ul>
   </div>
@@ -235,7 +238,7 @@ export const tcEnHTML = `<div class="page">
     <h2>Definitions</h2>
     <p>Key terms used in these Terms have the following meanings:</p>
     <ul>
-      <li><strong>"FlexiShift", "we", "us", "our"</strong> – FlexiShift Ltd, operator of the Platform.</li>
+      <li><strong>"FlexiShift", "we", "us", "our"</strong> – AI Planning Ltd, a company registered in England and Wales, trading as FlexiShift and operator of the Platform.</li>
       <li><strong>"Platform"</strong> – the FlexiShift logistics marketplace, including the Haulier web app, Driver mobile app, Firm portal, and all supporting software and infrastructure.</li>
       <li><strong>"User"</strong> – any Haulier, Driver, or Firm accessing or using the Platform.</li>
       <li><strong>"Haulier"</strong> – a business or individual posting freight jobs on the Platform.</li>
@@ -244,7 +247,7 @@ export const tcEnHTML = `<div class="page">
       <li><strong>"Supplier"</strong> – any verified Driver or Firm eligible to accept jobs.</li>
       <li><strong>"Job"</strong> – a freight task posted by a Haulier, assigned a unique Job Reference ID.</li>
       <li><strong>"Job Contract"</strong> – the binding agreement formed between Haulier and Supplier on booking confirmation, incorporating Section 5 below.</li>
-      <li><strong>"Payment Facilitation Services"</strong> – the secure payment holding facility managed by the Third-Party Payment Processor.</li>
+      <li><strong>"Payment Facilitation Services"</strong> (referred to interchangeably in these Terms as "Escrow") – the secure payment holding facility operated by the Third-Party Payment Processor, into which funds are locked on booking and from which funds are released on completion of a Job. This facility is operated exclusively by the Third-Party Payment Processor and not by FlexiShift.</li>
       <li><strong>"Third-Party Payment Processor"</strong> – the specialist payment provider engaged by FlexiShift to handle all financial transactions.</li>
       <li><strong>"Compliance Track"</strong> – the mandatory three-stage workflow: Load Code Confirmation, Dual Sign-off Handover, and Delivery Proof.</li>
       <li><strong>"Prohibited Goods"</strong> – goods listed in Section 6 that may not be carried via the Platform.</li>
@@ -272,6 +275,9 @@ export const tcEnHTML = `<div class="page">
     <p>Drivers, Firms and Hauliers act as independent contractors at all times.</p>
     <p>Nothing in these Terms creates any employment relationship, worker relationship, partnership, joint venture, agency relationship, fiduciary relationship or representative relationship between FlexiShift and any User.</p>
     <p>The Job Contract is formed solely between the Haulier and the Supplier. FlexiShift is not a party to that agreement and assumes no responsibility for its performance.</p>
+
+    <h3>3.1 Local Introducers and Marketing Partners</h3>
+    <p>In certain jurisdictions, including Sweden, FlexiShift works with independent local marketing and referral partners who introduce prospective Drivers, Firms and Hauliers to the Platform. Any such partner acts as an independent business in its own right and is not an employee, worker, partner, joint venturer, agent or representative of FlexiShift or AI Planning Ltd. No such partner has any authority to conclude, execute, vary, interpret or bind FlexiShift or AI Planning Ltd to any contract, including any Job Contract or these Terms. Every Job Contract, and every User's contractual relationship with FlexiShift, is formed directly and exclusively with AI Planning Ltd. Introduction to the Platform by a local partner does not make that partner a party to, or guarantor of, any agreement between a User and FlexiShift.</p>
   </div>
 
   <!-- SECTION 4 -->
@@ -414,7 +420,7 @@ export const tcEnHTML = `<div class="page">
       <li>Each Driver and Haulier is solely responsible for registering for, collecting, reporting, and remitting VAT (or equivalent sales tax, including MVA in Norway and MOMS in Sweden) in their applicable jurisdiction. Where a Driver or Haulier is required by Applicable Law to be VAT-registered, they must maintain such registration throughout their use of the Platform. FlexiShift does not collect, remit, or account for VAT on behalf of any Driver or Haulier, and makes no representation as to any User's VAT obligations. Users must take independent tax advice if they are uncertain of their VAT registration or reporting requirements.</li>
       <li>All Drivers and Hauliers must be legally registered to operate as required by the laws and regulations of their applicable jurisdiction. This includes, without limitation: holding a valid business registration or self-employment status; possessing all licences, permits, and authorisations required to carry out haulage or driving activities; and complying with all applicable employment, tax, and transport regulations. Drivers operating in Sweden must hold a valid F-skatt certificate if self-employed.</li>
     </ul>
-    <p>All payment services are provided by the Third-Party Payment Processor. FlexiShift does not provide regulated payment services, escrow services, banking services or money transmission services.</p>
+    <p>All payment services, including the Payment Facilitation Services (Escrow) described in these Terms, are provided by the Third-Party Payment Processor. FlexiShift does not itself operate as a regulated payment institution, bank, or money transmitter, and does not itself hold, transmit, or have custody of any User funds at any time.</p>
     <p>FlexiShift shall have no liability for processor failure, processor insolvency, delayed payments, chargebacks, fraud, payment reversals or processor errors.</p>
   </div>
 
@@ -470,6 +476,7 @@ export const tcEnHTML = `<div class="page">
       <li>Reviews must not be defamatory, abusive, discriminatory, fake, manipulated, or incentivised.</li>
       <li>FlexiShift may remove or decline to publish any review at its discretion and accepts no liability for inaccurate reviews.</li>
       <li>Ratings feed the Smart Matching Engine and affect Supplier visibility, job eligibility, and continued Platform access. Accounts falling below acceptable rating thresholds may be suspended.</li>
+      <li>Declining a dispatched Job does not affect a Supplier's rating and shall not, by itself, result in reduced visibility, reduced Job offers, deprioritisation by the Smart Matching Engine, or any other penalty. Ratings are based solely on the Supplier's conduct during completed Jobs.</li>
       <li>Reviews, ratings and user-generated content remain the responsibility of the author. Users grant FlexiShift a worldwide, royalty-free, perpetual licence to use, display, analyse and publish ratings, reviews and feedback.</li>
     </ul>
 
@@ -524,6 +531,27 @@ export const tcEnHTML = `<div class="page">
     <p>Each User acknowledges and agrees that they are solely responsible for conducting their own due diligence and independent assessment before entering into any Job Contract, engaging with another User, releasing goods, accepting goods, making payments or relying upon any information obtained through the Platform.</p>
   </div>
 
+  <!-- SECTION 15 -->
+  <div class="tc-section" id="s15">
+    <span class="section-num">Section 15</span>
+    <h2>Jurisdiction-Specific Provisions</h2>
+
+    <h3>15.1 United Kingdom</h3>
+    <p>For UK-based Users, these Terms and the Job Contract are subject to the laws of England and Wales. Where a User qualifies as a consumer, mandatory protections under the Consumer Rights Act 2015 and related UK consumer legislation apply and are not excluded by these Terms. Data processing is carried out in accordance with the UK GDPR and the Data Protection Act 2018.</p>
+
+    <h3>15.2 Norway</h3>
+    <p>For Norwegian-based Users, nothing in these Terms excludes or limits any protection to which a User is entitled under mandatory provisions of Norwegian law that cannot be excluded by contract, including the Norwegian Contracts Act (avtaleloven) and, where a User qualifies as a consumer, the Norwegian Consumer Purchases Act (forbrukerkjøpsloven). Data processing complies with the Norwegian Personal Data Act (personopplysningsloven) implementing the EEA GDPR. Disputes involving a Norwegian consumer that cannot be resolved directly may be referred to the Norwegian Consumer Authority (Forbrukertilsynet) or the Consumer Disputes Board (Forbrukerklageutvalget) where applicable, in addition to the courts of Oslo.</p>
+
+    <h3>15.3 Sweden</h3>
+    <p>For Swedish-based Users, nothing in these Terms excludes or limits any protection to which a User is entitled under mandatory provisions of Swedish law that cannot be excluded by contract, including the Swedish Contracts Act (avtalslagen) and, where a User qualifies as a consumer, the Swedish Consumer Sales Act (konsumentköplagen). Data processing complies with the Swedish Act on Personal Data Processing and the EEA GDPR as supervised by the Swedish Authority for Privacy Protection (Integritetsskyddsmyndigheten, IMY). Disputes involving a Swedish consumer that cannot be resolved directly may be referred to the National Board for Consumer Disputes (Allmänna Reklamationsnämnden, ARN) where applicable, in addition to the courts of Stockholm.</p>
+
+    <h3>15.4 Cross-Border Jobs</h3>
+    <p>Where a Job involves collection and delivery across more than one jurisdiction covered by these Terms, the mandatory laws of each relevant jurisdiction apply to the extent they cannot be excluded. For cross-border road freight, the CMR Convention (Convention on the Contract for the International Carriage of Goods by Road) may apply, and Hauliers and Suppliers are responsible for their own compliance. ADR regulations apply to hazardous goods transport in all three jurisdictions.</p>
+
+    <h3>15.5 Order of Precedence</h3>
+    <p>Where a provision of this Section 15 conflicts with the general Governing Law clause in Section 16, this Section 15 takes precedence in respect of the Applicable Law and jurisdiction of the relevant User, to the extent required by mandatory local law.</p>
+  </div>
+
   <!-- SECTION 16 -->
   <div class="tc-section" id="s16">
     <span class="section-num">Section 16</span>
@@ -538,18 +566,21 @@ export const tcEnHTML = `<div class="page">
       <li><strong>Class Action Waiver:</strong> Users agree to bring claims solely in their individual capacity and not as part of any class action, representative action, collective action or similar proceeding to the fullest extent permitted by law.</li>
       <li><strong>Insurance:</strong> Drivers, Firms and Hauliers shall maintain all insurance required by law and industry practice, including motor insurance, goods-in-transit insurance, public liability insurance and any other insurance required for the services provided. FlexiShift does not verify the adequacy of insurance and accepts no liability arising from inadequate or lapsed insurance coverage.</li>
       <li><strong>Cooperation with Authorities:</strong> Users acknowledge that FlexiShift may cooperate fully with police, customs authorities, regulators, transport authorities, tax authorities, courts and governmental agencies and may provide information without prior notice where permitted or required by law.</li>
-      <li><strong>Governing Law:</strong> These Terms shall be governed by and construed in accordance with the laws of England and Wales. The courts of England and Wales shall have exclusive jurisdiction over all disputes arising out of or relating to these Terms, the Platform or any Job.</li>
+      <li><strong>Governing Law:</strong> Subject to Section 15 (Jurisdiction-Specific Provisions), these Terms shall be governed by and construed in accordance with the laws of England and Wales, and the courts of England and Wales shall have jurisdiction over disputes arising out of or relating to these Terms, the Platform or any Job. This is without prejudice to any mandatory consumer protections, local statutory rights, or jurisdictional entitlements available to Norwegian or Swedish Users under Section 15.</li>
     </ul>
   </div>
 
   <!-- SIGNING BLOCK -->
   <div class="signing-block">
     <p>By registering for or continuing to use the FlexiShift Platform, you confirm that you have read, understood, and agree to be bound by these Terms and Conditions in their entirety.</p>
-    <p class="footer-detail">FlexiShift Ltd · Registered in England and Wales · Version 3.0 · May 2026 · UK • Norway • Sweden<br>These Terms are available in Norwegian and Swedish on request.</p>
+    <p class="footer-detail">AI Planning Ltd, trading as FlexiShift · Registered in England and Wales · Version 3.0 · May 2026 · UK • Norway • Sweden<br>These Terms are available in Norwegian and Swedish on request.</p>
   </div>
 
-</div>`;
-export const tcNoHTML = `<div class="page">
+</div>
+`;
+
+export const tcNoHTML = `
+<div class="page">
 
   <div class="doc-header">
     <div class="doc-header-inner">
@@ -583,6 +614,7 @@ export const tcNoHTML = `<div class="page">
       <li><a href="#s12">12. Plattformendringer</a></li>
       <li><a href="#s13">13. Immaterielle rettigheter</a></li>
       <li><a href="#s14">14. Ansvar og oppsigelse</a></li>
+      <li><a href="#s15">15. Jurisdiksjonsspesifikke bestemmelser</a></li>
       <li><a href="#s16">16. Generelt</a></li>
     </ul>
   </div>
@@ -593,7 +625,7 @@ export const tcNoHTML = `<div class="page">
     <h2>Definisjoner</h2>
     <p>Nøkkelbegreper brukt i disse Vilkårene har følgende betydning:</p>
     <ul>
-      <li><strong>«FlexiShift», «vi», «oss», «vår»</strong> – FlexiShift Ltd, operatør av Plattformen.</li>
+      <li><strong>«FlexiShift», «vi», «oss», «vår»</strong> – AI Planning Ltd, et selskap registrert i England og Wales, som driver virksomhet under navnet FlexiShift og er operatør av Plattformen.</li>
       <li><strong>«Plattformen»</strong> – FlexiShift-markedsplassen for logistikk, inkludert transportørenes nettapp, sjåførenes mobilapp, firmaportalen og all tilhørende programvare og infrastruktur.</li>
       <li><strong>«Bruker»</strong> – enhver Transportør, Sjåfør eller Firma som benytter Plattformen.</li>
       <li><strong>«Transportør»</strong> – en virksomhet eller enkeltperson som legger ut fraktoppdrag på Plattformen.</li>
@@ -602,7 +634,7 @@ export const tcNoHTML = `<div class="page">
       <li><strong>«Leverandør»</strong> – enhver verifisert Sjåfør eller Firma som er kvalifisert til å akseptere oppdrag.</li>
       <li><strong>«Oppdrag»</strong> – en fraktoppgave lagt ut av en Transportør, tildelt en unik oppdragsreferanse-ID.</li>
       <li><strong>«Oppdragskontrakt»</strong> – den bindende avtalen som inngås mellom Transportøren og Leverandøren ved bestillingsbekreftelse, som inkorporerer Seksjon 5 nedenfor.</li>
-      <li><strong>«Betalingstjenester»</strong> – den sikre betalingsholdsfasiliteten administrert av Tredjeparts betalingsbehandler.</li>
+      <li><strong>«Betalingstjenester»</strong> (i disse Vilkårene også omtalt som «escrow») – den sikre betalingsholdsfasiliteten som drives av Tredjeparts betalingsbehandler, hvor midler låses ved bestilling og frigjøres ved fullføring av et Oppdrag. Denne fasiliteten drives utelukkende av Tredjeparts betalingsbehandler og ikke av FlexiShift.</li>
       <li><strong>«Tredjeparts betalingsbehandler»</strong> – den spesialiserte betalingsleverandøren engasjert av FlexiShift for å håndtere alle finansielle transaksjoner.</li>
       <li><strong>«Samsvarsløype»</strong> – den obligatoriske tretrinnsarbeidsflyten: Lastekodebekreftelse, Dobbel digital overlevering og Leveringsbevis.</li>
       <li><strong>«Forbudte varer»</strong> – varer oppført i Seksjon 6 som ikke kan fraktes via Plattformen.</li>
@@ -630,6 +662,9 @@ export const tcNoHTML = `<div class="page">
     <p>Sjåfører, Firmaer og Transportører opptrer til enhver tid som uavhengige kontraktører.</p>
     <p>Ingenting i disse Vilkårene skaper noe ansettelsesforhold, arbeidsforhold, partnerskap, joint venture, agentforhold, tillitsforhold eller representasjonsforhold mellom FlexiShift og noen Bruker.</p>
     <p>Oppdrагskontrakten inngås utelukkende mellom Transportøren og Leverandøren. FlexiShift er ikke part i den avtalen og påtar seg intet ansvar for dens gjennomføring.</p>
+
+    <h3>3.1 Lokale introduktører og markedsføringspartnere</h3>
+    <p>I enkelte jurisdiksjoner, inkludert Sverige, samarbeider FlexiShift med uavhengige lokale markedsførings- og henvisningspartnere som introduserer potensielle Sjåfører, Firmaer og Transportører til Plattformen. Enhver slik partner opptrer som en uavhengig virksomhet i egen rett og er ikke ansatt, arbeider, partner, deltaker i et joint venture, agent eller representant for FlexiShift eller AI Planning Ltd. Ingen slik partner har fullmakt til å inngå, utføre, endre, tolke eller binde FlexiShift eller AI Planning Ltd til noen kontrakt, inkludert noen Oppdragskontrakt eller disse Vilkårene. Enhver Oppdragskontrakt, og ethvert Brukerforhold til FlexiShift, inngås direkte og utelukkende med AI Planning Ltd. Introduksjon til Plattformen via en lokal partner gjør ikke denne partneren til part i, eller garantist for, noen avtale mellom en Bruker og FlexiShift.</p>
   </div>
 
   <!-- § 4 -->
@@ -769,7 +804,7 @@ export const tcNoHTML = `<div class="page">
       <li>Alle Sjåfører og Transportører er eneansvarlige for å registrere seg for, samle inn, rapportere og innbetale MVA (eller tilsvarende merverdiavgift) i sin aktuelle jurisdiksjon. FlexiShift samler ikke inn, innbetaler eller regnskapsføres MVA på vegne av noen Sjåfør eller Transportør.</li>
       <li>Alle Sjåfører og Transportører må være lovlig registrert for drift i sin aktuelle jurisdiksjon. Dette inkluderer, uten begrensning: inneha gyldig virksomhetsregistrering eller selvstendig næringsdrivendes status; alle lisenser, tillatelser og autorisasjoner som kreves; og overholde all gjeldende arbeidslivs-, skatte- og transportlovgivning.</li>
     </ul>
-    <p>FlexiShift tilbyr ikke regulerte betalingstjenester, escrow-tjenester, banktjenester eller pengeoverføringstjenester. FlexiShift har intet ansvar for prosessorfeil, prosessorinsolvens, forsinkede betalinger, tilbakebetalinger, svindel eller prosessorfeil.</p>
+    <p>Alle betalingstjenester, inkludert Betalingstjenestene (escrow) beskrevet i disse Vilkårene, ytes av Tredjeparts betalingsbehandler. FlexiShift opptrer ikke selv som en regulert betalingsinstitusjon, bank eller pengeoverføringsforetak, og har på intet tidspunkt selv rådighet over eller besittelse av Brukeres midler. FlexiShift har intet ansvar for prosessorfeil, prosessorinsolvens, forsinkede betalinger, tilbakebetalinger, svindel eller prosessorfeil.</p>
   </div>
 
   <!-- § 9 -->
@@ -822,6 +857,7 @@ export const tcNoHTML = `<div class="page">
       <li>Anmeldelser må ikke være ærekrenkende, fornærmende, diskriminerende, falske, manipulerte eller incentiviserte.</li>
       <li>FlexiShift kan fjerne eller avslå å publisere enhver anmeldelse etter eget skjønn og aksepterer intet ansvar for unøyaktige anmeldelser.</li>
       <li>Vurderinger mater inn i den smarte matchingsmotoren og påvirker Leverandørens synlighet, oppdragskvalifikasjon og fortsatt plattformtilgang.</li>
+      <li>Å avslå et utsendt Oppdrag påvirker ikke Leverandørens vurdering og skal ikke i seg selv føre til redusert synlighet, reduserte oppdragstilbud, nedprioritering i den smarte matchingsmotoren eller noen annen form for straff. Vurderinger baseres utelukkende på Leverandørens opptreden under fullførte Oppdrag.</li>
       <li>Anmeldelser, vurderinger og brukergenerert innhold forblir forfatterens ansvar. Brukere gir FlexiShift en verdensomspennende, royaltyfri, evig lisens til å bruke, vise, analysere og publisere vurderinger, anmeldelser og tilbakemeldinger.</li>
     </ul>
 
@@ -872,6 +908,27 @@ export const tcNoHTML = `<div class="page">
   </div>
 
   <!-- § 16 -->
+  <!-- § 15 -->
+  <div class="tc-section" id="s15">
+    <span class="section-num">Seksjon 15</span>
+    <h2>Jurisdiksjonsspesifikke bestemmelser</h2>
+
+    <h3>15.1 Storbritannia</h3>
+    <p>For Brukere etablert i Storbritannia er disse Vilkårene og Oppdragskontrakten underlagt lovgivningen i England og Wales. Der en Bruker anses som forbruker, gjelder ufravikelige beskyttelser under Consumer Rights Act 2015 og relatert britisk forbrukerlovgivning, og disse fravikes ikke av disse Vilkårene. Databehandling skjer i samsvar med UK GDPR og Data Protection Act 2018.</p>
+
+    <h3>15.2 Norge</h3>
+    <p>For Brukere etablert i Norge begrenser ingenting i disse Vilkårene den beskyttelsen en Bruker har krav på under ufravikelige bestemmelser i norsk rett som ikke kan fravikes ved avtale, herunder avtaleloven og, der Brukeren anses som forbruker, forbrukerkjøpsloven. Databehandling skjer i samsvar med personopplysningsloven, som gjennomfører EØS-GDPR. Tvister som involverer en norsk forbruker og som ikke kan løses direkte, kan henvises til Forbrukertilsynet eller Forbrukerklageutvalget der dette er relevant, i tillegg til domstolene i Oslo.</p>
+
+    <h3>15.3 Sverige</h3>
+    <p>For Brukere etablert i Sverige begrenser ingenting i disse Vilkårene den beskyttelsen en Bruker har krav på under ufravikelige bestemmelser i svensk rett som ikke kan fravikes ved avtale, herunder avtalslagen og, der Brukeren anses som forbruker, konsumentköplagen. Databehandling skjer i samsvar med den svenske personopplysningsloven og EØS-GDPR under tilsyn av Integritetsskyddsmyndigheten (IMY). Tvister som involverer en svensk forbruker og som ikke kan løses direkte, kan henvises til Allmänna Reklamationsnämnden (ARN) der dette er relevant, i tillegg til domstolene i Stockholm.</p>
+
+    <h3>15.4 Grensekryssende oppdrag</h3>
+    <p>Der et Oppdrag omfatter henting og levering på tvers av mer enn én jurisdiksjon omfattet av disse Vilkårene, gjelder ufravikelig lovgivning i hver relevante jurisdiksjon i den utstrekning den ikke kan fravikes. For grensekryssende veifrakt kan CMR-konvensjonen (konvensjonen om fraktavtaler ved internasjonal godsbefordring på vei) komme til anvendelse, og Transportører og Leverandører er selv ansvarlige for overholdelse. ADR-regelverket gjelder for transport av farlig gods i alle tre jurisdiksjoner.</p>
+
+    <h3>15.5 Rangorden</h3>
+    <p>Der en bestemmelse i denne Seksjon 15 er i strid med den generelle bestemmelsen om lovvalg i Seksjon 16, går denne Seksjon 15 foran for gjeldende lov og jurisdiksjon for vedkommende Bruker, i den utstrekning ufravikelig lokal lovgivning krever det.</p>
+  </div>
+
   <div class="tc-section" id="s16">
     <span class="section-num">Seksjon 16</span>
     <h2>Generelt</h2>
@@ -885,13 +942,409 @@ export const tcNoHTML = `<div class="page">
       <li><strong>Fraskrivelse av gruppesøksmål:</strong> Brukere samtykker til å fremme krav utelukkende i individuell kapasitet og ikke som del av noe gruppesøksmål, representativt søksmål, kollektivt søksmål eller lignende saksgang.</li>
       <li><strong>Forsikring:</strong> Sjåfører, Firmaer og Transportører skal opprettholde all forsikring som kreves av lov og bransjepraksis, inkludert motorvognforsikring, godstransportforsikring, ansvarsforsikring og annen forsikring som kreves for de tjenester som ytes. FlexiShift verifiserer ikke tilstrekkeligheten av forsikring og aksepterer intet ansvar som oppstår fra utilstrekkelig eller utløpt forsikringsdekning.</li>
       <li><strong>Samarbeid med myndigheter:</strong> Brukere erkjenner at FlexiShift kan samarbeide fullt ut med politi, tollmyndigheter, regulatorer, transportmyndigheter, skattemyndigheter, domstoler og statlige organer og kan gi informasjon uten forhåndsvarsel der dette er tillatt eller påkrevd av lov.</li>
-      <li><strong>Gjeldende lov:</strong> Disse Vilkårene skal reguleres av og tolkes i samsvar med lovgivningen i England og Wales. Domstolene i England og Wales skal ha eksklusiv jurisdiksjon over alle tvister som oppstår fra eller relaterer seg til disse Vilkårene, Plattformen eller ethvert Oppdrag.</li>
+      <li><strong>Gjeldende lov:</strong> Med forbehold om Seksjon 15 (Jurisdiksjonsspesifikke bestemmelser) skal disse Vilkårene reguleres av og tolkes i samsvar med lovgivningen i England og Wales, og domstolene i England og Wales skal ha jurisdiksjon over tvister som oppstår fra eller relaterer seg til disse Vilkårene, Plattformen eller ethvert Oppdrag. Dette berører ikke ufravikelige forbrukerrettigheter, lokale lovbestemte rettigheter eller jurisdiksjonsmessige rettigheter som tilkommer norske eller svenske Brukere under Seksjon 15.</li>
     </ul>
   </div>
 
   <div class="signing-block">
     <p>Ved å registrere deg eller fortsette å bruke FlexiShift-plattformen bekrefter du at du har lest, forstått og godtar å være bundet av disse vilkårene og betingelsene i sin helhet.</p>
-    <p class="footer-detail">FlexiShift Ltd · Registrert i England og Wales · Versjon 3.0 · Mai 2026 · Storbritannia • Norge • Sverige<br>Disse Vilkårene er tilgjengelige på norsk og svensk på forespørsel.</p>
+    <p class="footer-detail">AI Planning Ltd, som driver virksomhet under navnet FlexiShift · Registrert i England og Wales · Versjon 3.0 · Mai 2026 · Storbritannia • Norge • Sverige<br>Disse Vilkårene er tilgjengelige på norsk og svensk på forespørsel.</p>
   </div>
 
-</div>`;
+</div>
+`;
+
+export const tcSvHTML = `
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-header-inner">
+      <div class="doc-badge">Juridiskt dokument</div>
+      <h1>Villkor och bestämmelser för användning</h1>
+      <div class="doc-meta">
+        <span class="doc-meta-item">Version 3.0</span>
+        <span class="doc-meta-item">Gäller från: maj 2026</span>
+        <span class="doc-meta-item">🇬🇧 Storbritannien</span>
+        <span class="doc-meta-item">🇳🇴 Norge</span>
+        <span class="doc-meta-item">🇸🇪 Sverige</span>
+      </div>
+      <div class="doc-notice">Genom att registrera dig eller använda Plattformen i någon egenskap godkänner du att vara juridiskt bunden av dessa Villkor. Om du inte godkänner detta får du inte använda Plattformen.</div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Innehåll</div>
+    <ul class="toc-list">
+      <li><a href="#s1">1. Definitioner</a></li>
+      <li><a href="#s2">2. Godkännande och behörighet</a></li>
+      <li><a href="#s3">3. FlexiShifts roll</a></li>
+      <li><a href="#s4">4. Verifiering och identitet</a></li>
+      <li><a href="#s5">5. Uppdragsavtalets villkor</a></li>
+      <li><a href="#s6">6. Förbjudna och begränsade varor</a></li>
+      <li><a href="#s7">7. Ansvarsfriskrivningar</a></li>
+      <li><a href="#s8">8. Betalningar, avgifter och skatt</a></li>
+      <li><a href="#s9">9. Tvister och escrow</a></li>
+      <li><a href="#s10">10. Integritet och data</a></li>
+      <li><a href="#s11">11. Plattformsregler</a></li>
+      <li><a href="#s12">12. Plattformsändringar</a></li>
+      <li><a href="#s13">13. Immateriella rättigheter</a></li>
+      <li><a href="#s14">14. Ansvar och uppsägning</a></li>
+      <li><a href="#s15">15. Jurisdiktionsspecifika bestämmelser</a></li>
+      <li><a href="#s16">16. Allmänt</a></li>
+    </ul>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="tc-section" id="s1">
+    <span class="section-num">Avsnitt 1</span>
+    <h2>Definitioner</h2>
+    <p>Nyckelbegrepp som används i dessa Villkor har följande betydelse:</p>
+    <ul>
+      <li><strong>”FlexiShift”, ”vi”, ”oss”, ”vår”</strong> – AI Planning Ltd, ett bolag registrerat i England och Wales, som bedriver verksamhet under namnet FlexiShift och är operatör av Plattformen.</li>
+      <li><strong>”Plattformen”</strong> – FlexiShifts logistikmarknadsplats, inklusive transportörernas webbapp, förarnas mobilapp, företagsportalen samt all tillhörande programvara och infrastruktur.</li>
+      <li><strong>”Användare”</strong> – varje Transportör, Förare eller Företag som får tillgång till eller använder Plattformen.</li>
+      <li><strong>”Transportör”</strong> – ett företag eller en enskild person som lägger upp fraktuppdrag på Plattformen.</li>
+      <li><strong>”Förare”</strong> – en enskild person som utför uppdrag via förarnas mobilapplikation.</li>
+      <li><strong>”Företag”</strong> – en transportverksamhet som förvaltar fordonsflottor och Förare på Plattformen.</li>
+      <li><strong>”Leverantör”</strong> – varje verifierad Förare eller Företag som är berättigad att acceptera uppdrag.</li>
+      <li><strong>”Uppdrag”</strong> – en fraktuppgift som läggs upp av en Transportör och som tilldelas ett unikt uppdrags-ID.</li>
+      <li><strong>”Uppdragsavtal”</strong> – det bindande avtal som ingås mellan Transportören och Leverantören vid bokningsbekräftelse, vilket inkluderar avsnitt 5 nedan.</li>
+      <li><strong>”Betalningsförmedlingstjänster”</strong> (i dessa Villkor omväxlande kallade ”Escrow”) – den säkra betalningshållningsfunktion som drivs av Tredjeparts betalningsleverantör, där medel låses vid bokning och frigörs när ett Uppdrag har slutförts. Denna funktion drivs uteslutande av Tredjeparts betalningsleverantör och inte av FlexiShift.</li>
+      <li><strong>”Tredjeparts betalningsleverantör”</strong> – den specialiserade betalningsleverantör som anlitas av FlexiShift för att hantera alla finansiella transaktioner.</li>
+      <li><strong>”Efterlevnadsspåret”</strong> – det obligatoriska arbetsflödet i tre steg: bekräftelse av lastkod, dubbel signering vid överlämning och leveransbevis.</li>
+      <li><strong>”Förbjudna varor”</strong> – varor som anges i avsnitt 6 och som inte får transporteras via Plattformen.</li>
+      <li><strong>”Tillämplig lag”</strong> – lagstiftningen i den jurisdiktion där Användaren är etablerad eller där Uppdraget utförs, beroende på vad som är relevant.</li>
+      <li><strong>”Fraktförare” (Carrier)</strong> – varje person som ingår avtal om att transportera varor och som åtar sig ansvaret för sådan transport.</li>
+      <li><strong>”Oberoende uppdragstagare”</strong> – en Förare, ett Företag eller en Transportör som agerar för egen räkning och inte som anställd, arbetstagare, agent eller representant för FlexiShift.</li>
+      <li><strong>”Brottsbekämpande myndighet”</strong> – varje polismyndighet, tullmyndighet, tillsynsmyndighet, transportmyndighet, skattemyndighet, domstol, nämnd, sanktionsmyndighet eller statligt organ.</li>
+      <li><strong>”Plattformsdata”</strong> – alla GPS-registreringar, granskningsloggar, meddelanden, omdömen, verifieringsuppgifter, fotografier, videor, uppdragshistorik och all eller viss därtill hörande data.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="tc-section" id="s2">
+    <span class="section-num">Avsnitt 2</span>
+    <h2>Godkännande, behörighet och kontosäkerhet</h2>
+    <p>Genom att använda Plattformen bekräftar du att du är minst 18 år gammal, har rättslig handlingsförmåga att ingå avtal och (om du agerar för ett företags räkning) har befogenhet att binda det företaget. Du måste följa all Tillämplig lag och hålla dina kontouppgifter konfidentiella. Meddela oss omedelbart om du misstänker obehörig åtkomst.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="tc-section" id="s3">
+    <span class="section-num">Avsnitt 3</span>
+    <h2>FlexiShifts roll – endast marknadsplats</h2>
+    <p>FlexiShift driver uteslutande en digital marknadsplats och teknikplattform. FlexiShift är inget åkeri, ingen fraktförare, speditör, transportoperatör, logistikleverantör, lageroperatör, förvarare av varor, bemanningsföretag, rekryteringsbyrå, arbetsgivare eller leverantör av transporttjänster.</p>
+    <p>FlexiShift anställer, engagerar, övervakar, leder, kontrollerar eller hanterar inte Förare, Företag eller Transportörer och utövar ingen operativ kontroll över genomförandet av något Uppdrag.</p>
+    <p>Förare, Företag och Transportörer agerar alltid som oberoende uppdragstagare.</p>
+    <p>Ingenting i dessa Villkor skapar något anställningsförhållande, arbetstagarförhållande, partnerskap, samriskföretag, ombudsförhållande, förtroendeförhållande eller representationsförhållande mellan FlexiShift och någon Användare.</p>
+    <p>Uppdragsavtalet ingås uteslutande mellan Transportören och Leverantören. FlexiShift är inte part i det avtalet och tar inget ansvar för dess fullgörande.</p>
+
+    <h3>3.1 Lokala förmedlare och marknadsföringspartner</h3>
+    <p>I vissa jurisdiktioner, inklusive Sverige, samarbetar FlexiShift med oberoende lokala marknadsförings- och förmedlingspartner som introducerar potentiella Förare, Företag och Transportörer till Plattformen. Varje sådan partner agerar som ett självständigt företag i egen rätt och är inte anställd, arbetstagare, partner, deltagare i ett samriskföretag, ombud eller representant för FlexiShift eller AI Planning Ltd. Ingen sådan partner har någon befogenhet att ingå, genomföra, ändra, tolka eller binda FlexiShift eller AI Planning Ltd till något avtal, inklusive något Uppdragsavtal eller dessa Villkor. Varje Uppdragsavtal, och varje Användares avtalsförhållande med FlexiShift, ingås direkt och uteslutande med AI Planning Ltd. Introduktion till Plattformen genom en lokal partner gör inte den partnern till part i, eller garant för, något avtal mellan en Användare och FlexiShift.</p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="tc-section" id="s4">
+    <span class="section-num">Avsnitt 4</span>
+    <h2>Verifiering, identitetskontroller och bedrägeriförebyggande</h2>
+    <p>Alla Leverantörer måste genomföra obligatorisk verifiering innan de accepterar något Uppdrag. Nödvändiga dokument inkluderar:</p>
+    <ul>
+      <li>Körkort (Förare); fordonsregistreringsbevis; gällande försäkringshandling.</li>
+      <li>Företagsregistrering och flottförsäkring (Företag).</li>
+      <li>Övrig dokumentation som krävs lokalt.</li>
+    </ul>
+    <p>FlexiShift kan när som helst genomföra KYC- (identitet), KYB- (verksamhet), sanktions-, bedrägeri- och penningtvättskontroller. Vi förbehåller oss rätten att stänga av eller avsluta konton utan föregående meddelande om en Användare inte klarar verifieringen, förekommer på en sanktionslista, eller om vi har rimlig grund att misstänka bedrägeri, penningtvätt eller brottslig verksamhet. Vi kan rapportera misstankar till relevanta myndigheter utan att meddela Användaren. Dubbla registreringar med samma e-postadress blockeras automatiskt.</p>
+    <p>Verifieringskontroller genomförs uteslutande i administrativt syfte. Verifiering utgör inte något intygande, någon garanti eller certifiering från FlexiShift avseende en Användares identitet, kompetens, lämplighet, laglighet, kvalifikationer, erfarenhet, försäkringsskydd, lämplighet eller fortlöpande efterlevnad. Användare måste genomföra sin egen oberoende granskning och får inte förlita sig på någon verifiering som utförts av FlexiShift.</p>
+
+    <h3>4.1 Förarens lämplighet och juridiska körbehörighet</h3>
+    <p>Genom att acceptera ett Uppdrag på Plattformen bekräftar, intygar och garanterar Föraren att denne, vid tidpunkten för accepterandet och under hela genomförandet av Uppdraget:</p>
+    <ul>
+      <li>Innehar ett giltigt körkort av rätt kategori för fordonet, jurisdiktionen och den lasttyp som krävs</li>
+      <li>Inte är föremål för körförbud, återkallat körkort eller domstolsbeslut som begränsar rätten att köra</li>
+      <li>Inte har ådragit sig prickar, anmärkningar eller andra sanktioner som gör dem juridiskt obehöriga eller olämpliga att köra enligt Tillämplig lag</li>
+      <li>Inte är diskvalificerade från att köra av någon tillsynsmyndighet, förvaltningsmyndighet eller domstol i någon jurisdiktion där de är verksamma</li>
+      <li>Är fysiskt, medicinskt och psykiskt lämpade att på ett säkert sätt utföra Uppdraget och hantera det aktuella fordonet och utrustningen</li>
+      <li>Besitter den erfarenhet, kompetens, kvalifikation, utbildning, certifiering och skicklighet som rimligen krävs för att utföra det specifika Uppdrag som accepterats</li>
+      <li>Innehar alla specialistlicenser, certifikat, tillstånd och ackrediteringar som krävs för Uppdraget, inklusive men inte begränsat till ADR-certifiering, yrkeskompetensbevis (YKB), truckkort, lyftutrustningscertifikat, tankfordonscertifikat, transport av odelbar last eller annan branschspecifik kvalifikation som krävs enligt lag, av Kunden eller av Transportören</li>
+      <li>I övrigt är lämpade och kapabla att utföra Uppdraget säkert, kompetent och i enlighet med all Tillämplig lag, föreskrifter, branschstandarder och platsspecifika krav</li>
+    </ul>
+    <p>Föraren erkänner att denne ensam ansvarar för att avgöra om denne är lämpad, kompetent och juridiskt berättigad att utföra ett Uppdrag innan det accepteras. Accepterandet av ett Uppdrag utgör Förarens bekräftelse på att samtliga krav som gäller för det Uppdraget är uppfyllda.</p>
+    <p>Föraren intygar och garanterar vidare att denne inte är påverkad av alkohol, droger, läkemedel, trötthet, sjukdom eller något annat tillstånd som kan försämra förmågan att utföra Uppdraget på ett säkert sätt.</p>
+    <p>FlexiShift och Transportören förbehåller sig rätten att stänga av en Förare där påverkan, säkerhetsrisker eller regulatoriska betänkligheter rimligen misstänks föreligga.</p>
+    <p>Om en Förare vid något tillfälle ådrar sig prickar, blir föremål för körförbud, får sitt körkort återkallat, avstängt eller på annat sätt inskränkt, eller blir medveten om någon rättslig begränsning av sin körbehörighet, eller blir medicinskt olämplig eller nedsatt i sin förmåga att utföra arbetet på ett säkert sätt, måste denne: (i) omedelbart meddela FlexiShift genom att kontakta supporten via Plattformen; (ii) uppdatera sin profil för att återspegla sin otillgänglighet; (iii) avböja alla erbjudanden om Uppdrag eller pass tills körbehörigheten är fullt återställd; och (iv) avbryta utförandet av alla berörda uppdrag. En Förare som accepterar eller fortsätter ett Uppdrag medan denne är juridiskt förbjuden att köra bryter väsentligt mot dessa Villkor och kan omedelbart stängas av, anmälas till relevanta myndigheter och hållas ansvarig för alla uppkomna förluster.</p>
+    <p>FlexiShift genomför endast digitala verifieringskontroller av Förarens dokument vid registreringstillfället. Sådana kontroller utförs i god tro utifrån den information och de dokument som lämnats av Föraren och utgör inte någon garanti för Förarens fortlöpande juridiska körbehörighet. Föraren bär ensam ansvaret för att fortlöpande uppfylla alla tillämpliga krav för det valda uppdraget under användningen av Plattformen.</p>
+
+    <h3>4.2 Transportörens skyldighet att fysiskt verifiera Förarens behörighetshandlingar</h3>
+    <p>FlexiShift utför endast digital dokumentverifiering vid tidpunkten för Förarens registrering. Sådana kontroller genomförs i god tro utifrån den information och dokumentation som lämnats av Föraren och ersätter inte en fysisk inspektion av Förarens behörighetshandlingar vid tidpunkten för engagemang. Innan en Förare tillåts påbörja ett uppdrag, få tillträde till en plats, hantera utrustning eller ta hand om varor eller ett fordon, ansvarar Transportören (eller dennes behöriga representant) ensam för att fysiskt inspektera och verifiera:</p>
+    <ul>
+      <li>Förarens originalkörkort, och bekräfta att det är giltigt, inte utgånget och av rätt kategori för fordonet och lasten</li>
+      <li>Eventuella specialistcertifieringar som krävs för det specifika uppdraget (inklusive men inte begränsat till ADR-certifiering för farligt gods, yrkeskompetensbevis (YKB), truckkort eller certifikat för specialutrustning samt eventuella lokalt krävda tillstånd)</li>
+      <li>Förarens identitet mot körkortet och Plattformsprofilen</li>
+      <li>Bedöma om Föraren besitter den erfarenhet, kompetens, utbildning och förmåga som rimligen krävs för att utföra det specifika Uppdraget säkert och effektivt</li>
+      <li>Förvissa sig om att Föraren förefaller tjänstbar och inte är synbart påverkad, trött, berusad eller på annat sätt olämplig att utföra Uppdraget</li>
+      <li>Säkerställa att alla tillämpliga rättsliga, regulatoriska, avtalsmässiga, försäkringsmässiga, kund-, plats- samt hälso- och säkerhetskrav är uppfyllda innan Uppdraget påbörjas</li>
+      <li>Tillhandahålla platsintroduktion, säkerhetsgenomgång, driftinstruktioner, riskbedömningar, metodbeskrivningar, personkontroller och instruktioner</li>
+      <li>Neka tillträde för varje Förare som Transportören rimligen bedömer inte uppfyller kraven för Uppdraget eller utgör en säkerhets-, juridisk-, operativ- eller efterlevnadsrisk</li>
+    </ul>
+    <p>Transportören bekräftar och samtycker till att denne ensam bär ansvaret för den operativa ledningen, tillsynen och kontrollen av alla Förare som engagerats genom Plattformen från det att de infinner sig på Uppdragsplatsen och under hela genomförandet av Uppdraget.</p>
+    <p>FlexiShift agerar uteslutande som en teknikplattform som förmedlar kontakter mellan Förare och Transportörer. FlexiShift anställer, övervakar, leder, hanterar, bedömer eller kontrollerar inte Förare under genomförandet av något Uppdrag och har ingen möjlighet att verifiera en Förares fortlöpande juridiska behörighet, kompetens, kvalifikationer, lämplighet eller uppträdande vid tidpunkten för engagemang eller därefter.</p>
+    <div class="warn-box">FlexiShift ska inte under några omständigheter ha något ansvar för förlust, skada, personskada, försening, regulatoriskt brott, bristande efterlevnad, fordonsskada, godsförlust, personskada, dödsfall, böter, sanktionsavgifter, krav eller kostnader som uppstår till följd av: (i) Transportörens underlåtenhet att genomföra lämplig verifiering, inspektion eller lämplighetsbedömning; (ii) Transportörens beslut att engagera, tillåta eller fortsätta att använda en Förare; (iii) felaktig, ofullständig eller bedräglig information som lämnats av en Förare; eller (iv) handling, underlåtenhet, vårdslöshet, tjänstefel eller lagbrott begånget av en Förare.</div>
+    <p>Transportören åtar sig samtliga risker förknippade med att tillåta en Förare att utföra ett Uppdrag och ska hålla FlexiShift, dess ledande befattningshavare, styrelseledamöter, anställda och närstående bolag skadeslösa från och mot alla krav, åtgärder, förluster, skulder, skadestånd, sanktionsavgifter, kostnader och utgifter (inklusive skäliga juridiska avgifter) som uppstår till följd av eller i samband med Transportörens underlåtenhet att uppfylla sina skyldigheter enligt denna klausul eller dennes engagemang av en Förare som Transportören kände till, eller rimligen borde ha känt till, inte var lämplig för Uppdraget.</p>
+    <p>Transportören ska anses vara den transportoperatör som har operativ kontroll över Uppdraget. Transportören ansvarar ensam för efterlevnaden av all tillämplig transportlagstiftning, krav på kör- och vilotider, krav på färdskrivare, arbetstidskrav, hälso- och säkerhetsskyldigheter, krav på fordonsöverensstämmelse och avtalsförpliktelser gentemot kund.</p>
+    <p>Den verifieringsstatus som visas på Plattformen är endast avsedd för administrativa ändamål och bör inte förlitas på som bevis för kompetens, lämplighet, laglighet, giltig försäkring, lämplighet eller tillförlitlighet.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="tc-section" id="s5">
+    <span class="section-num">Avsnitt 5</span>
+    <h2>Uppdragsavtalets villkor (inkluderat i varje bokning)</h2>
+    <p>Dessa villkor gäller mellan Transportören och Leverantören för varje Uppdrag, såvida inte annat uttryckligen avtalats skriftligen. FlexiShift är inte part i något Uppdragsavtal.</p>
+    <p>Uppdragsavtalet föreligger uteslutande mellan Transportören och Leverantören. FlexiShift är inte part i, förmånstagare till, garant för eller administratör av något Uppdragsavtal. FlexiShift ansvarar inte för att tolka, verkställa eller avgöra rättigheter eller skyldigheter som uppstår enligt något Uppdragsavtal.</p>
+
+    <h3>5.1 Lastning, lossning och varukontroll</h3>
+    <p>Om inte annat avtalats: Transportörens avsändare ansvarar för lastning; Föraren ansvarar för lossning. Krav på specialutrustning (baklyft, pallyft, etc.) måste anges vid skapandet av uppdraget. Vid hämtning ska Föraren kontrollera och registrera kvantitet, det yttre förpackningsskicket samt eventuell deklarerad specialhantering. Förare är inte skyldiga att öppna förseglade förpackningar och bär inget ansvar för odeklarerat innehåll. Eventuella avvikelser ska registreras i appen vid överlämningstillfället.</p>
+
+    <h3>5.2 Riskövergång</h3>
+    <p>FlexiShift ansvarar inte för att fastställa, fördela, övervaka eller upprätthålla risken för varor som transporteras via Plattformen. Riskfördelningen är en fråga uteslutande mellan Transportören och Leverantören.</p>
+
+    <h3>5.3 Omplanering och ofullständiga uppdrag</h3>
+    <p>Omplanering kräver ömsesidig skriftlig överenskommelse via Plattformen. Om en Leverantör påbörjar men inte kan slutföra ett Uppdrag måste denne omedelbart meddela Transportören via Plattformen. Betalning bestäms av utfallet av tvisten enligt avsnitt 10. FlexiShift tar inget ekonomiskt ansvar för ofullständiga uppdrag.</p>
+
+    <h3>5.4 Leveransbevis och bevisning vid tvist</h3>
+    <p>Giltigt Leveransbevis kräver: ett tydligt fotografi av varorna på leveransplatsen; mottagarens digitala signatur; samt tidsstämpel och geolokalisering registrerad av Plattformen. Vid en tvist bedöms bevisning i följande prioritetsordning: (1) uppgifter från Efterlevnadsspåret; (2) GPS-/telematikdata; (3) tidsstämplade appfotografier och signaturer; (4) meddelandeloggar från Plattformen; (5) tredjepartsdokument; (6) vittnesmål. FlexiShift kan dela Plattformsdata med försäkringsbolag, juridiska ombud, brottsbekämpande myndigheter eller skiljemän på begäran.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="tc-section" id="s6">
+    <span class="section-num">Avsnitt 6</span>
+    <h2>Förbjudna och begränsade varor</h2>
+    <div class="warn-box">Att lägga upp eller transportera Förbjudna varor kan resultera i omedelbar avstängning av kontot och anmälan till myndigheter. Leverantörer får utan påföljd avböja last som de rimligen misstänker är förbjuden.</div>
+
+    <h3>6.1 Absolut förbjudet (inga undantag)</h3>
+    <ul>
+      <li>Olagliga varor, stulen egendom eller varor som är involverade i brottslig verksamhet</li>
+      <li>Skjutvapen, vapen, ammunition eller sprängämnen (licensierade eller ej)</li>
+      <li>Narkotika och kontrollerade substanser</li>
+      <li>Kontanter, innehavarinstrument eller högvärdiga omsättningsbara instrument</li>
+      <li>Varor som omfattas av internationella sanktioner eller embargon</li>
+      <li>Smittämnen i kategori A/B; icke-auktoriserade mänskliga kvarlevor eller biologiskt material</li>
+    </ul>
+
+    <h3>6.2 Begränsat – kräver fullständig förhandsdeklaration och Leverantörens godkännande</h3>
+    <ul>
+      <li>Farligt gods (ADR/tillämpliga nationella föreskrifter): brandfarligt, frätande, giftigt, oxiderande eller radioaktivt</li>
+      <li>Temperaturkontrollerade varor eller kylkedjegods</li>
+      <li>Boskap eller levande djur</li>
+      <li>Alkohol och tobak som omfattas av licens- eller punktskattekrav</li>
+      <li>Överdimensionerade eller överviktiga laster som kräver tillstånd eller eskortfordon</li>
+      <li>Avfall eller miljöreglerat material</li>
+      <li>Högvärdiga eller ömtåliga varor med ett deklarerat värde överstigande £10 000 / NOK 130 000 / SEK 140 000 per sändning</li>
+      <li>Läkemedel, temperaturkänsliga mediciner eller medicintekniska produkter</li>
+    </ul>
+    <p>Transportören ansvarar ensam för korrekt varudeklaration. FlexiShift inspekterar inte varor och accepterar inget ansvar för förlust, myndighetsåtgärder eller straffrättsliga förfaranden som uppstår till följd av odeklarerade eller felaktigt beskrivna laster.</p>
+    <p>Varje Användare intygar och garanterar att varken denne, dess verkliga huvudmän, dess anställda eller någon sändning som läggs upp via Plattformen är föremål för sanktioner som beslutats av Storbritannien, EES, Europeiska unionen, USA, Förenta nationerna eller någon annan tillämplig sanktionsmyndighet.</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="tc-section" id="s7">
+    <span class="section-num">Avsnitt 7</span>
+    <h2>Ansvarsfriskrivningar – fordon, varor, stöld och cybersäkerhet</h2>
+
+    <h3>7.1 Fordonsskada</h3>
+    <p>FlexiShift friskriver sig från allt ansvar för förlust, skada eller förstörelse av fordon som används i samband med ett Uppdrag, oavsett orsak. Varje Förare och Företag måste alltid inneha giltig kommersiell motorfordonsförsäkring (som täcker ansvar gentemot tredje part, gods under transport och fordonsskada). Varje Transportör måste inneha tillräcklig kommersiell försäkring för sin fraktverksamhet. FlexiShift kan när som helst begära bevis på försäkring; underlåtenhet att tillhandahålla detta utgör ett väsentligt brott mot dessa Villkor.</p>
+
+    <h3>7.2 Stöld, produktförlust och förares tjänstefel</h3>
+    <p>FlexiShift friskriver sig från allt ansvar för stöld, förskingring, olovligt förfogande eller felaktig leverans av varor begången av en Förare, en anställd hos ett Företag eller en underleverantör. Förare och Företag är oberoende uppdragstagare; FlexiShift bär inget principalansvar för deras agerande. Krav ska riktas till den berörda Leverantören eller dennes försäkringsbolag. Transportörer ansvarar för att inneha tillräcklig försäkring för gods under transport innan varor överlämnas.</p>
+    <p>För att undvika tvivel friskriver FlexiShift sig från allt ansvar för: (a) stöld av, från eller i samband med sändning, gods, last eller varor som transporteras under ett Uppdrag, oavsett om detta begås av en Förare, en tredje part eller på annat sätt; (b) stöld av eller från fordon som används i samband med ett Uppdrag; (c) skada på sändning, gods, last eller varor, oavsett om detta orsakats av felaktig hantering, olycka, olämpligt fordon, bristfällig förpackning eller annan orsak; och (d) skada på fordon, utrustning eller egendom som uppstår under eller i samband med ett Uppdrag. FlexiShift är uteslutande en förmedlings- och teknikplattform. Vi förmedlar kontakt mellan Transportörer och Förare och underlättar ingåendet av Uppdragsavtal mellan dem. Vi är inte part i något Uppdragsavtal, övervakar eller leder inte genomförandet av något Uppdrag och kan inte upprätthålla efterlevnaden av någon rättslig, operativ eller säkerhetsmässig skyldighet. Alla krav som uppstår till följd av stöld, förlust eller skada måste riktas direkt mot Föraren, Företaget eller deras respektive försäkringsbolag.</p>
+
+    <h3>7.3 Cybersäkerhet och force majeure</h3>
+    <p>FlexiShift vidtar proportionerliga säkerhetsåtgärder men garanterar inte att Plattformen är fri från cyberangrepp, intrång, skadlig programvara eller dataintrång. FlexiShift ansvarar inte för förluster som uppstår till följd av tredje parts cyberangrepp, nätverksfel eller force majeure-händelser (inklusive naturkatastrofer eller myndighetsåtgärder). Eftersom betalningsdata uteslutande hanteras av Tredjeparts betalningsleverantör accepterar FlexiShift inget ansvar för att betalningsinformation komprometteras på den nivån. Användare ansvarar för att säkra sina egna enheter och inloggningsuppgifter.</p>
+
+    <h3>7.4 Beräknad ankomsttid, kartor och ruttdata</h3>
+    <p>Beräkningar av ankomsttid, GPS-spårning, ruttförslag och avvikelselarm är endast verktyg och uppskattningar – inga garantier. Kartdata hämtas från tredjepartsleverantörer. FlexiShift accepterar inget ansvar för felaktigheter i matchningsresultat, beräknade ankomsttider, GPS-data eller navigationsinformation. Förare måste följa vägmärken och trafiklagstiftning oavsett vilket ruttförslag som visas i appen.</p>
+
+    <h3>7.5 Följdskador</h3>
+    <p>FlexiShift ska inte hållas ansvarigt för utebliven vinst, uteblivna intäkter, förlorade affärsmöjligheter, förlorade avtal, förlust av goodwill, uteblivna besparingar, störningar i försörjningskedjan, driftsavbrott, skadat anseende eller följdskador. FlexiShift har ingen skyldighet att utreda stöld, återfå varor, lokalisera enskilda personer, driva in krav eller delta i återvinningsåtgärder.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="tc-section" id="s8">
+    <span class="section-num">Avsnitt 8</span>
+    <h2>Betalningar, avgifter, skatt och fakturering</h2>
+    <p>Alla transaktioner hanteras uteslutande av Tredjeparts betalningsleverantör. FlexiShift lagrar eller hanterar inte betalkorts- eller bankuppgifter. Godkända betalningskanaler är de som publiceras på Plattformen (inklusive UPI, kreditkort och banköverföring där detta är tillgängligt). Betalningsförmedlingstjänster låses vid bokning och frigörs till Leverantören när Transportören har godkänt Leveransbeviset.</p>
+    <ul>
+      <li>Plattformens provision och serviceavgifter är de som publiceras i Plattformens avgiftsschema (som uppdateras från tid till annan med rimligt varsel) och anges exklusive tillämplig mervärdesskatt.</li>
+      <li>Plattformsavgifter förfaller till betalning, och är icke återbetalningsbara, så snart en resa eller ett pass har påbörjats, oavsett eventuella tvister eller utfallet av dessa.</li>
+      <li>Mervärdesskatt tillämpas enligt följande: VAT (Storbritannien), MVA/merverdiavgift (Norge) och MOMS/mervärdesskatt (Sverige), var och en till gällande skattesats i respektive jurisdiktion.</li>
+      <li>Varje Användare ansvarar ensam för sin egen skatteefterlevnad, inklusive registrering, rapportering och betalning av tillämpliga skatter på inkomst som intjänats eller tjänster som mottagits genom Plattformen.</li>
+      <li>Automatiskt genererade fakturor från Plattformen tillhandahålls endast som en informativ bekvämlighet. FlexiShift agerar inte som momsombud, skatteombud eller fiskalt ombud för någon Användare.</li>
+      <li>Plattformens provision är icke återbetalningsbar vid avbokningar efter det att transporten har påbörjats samt vid omtvistade uppdrag där FlexiShift inte bär skulden.</li>
+      <li>Återkrediteringar eller betalningsåterföringar som initieras av en Transportör (utöver de som orsakats av fel från FlexiShift) är uteslutande Transportörens ansvar. FlexiShift kan återkräva belopp för återkrediteringar genom kvittning mot framtida escrow-utbetalningar. Missbruk av återkrediteringsprocessen kan leda till avstängning av kontot.</li>
+      <li>Varje Förare och Transportör ansvarar ensam för att registrera sig för, samla in, rapportera och betala in mervärdesskatt (eller motsvarande omsättningsskatt, inklusive MVA i Norge och MOMS i Sverige) i sin tillämpliga jurisdiktion. Om en Förare eller Transportör enligt Tillämplig lag är skyldig att vara momsregistrerad ska denne upprätthålla sådan registrering under hela sin användning av Plattformen. FlexiShift samlar inte in, betalar inte in och redovisar inte moms för någon Förares eller Transportörs räkning, och lämnar inga utfästelser om någon Användares momsskyldigheter. Användare måste inhämta oberoende skatterådgivning om de är osäkra på sina krav på momsregistrering eller momsrapportering.</li>
+      <li>Alla Förare och Transportörer måste vara juridiskt registrerade för att bedriva verksamhet i enlighet med lagar och föreskrifter i sin tillämpliga jurisdiktion. Detta inkluderar, utan begränsning: att inneha giltig företagsregistrering eller status som egenföretagare; att inneha alla licenser, tillstånd och godkännanden som krävs för att bedriva åkeri- eller körverksamhet; samt att följa all tillämplig arbetsrätts-, skatte- och transportlagstiftning. Förare som är verksamma i Sverige måste, om de är egenföretagare, inneha ett giltigt F-skattsedel/F-skattebevis.</li>
+    </ul>
+    <p>Alla betaltjänster, inklusive de Betalningsförmedlingstjänster (Escrow) som beskrivs i dessa Villkor, tillhandahålls av Tredjeparts betalningsleverantör. FlexiShift bedriver inte i sig verksamhet som ett reglerat betalningsinstitut, en bank eller en betalningsförmedlare, och innehar, överför eller förvarar aldrig själv någon Användares medel.</p>
+    <p>FlexiShift ska inte hållas ansvarigt för fel hos betalningsleverantören, dennes insolvens, försenade betalningar, återkrediteringar, bedrägeri, betalningsåterföringar eller fel hos betalningsleverantören.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="tc-section" id="s9">
+    <span class="section-num">Avsnitt 9</span>
+    <h2>Tvister och frigörande av escrow</h2>
+    <ul>
+      <li>FlexiShift har ingen skyldighet att utreda, medla, avgöra genom skiljeförfarande eller på annat sätt lösa tvister mellan Användare. Eventuellt bistånd från FlexiShift lämnas frivilligt, efter eget gottfinnande och uteslutande som en kundservicetjänst.</li>
+      <li>FlexiShift kan i förekommande fall dra av utestående plattformsavgifter, provision eller avbokningsavgifter från escrow innan medlen frigörs.</li>
+      <li>FlexiShift accepterar inget ekonomiskt ansvar i samband med tvister mellan Användare. FlexiShifts medverkan är endast en administrativ bekvämlighet och utgör inte något rättsligt avgörande eller skiljedom.</li>
+      <li>Olösta tvister kan hänskjutas till domstol, oberoende skiljeförfarande, berört försäkringsbolag eller Tredjeparts betalningsleverantörs egna process. FlexiShift kommer att tillhandahålla tillgång till Plattformens bevisregistreringar vid mottagande av en giltig rättslig begäran.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="tc-section" id="s10">
+    <span class="section-num">Avsnitt 10</span>
+    <h2>Integritet, GPS-spårning och databehandling</h2>
+    <p>FlexiShift behandlar personuppgifter i enlighet med sin integritetspolicy (tillgänglig på Plattformen och införlivad genom hänvisning). Genom att använda Plattformen samtycker Användare till den databehandling som beskrivs där.</p>
+
+    <h3>10.1 Status som personuppgiftsansvarig</h3>
+    <p>FlexiShift, Förare, Företag och Transportörer agerar som självständiga personuppgiftsansvariga avseende personuppgifter som behandlas för deras egna affärsändamål, om inte annat krävs enligt lag.</p>
+
+    <h3>10.2 Delning av förardata</h3>
+    <p>Förare bemyndigar uttryckligen FlexiShift att dela relevant information med den berörda Transportören, inklusive identitetsuppgifter, körkortsstatus, kvalifikationer, certifieringar, fordonsuppgifter, omdömen, GPS-position och efterlevnadsuppgifter som är nödvändiga för genomförandet av Uppdraget.</p>
+
+    <h3>10.3 Brottsbekämpning och bedrägeriförebyggande</h3>
+    <p>FlexiShift kan övervaka, bevara, använda och lämna ut Användarinformation, Plattformsdata, identitetsuppgifter, kommunikation, GPS-registreringar, verifieringsdokument, transaktionsuppgifter, fotografier, videor och efterlevnadsinformation där FlexiShift rimligen bedömer att sådant utlämnande är nödvändigt för att: (a) uppfylla rättsliga skyldigheter; (b) besvara förfrågningar från domstolar, tillsynsmyndigheter eller brottsbekämpande myndigheter; (c) utreda misstänkt bedrägeri, stöld, brottslig verksamhet, penningtvätt, sanktionsbrott eller hot mot säkerheten; (d) skydda FlexiShift, Användare eller tredje part; eller (e) fastställa, göra gällande eller försvara rättsliga anspråk. FlexiShift ska inte hållas ansvarigt för utlämnanden som gjorts i god tro enligt denna klausul.</p>
+
+    <h3>10.4 Lagring</h3>
+    <p>Data kan lagras så länge det rimligen är nödvändigt för rättsliga, regulatoriska, operativa, bedrägeriförebyggande, försäkringsmässiga, tvistlösnings- och efterlevnadsändamål, enligt FlexiShifts eget gottfinnande.</p>
+
+    <h3>10.5 Realtidsdata och övrig data</h3>
+    <ul>
+      <li>Förare samtycker till GPS-positionsspårning i realtid under pågående Uppdrag. Positionsdata delas med den berörda Transportören och Företaget i realtid och kan lagras enligt avsnitt 10.4.</li>
+      <li>GPS-data kan delas med försäkringsbolag, brottsbekämpande myndigheter eller skiljemän på begäran.</li>
+      <li>Verifieringsdokument, leveransfotografier, digitala signaturer och efterlevnadsdata lagras säkert och sparas enligt avsnitt 10.4.</li>
+      <li>Uppdragsdata kan delas med Tredjeparts betalningsleverantör (bedrägeriförebyggande), försäkringsbolag (skadereglering), tillsynsmyndigheter (rättslig skyldighet) och i anonymiserad form för plattformsanalys.</li>
+      <li>Förare får inte inaktivera GPS eller platstjänster under ett pågående Uppdrag. Avsiktlig inaktivering kan leda till åtgärder mot kontot.</li>
+      <li>Användare kan utöva sina dataskyddsrättigheter (tillgång, rättelse, radering, dataportabilitet, invändning) enligt vad som anges i integritetspolicyn och i enlighet med Tillämplig lag.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="tc-section" id="s11">
+    <span class="section-num">Avsnitt 11</span>
+    <h2>Plattformsregler – omdömen, recensioner och förarappen</h2>
+
+    <h3>11.1 Omdömen och recensioner</h3>
+    <ul>
+      <li>Ett omdöme per slutfört Uppdrag och motpart. Omdömen ska vara ärliga och baserade på faktisk erfarenhet av det specifika Uppdraget.</li>
+      <li>Recensioner får inte vara ärekränkande, kränkande, diskriminerande, falska, manipulerade eller belönade.</li>
+      <li>FlexiShift kan efter eget gottfinnande ta bort eller avstå från att publicera en recension och accepterar inget ansvar för felaktiga recensioner.</li>
+      <li>Omdömen matar den smarta matchningsmotorn och påverkar Leverantörens synlighet, behörighet att erhålla uppdrag och fortsatt tillgång till Plattformen. Konton som understiger godtagbara omdömesgränser kan stängas av.</li>
+      <li>Att avböja ett utskickat Uppdrag påverkar inte Leverantörens omdöme och ska inte i sig leda till minskad synlighet, färre uppdragserbjudanden, nedprioritering av den smarta matchningsmotorn eller någon annan påföljd. Omdömen baseras uteslutande på Leverantörens agerande under slutförda Uppdrag.</li>
+      <li>Recensioner, omdömen och användargenererat innehåll förblir upphovspersonens ansvar. Användare beviljar FlexiShift en global, royaltyfri och evig licens att använda, visa, analysera och publicera omdömen, recensioner och feedback.</li>
+    </ul>
+
+    <h3>11.2 Förarappen – enhet och säker användning</h3>
+    <ul>
+      <li>Förarappen kräver: GPS/plats (alltid aktiverat under pågående Uppdrag); kamera; push-notiser; och lagringsutrymme. Att inaktivera nödvändiga behörigheter under ett Uppdrag kan försämra funktionaliteten och utgöra ett avtalsbrott.</li>
+      <li>Förare får inte interagera med appen på ett sätt som är osäkert eller olagligt under körning. All aktiv interaktion med appen under transport får endast ske när fordonet står säkert stillastående.</li>
+      <li>Förare ansvarar för att deras enhet är laddad och uppkopplad under hela Uppdraget. FlexiShift accepterar inget ansvar för fel orsakade av enhetsproblem, batteri eller dålig uppkoppling.</li>
+      <li>Programuppdateringar måste installeras utan dröjsmål. FlexiShift accepterar inget ansvar för fel som uppstår till följd av föråldrade appversioner.</li>
+      <li>När appen distribueras via en appbutik gäller den butikens villkor utöver dessa Villkor och har företräde enbart avseende appdistributionen.</li>
+    </ul>
+
+    <h3>11.3 Direkt engagemang och kringgående</h3>
+    <p>FlexiShift driver en marknadsplatsplattform och genererar intäkter genom att förmedla kontakt mellan Förare, Företag och Transportörer samt genom att underlätta ingåendet av Uppdragsavtal mellan dem.</p>
+    <p>Ingenting i dessa Villkor begränsar en Förares, ett Företags eller en Transportörs möjlighet att tillhandahålla eller ta emot tjänster via andra plattformar, kunder eller affärsrelationer. Förare och Företag är fortsatt fria att bestämma när, var och för vem de tillhandahåller tjänster och får använda konkurrerande plattformar när som helst.</p>
+    <p>Om en Förare eller ett Företag däremot introduceras för en Transportör genom Plattformen, får Transportören inte medvetet kringgå Plattformen genom att direkt engagera den Föraren eller det Företaget för väsentligen liknande tjänster utanför Plattformen under en period av tolv (12) veckor efter det senaste Uppdraget, såvida inte Transportören har inhämtat FlexiShifts skriftliga förhandssamtycke eller betalat tillämplig avgift för direkt engagemang.</p>
+    <p>FlexiShift kan övervaka aktivitet på Plattformen för att identifiera misstänkt undvikande av avgifter eller kringgående, och kan stänga av konton, driva in obetalda avgifter eller vidta rimliga åtgärder för att skydda sina legitima affärsintressen.</p>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="tc-section" id="s12">
+    <span class="section-num">Avsnitt 12</span>
+    <h2>Plattformsändringar och tjänsteleverantörer</h2>
+    <p>FlexiShift förbehåller sig rätten att när som helst ändra, förbättra, avveckla eller ersätta funktioner; byta ut eller avsluta samarbetet med tredjepartsleverantörer (inklusive Tredjeparts betalningsleverantör); samt uppdatera priser eller provisionsstrukturer med rimligt varsel. FlexiShift ska inte hållas ansvarigt för förluster som uppstår till följd av sådana ändringar. Väsentliga ändringar av dessa Villkor kommer att meddelas via e-post eller meddelande i Plattformen; fortsatt användning utgör godkännande.</p>
+    <p>FlexiShift kan stänga av, begränsa eller avveckla Plattformen eller en funktion när som helst och av vilken anledning som helst utan ansvar.</p>
+  </div>
+
+  <!-- SECTION 13 -->
+  <div class="tc-section" id="s13">
+    <span class="section-num">Avsnitt 13</span>
+    <h2>Immateriella rättigheter</h2>
+    <p>Alla immateriella rättigheter till Plattformen (programvara, design, algoritmer, varumärken och innehåll) ägs av eller är licensierade till AI Planning Ltd UK. Användare erhåller en begränsad, icke-exklusiv och icke-överlåtbar licens att använda Plattformen enbart för dess avsedda syfte. Användare får inte kopiera, dekompilera, modifiera eller distribuera något element av Plattformen utan föregående skriftligt medgivande.</p>
+    <p>Alla algoritmer, maskininlärningsmodeller, poängsättningssystem, analysresultat, prestationsmått, härledd data och plattformsintelligens tillhör uteslutande FlexiShift.</p>
+  </div>
+
+  <!-- SECTION 14 -->
+  <div class="tc-section" id="s14">
+    <span class="section-num">Avsnitt 14</span>
+    <h2>Ansvarsbegränsning, skadeslöshet och uppsägning</h2>
+
+    <h3>14.1 Ansvarsbegränsning</h3>
+    <p>I den utsträckning Tillämplig lag tillåter är FlexiShifts sammanlagda ansvar gentemot en Användare begränsat till det lägsta av de totala plattformsavgifter som betalats av den Användaren under de tre månaderna före det aktuella kravet, eller £1 000 (endast ettusen brittiska pund). FlexiShift ansvarar inte för indirekta skador, följdskador, tillfälliga skador, särskilda skador eller skadestånd i bestraffande syfte, inklusive utebliven vinst, uteblivna intäkter, förlorad data eller förlorad goodwill. Denna begränsning gäller oavsett grunden för anspråket, oavsett om det grundas på avtal, skadestånd (inklusive vårdslöshet), lagstadgad skyldighet, felaktig uppgift eller annat. Ingenting häri begränsar ansvar som orsakats av FlexiShifts vårdslöshet, bedrägeri eller annan ansvarsgrund som inte kan uteslutas enligt Tillämplig lag.</p>
+
+    <h3>14.2 Användarens skadeslöshetsåtagande</h3>
+    <p>Varje Användare ska hålla FlexiShift, dess styrelseledamöter, ledande befattningshavare och närstående bolag skadeslösa från alla krav, förluster, sanktionsavgifter och kostnader (inklusive juridiska avgifter) som uppstår till följd av: brott mot dessa Villkor; överträdelse av Tillämplig lag; handlingar eller underlåtenheter i samband med ett Uppdrag; tredjepartskrav avseende varor som förlorats, stulits eller skadats i samband med ett Uppdrag; underlåtenhet att inneha tillräcklig försäkring; att lägga upp eller transportera Förbjudna varor; anställningsrättsliga krav; krav avseende arbetstagarstatus; skattekrav; momskrav; tullkrav; sanktionsrelaterade krav; regulatoriska krav; godskrav; dataskyddskrav; samt tredjepartskrav som uppstår till följd av användningen av Plattformen.</p>
+
+    <h3>14.3 Avstängning och uppsägning</h3>
+    <p>FlexiShift kan stänga av eller avsluta ett konto utan föregående meddelande vid: brott mot dessa Villkor; falsk eller vilseledande information; olagligt eller skadligt beteende; utgången försäkring eller verifieringsdokument; underlåtenhet att klara KYC-/KYB-/sanktionskontroller; eller om det krävs enligt lag eller domstolsbeslut. Utestående escrow-medel hanteras i enlighet med det aktuella Uppdragets status och Tredjeparts betalningsleverantörs rutiner.</p>
+
+    <h3>14.4 Ansvarsfriskrivning avseende garantier</h3>
+    <p>I den utsträckning Tillämplig lag tillåter tillhandahålls Plattformen samt alla tjänster, innehåll, data, information, programvara, funktionalitet och funktioner som görs tillgängliga av FlexiShift i befintligt skick (”as is”), i mån av tillgänglighet (”as available”) och med alla eventuella fel (”with all faults”). FlexiShift lämnar inga utfästelser, garantier, åtaganden eller försäkringar, vare sig uttryckliga, underförstådda, lagstadgade eller på annat sätt, avseende tillgängligheten, tillförlitligheten, prestandan, riktigheten eller lämpligheten hos Plattformen eller hos någon Användare, något Uppdrag, några varor eller någon information som visas genom Plattformen.</p>
+    <p>Varje Användare bekräftar och samtycker till att denne ensam ansvarar för att genomföra sin egen granskning och oberoende bedömning innan denne ingår ett Uppdragsavtal, interagerar med en annan Användare, lämnar ut varor, tar emot varor, gör betalningar eller förlitar sig på information som erhållits genom Plattformen.</p>
+  </div>
+
+  <!-- SECTION 15 -->
+  <div class="tc-section" id="s15">
+    <span class="section-num">Avsnitt 15</span>
+    <h2>Jurisdiktionsspecifika bestämmelser</h2>
+
+    <h3>15.1 Storbritannien</h3>
+    <p>För Användare baserade i Storbritannien omfattas dessa Villkor och Uppdragsavtalet av lagstiftningen i England och Wales. Om en Användare kvalificerar som konsument gäller de tvingande skyddsreglerna enligt Consumer Rights Act 2015 och relaterad brittisk konsumentlagstiftning, och dessa utesluts inte av dessa Villkor. Databehandling sker i enlighet med UK GDPR och Data Protection Act 2018.</p>
+
+    <h3>15.2 Norge</h3>
+    <p>För Användare baserade i Norge utesluter eller begränsar ingenting i dessa Villkor det skydd som en Användare har rätt till enligt tvingande bestämmelser i norsk rätt som inte kan avtalas bort, inklusive den norska avtalslagen (avtaleloven) och, där Användaren kvalificerar som konsument, den norska konsumentköplagen (forbrukerkjøpsloven). Databehandling sker i enlighet med den norska personuppgiftslagen (personopplysningsloven), som implementerar EES-GDPR. Tvister som involverar en norsk konsument och som inte kan lösas direkt kan, i förekommande fall, hänskjutas till den norska konsumentmyndigheten (Forbrukertilsynet) eller konsumenttvistnämnden (Forbrukerklageutvalget), utöver domstolarna i Oslo.</p>
+
+    <h3>15.3 Sverige</h3>
+    <p>För Användare baserade i Sverige utesluter eller begränsar ingenting i dessa Villkor det skydd som en Användare har rätt till enligt tvingande bestämmelser i svensk rätt som inte kan avtalas bort, inklusive avtalslagen och, där Användaren kvalificerar som konsument, konsumentköplagen. Databehandling sker i enlighet med lagen om behandling av personuppgifter och EES-GDPR, under tillsyn av Integritetsskyddsmyndigheten (IMY). Tvister som involverar en svensk konsument och som inte kan lösas direkt kan, i förekommande fall, hänskjutas till Allmänna Reklamationsnämnden (ARN), utöver domstolarna i Stockholm.</p>
+
+    <h3>15.4 Gränsöverskridande uppdrag</h3>
+    <p>När ett Uppdrag omfattar hämtning och leverans i mer än en jurisdiktion som omfattas av dessa Villkor gäller den tvingande lagstiftningen i varje berörd jurisdiktion i den utsträckning den inte kan avtalas bort. För gränsöverskridande vägtransport kan CMR-konventionen (konventionen om fraktavtal vid internationell godsbefordran på väg) vara tillämplig, och Transportörer och Leverantörer ansvarar själva för sin efterlevnad. ADR-föreskrifterna gäller för transport av farligt gods i samtliga tre jurisdiktioner.</p>
+
+    <h3>15.5 Företrädesordning</h3>
+    <p>Om en bestämmelse i detta avsnitt 15 står i strid med den allmänna bestämmelsen om tillämplig lag i avsnitt 16, ska detta avsnitt 15 äga företräde avseende Tillämplig lag och jurisdiktion för den berörda Användaren, i den utsträckning tvingande lokal lagstiftning kräver det.</p>
+  </div>
+
+  <!-- SECTION 16 -->
+  <div class="tc-section" id="s16">
+    <span class="section-num">Avsnitt 16</span>
+    <h2>Allmänt</h2>
+    <ul>
+      <li><strong>Hela avtalet:</strong> Dessa Villkor utgör hela avtalet mellan FlexiShift och varje Användare avseende användningen av Plattformen.</li>
+      <li><strong>Delbarhet:</strong> Ogiltiga eller icke-verkställbara bestämmelser ska ändras i minsta möjliga utsträckning; övriga bestämmelser förblir i full kraft.</li>
+      <li><strong>Avstående:</strong> Underlåtenhet att göra en bestämmelse gällande innebär inte ett avstående från rätten att göra den gällande i framtiden.</li>
+      <li><strong>Överlåtelse:</strong> FlexiShift får överlåta sina rättigheter och skyldigheter till en efterträdande juridisk person. Användare får inte överlåta sina rättigheter utan föregående skriftligt medgivande.</li>
+      <li><strong>Språk:</strong> Dessa Villkor utfärdas på engelska. Norska och svenska översättningar finns tillgängliga på begäran. Vid eventuell konflikt gäller den engelska versionen, förutom där Tillämplig lag kräver annat.</li>
+      <li><strong>Meddelanden:</strong> Formella meddelanden till FlexiShift ska skickas till den kontaktadress som publiceras på Plattformen.</li>
+      <li><strong>Avstående från grupptalan:</strong> Användare samtycker till att framställa krav uteslutande i egen person och inte som en del av en grupptalan, representativ talan, kollektiv talan eller liknande förfarande, i den utsträckning lagen tillåter.</li>
+      <li><strong>Försäkring:</strong> Förare, Företag och Transportörer ska inneha all försäkring som krävs enligt lag och branschpraxis, inklusive motorfordonsförsäkring, försäkring för gods under transport, ansvarsförsäkring samt annan försäkring som krävs för de tjänster som tillhandahålls. FlexiShift kontrollerar inte om försäkringen är tillräcklig och accepterar inget ansvar som uppstår till följd av otillräckligt eller utgånget försäkringsskydd.</li>
+      <li><strong>Samarbete med myndigheter:</strong> Användare bekräftar att FlexiShift fullt ut kan samarbeta med polis, tullmyndigheter, tillsynsmyndigheter, transportmyndigheter, skattemyndigheter, domstolar och statliga organ, och kan lämna ut information utan föregående meddelande där detta är tillåtet eller krävs enligt lag.</li>
+      <li><strong>Tillämplig lag:</strong> Med förbehåll för avsnitt 15 (Jurisdiktionsspecifika bestämmelser) ska dessa Villkor regleras av och tolkas i enlighet med lagstiftningen i England och Wales, och domstolarna i England och Wales ska ha exklusiv behörighet avseende tvister som uppstår ur eller har samband med dessa Villkor, Plattformen eller något Uppdrag. Detta påverkar inte tvingande konsumentskydd, lokala lagstadgade rättigheter eller jurisdiktionsmässiga rättigheter som tillkommer norska eller svenska Användare enligt avsnitt 15.</li>
+    </ul>
+  </div>
+
+  <!-- SIGNING BLOCK -->
+  <div class="signing-block">
+    <p>Genom att registrera dig för eller fortsätta använda FlexiShift-plattformen bekräftar du att du har läst, förstått och godkänner att vara bunden av dessa Villkor och bestämmelser i sin helhet.</p>
+    <p class="footer-detail">AI Planning Ltd, som bedriver verksamhet under namnet FlexiShift · Registrerat i England och Wales · Version 3.0 · Maj 2026 · Storbritannien • Norge • Sverige<br>Dessa Villkor finns tillgängliga på engelska och norska på begäran.</p>
+  </div>
+
+</div>
+`;
+
+export const tcHTMLByLang = {
+  en: tcEnHTML,
+  no: tcNoHTML,
+  sv: tcSvHTML,
+} as const;

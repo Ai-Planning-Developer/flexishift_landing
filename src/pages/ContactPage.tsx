@@ -22,6 +22,7 @@ const labels = {
     send: 'Send Message',
     successTitle: 'Message sent!',
     successSub: 'We\'ll get back to you at your email address within 1–2 business days.',
+    sendAnother: 'Send another',
     back: 'Back to home',
   },
   no: {
@@ -43,7 +44,30 @@ const labels = {
     send: 'Send melding',
     successTitle: 'Melding sendt!',
     successSub: 'Vi svarer deg på e-postadressen din innen 1–2 virkedager.',
+    sendAnother: 'Send en ny',
     back: 'Tilbake til hjem',
+  },
+  sv: {
+    badge: 'Support',
+    title: 'Kontakta oss',
+    sub: 'Har du frågor om FlexiShift? Vårt team finns här för att hjälpa förare, åkerier och företag.',
+    infoTitle: 'Kom i kontakt',
+    infoSub: 'För support, kontohjälp, dataskyddsärenden eller allmänna förfrågningar, kontakta FlexiShift-teamet.',
+    emailLabel: 'Allmänna förfrågningar',
+    supportLabel: 'Teknisk support',
+    topicsTitle: 'Vanliga supportämnen',
+    topics: ['Kontostöd', 'Hjälp med förarverifiering', 'Stöd för åkeriregistrering', 'Betalnings- och escrowfrågor', 'Tekniska problem', 'Dataskyddsärenden'],
+    formTitle: 'Skicka oss ett meddelande',
+    firstName: 'Fullständigt namn', firstNamePh: 'Anna Andersson',
+    email: 'E-postadress', emailPh: 'anna@exempel.se',
+    userType: 'Jag är...', driver: 'Förare', haulier: 'Åkeri', other: 'Annat / Allmän förfrågan',
+    subject: 'Ämne', subjectPh: 'Hur kan vi hjälpa dig?',
+    message: 'Meddelande', messagePh: 'Ange detaljer om din förfrågan...',
+    send: 'Skicka meddelande',
+    successTitle: 'Meddelandet skickat!',
+    successSub: 'Vi återkommer till dig på din e-postadress inom 1–2 arbetsdagar.',
+    sendAnother: 'Skicka ett till',
+    back: 'Tillbaka till startsidan',
   },
 };
 
@@ -159,7 +183,7 @@ export default function ContactPage() {
                 <h3 style={{ fontSize: 22, fontWeight: 700, color: 'var(--dark)', marginBottom: 10 }}>{t.successTitle}</h3>
                 <p style={{ fontSize: 15, color: 'var(--muted)', lineHeight: 1.65, marginBottom: 28 }}>{t.successSub}</p>
                 <button onClick={() => setSubmitted(false)} style={{ padding: '10px 24px', borderRadius: 8, border: '1.5px solid var(--navy)', background: 'none', color: 'var(--navy)', fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
-                  Send another
+                  {t.sendAnother}
                 </button>
               </div>
             ) : (

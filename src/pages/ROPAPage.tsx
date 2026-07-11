@@ -1,12 +1,19 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { ropaHTML, ropaStyles } from '../content/ropaContent';
-import HybridBanner from '../components/HybridBanner';
+import { ropaEnHTML, ropaNoHTML, ropaSvHTML, ropaStyles } from '../content/ropaContent';
+
+const backLabels = {
+  en: { home: 'Back to home', back: '← Back' },
+  no: { home: 'Tilbake til hjem', back: '← Tilbake' },
+  sv: { home: 'Tillbaka till startsidan', back: '← Tillbaka' },
+} as const;
 
 export default function ROPAPage() {
   const { lang } = useLanguage();
   const navigate = useNavigate();
+  const t = backLabels[lang];
+  const html = lang === 'no' ? ropaNoHTML : lang === 'sv' ? ropaSvHTML : ropaEnHTML;
 
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, []);
 
@@ -28,22 +35,16 @@ export default function ROPAPage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
           <button onClick={() => navigate('/')}
             style={{ fontSize: 13, color: 'var(--mid)', background: 'none', border: 'none', cursor: 'pointer' }}>
-            ← {lang === 'no' ? 'Tilbake til hjem' : 'Back to home'}
+            ← {t.home}
           </button>
-
         </div>
       </div>
-      {lang === 'no' && (
-        <div style={{ maxWidth: 980, margin: '12px auto 0', padding: '0 24px' }}>
-          <HybridBanner docName="Record of Processing Activities (ROPA)" />
-        </div>
-      )}
-      <div className="ropa-document" dangerouslySetInnerHTML={{ __html: ropaHTML }} />
+      <div className="ropa-document" dangerouslySetInnerHTML={{ __html: html }} />
       <footer style={{ background: '#080F1C', padding: '28px 5%' }}>
         <div style={{ maxWidth: 980, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>© 2026 AI Planning Ltd · FlexiShift · ROPA v1.0</span>
           <button onClick={() => navigate('/')} style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, background: 'none', border: 'none', cursor: 'pointer' }}>
-            {lang === 'no' ? '← Tilbake' : '← Back'}
+            {t.back}
           </button>
         </div>
       </footer>

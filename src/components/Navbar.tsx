@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import type { Lang } from '../context/LanguageContext';
 
 const navLabels = {
   en: {
@@ -10,7 +11,6 @@ const navLabels = {
     privacy: 'Privacy Policy',
     ropa: 'ROPA',
     contact: 'Contact',
-    lang: 'NO',
     getStarted: 'Get Started',
   },
   no: {
@@ -20,10 +20,24 @@ const navLabels = {
     privacy: 'Personvern',
     ropa: 'ROPA',
     contact: 'Kontakt',
-    lang: 'EN',
     getStarted: 'Kom i gang',
   },
+  sv: {
+    howItWorks: 'Så fungerar det',
+    markets: 'Marknader',
+    terms: 'Villkor',
+    privacy: 'Integritet',
+    ropa: 'ROPA',
+    contact: 'Kontakt',
+    getStarted: 'Kom igång',
+  },
 };
+
+const langOptions: { code: Lang; label: string }[] = [
+  { code: 'en', label: 'EN' },
+  { code: 'no', label: 'NO' },
+  { code: 'sv', label: 'SV' },
+];
 
 function FlexiShiftLogo() {
   return (
@@ -78,6 +92,14 @@ export default function Navbar() {
     transition: 'color 0.15s', whiteSpace: 'nowrap',
   });
 
+  const langBtnStyle = (active: boolean): React.CSSProperties => ({
+    fontSize: 11, fontWeight: 700, cursor: 'pointer',
+    padding: '4px 8px', borderRadius: 5, border: 'none',
+    background: active ? 'rgba(255,255,255,0.18)' : 'transparent',
+    color: active ? 'white' : 'rgba(255,255,255,0.55)',
+    transition: 'background 0.15s, color 0.15s',
+  });
+
   return (
     <>
       <nav style={{
@@ -108,10 +130,26 @@ export default function Navbar() {
 
         {/* Right: lang + CTA + hamburger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
-          <button
-            onClick={() => setLang(lang === 'en' ? 'no' : 'en')}
-            style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.22)', borderRadius: 6, padding: '4px 10px', background: 'none', cursor: 'pointer' }}
-          >{t.lang}</button>
+          <div
+            role="group"
+            aria-label="Language"
+            style={{
+              display: 'flex', alignItems: 'center', gap: 2,
+              border: '1px solid rgba(255,255,255,0.22)', borderRadius: 6, padding: 2,
+            }}
+          >
+            {langOptions.map(({ code, label }) => (
+              <button
+                key={code}
+                type="button"
+                onClick={() => setLang(code)}
+                aria-pressed={lang === code}
+                style={langBtnStyle(lang === code)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
 
           <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer"
             className="hide-mobile"

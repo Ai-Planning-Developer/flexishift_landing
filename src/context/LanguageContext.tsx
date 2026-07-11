@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
-export type Lang = 'en' | 'no';
+export type Lang = 'en' | 'no' | 'sv';
 
 interface LanguageContextType {
   lang: Lang;
@@ -13,10 +13,14 @@ const LanguageContext = createContext<LanguageContextType>({
   setLang: () => {},
 });
 
+function isLang(value: string | null): value is Lang {
+  return value === 'en' || value === 'no' || value === 'sv';
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(() => {
     const stored = localStorage.getItem('fs_lang');
-    return (stored === 'no' || stored === 'en') ? stored : 'en';
+    return isLang(stored) ? stored : 'en';
   });
 
   const setLang = (l: Lang) => {

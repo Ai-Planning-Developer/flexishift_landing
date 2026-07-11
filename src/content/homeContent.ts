@@ -164,4 +164,87 @@ export const homeContent = {
     footerTerms: 'Vilkår og betingelser',
     footerContact: 'Kontakt',
   },
+
+  sv: {
+    heroBadge: 'Nu tillgänglig i Storbritannien och Norge',
+    heroH1_1: 'Det ',
+    heroH1_em: 'smartare',
+    heroH1_2: ' sättet att koppla samman förare och åkerier.',
+    heroSub: 'FlexiShift är B2B-fraktmarknadsplatsen som löser obalansen mellan utbud och efterfrågan inom logistik. Åkerier med resursbrist på en given plats kopplas samman med förare och transportföretag som har ledig kapacitet i samma område. Åkerier publicerar uppdrag som behöver omedelbar täckning. Verifierade förare och säljande åkerier ger bud och levererar. Betalningar säkras automatiskt — från bokning till leveransbekräftelse.',
+    heroMarkets: 'Tillgängligt nu: Storbritannien och Norge · Norden lanseras snart',
+    heroCtaPrimary: 'Kom igång',
+    heroCtaSecondary: 'Se introduktionen',
+    heroScroll: 'Scrolla för att utforska',
+    youtubeEyebrow: 'Se det i praktiken',
+    youtubeTitle: 'Se hur FlexiShift fungerar.',
+    youtubeLead: 'Se hur förare och åkerier använder FlexiShift — från publicering av uppdrag till bekräftad leverans och automatisk betalning.',
+    youtubeVideos: [
+      { id: 'Y7EDwGv9joY', title: 'FlexiShift för åkerier', desc: 'Så publicerar du ett uppdrag, anger åtkomstkoder, spårar föraren i realtid och frigör betalning automatiskt.' },
+      { id: 'IFXvlVW27kg', title: 'FlexiShift för förare', desc: 'Så hittar du uppdrag, skickar offerter, genomför fordonskontroll, levererar och får betalt — allt i appen.' },
+    ],
+
+    whatEyebrow: 'Plattformen',
+    whatTitle: 'En plattform. Hela uppdraget.',
+    whatLead: 'FlexiShift sammanför åkerier och professionella förare på en säker plattform — där varje steg i uppdragets livscykel hanteras digitalt, från publicering till betalning.',
+    whatCards: [
+      { icon: '🖥️', title: 'Webbdashboard för åkerier', body: 'Skapa uppdrag, specificera last, ange åtkomstkoder och granska förarbud — allt från ett komplett webbgränssnitt. GPS-spårning i realtid håller dig uppdaterad under hela leveransen.' },
+      { icon: '📱', title: 'Mobilapp för förare', body: 'Hitta uppdrag i närheten, skicka offerter, genomför digitala fordonskontroller och bekräfta leverans — allt från en enda app. Tillgänglig på iOS och Android.' },
+      { icon: '🔒', title: 'Escrow-säkrade betalningar', body: 'Varje transaktion säkras i escrow. Medlen låses vid bokning och frigörs automatiskt när uppdraget bekräftas som slutfört. Inga fakturor. Ingen uppföljning. Inga tvister.' },
+      { icon: '✅', title: 'Verifierad efterlevnad', body: 'Förare genomgår obligatorisk dokumentverifiering innan de får tillgång till plattformen. Lastkoder, dubbel digital signering och oföränderliga leveransregister avslutar varje uppdrag med ett komplett revisionsspår.' },
+    ],
+
+    pillarsEyebrow: 'Kärnprinciper',
+    pillarsTitle: 'Byggt på tre grunder.',
+    pillarsLead: 'Varje funktion på FlexiShift finns för att tjäna ett av tre åtaganden — säkerhet, efterlevnad och att ta bort friktion från logistiken.',
+    pillars: [
+      { num: '01', accent: 'Säkrade', rest: ' medel', body: 'Varje uppdragsbetalning hålls i escrow från det ögonblick en bokning accepteras. Medlen frigörs till föraren automatiskt vid leveransbekräftelse — och skyddar båda parter under hela uppdragets livscykel.' },
+      { num: '02', accent: 'Verifierade', rest: ' förare', body: 'Alla förare genomgår obligatorisk dokumentverifiering innan de får tillgång till plattformen — inklusive validering av körkort, ADR-certifiering för farligt gods och YKB yrkeskompetensbevis för de nordiska marknaderna. Åkerier ansvarar fortfarande för fysiska kontroller vid överlämning.' },
+      { num: '03', accent: 'Automatiserat', rest: ' genomförande', body: 'Dubbel digital signering vid upphämtning och leverans skapar ett oföränderligt register för varje uppdrag. Lastkoder, åtkomstkoder, GPS-spårning och elektroniskt leveransbevis stänger loopen automatiskt — ingen manuell godkännande krävs, och 100 % automatiserad finansiell avräkning.' },
+    ],
+
+    howEyebrow: 'Så fungerar det',
+    howTitle: 'Enkelt för båda sidor.',
+    howLead: 'Oavsett om du publicerar ett uppdrag eller tar ett, hanteras varje steg via plattformen — tydligt, snabbt och utan pappersarbete.',
+    haulierBadge: 'För åkerier',
+    haulierTitle: 'Publicera och hantera uppdrag',
+    haulierSteps: [
+      { title: 'Definiera uppdraget', body: 'Specificera rutt, lasttyp, tonnage, fordonskrav och eventuell särskild hantering. För bränslelaster anges literfördelning per fack för efterlevnad och säkerhet.' },
+      { title: 'Ange säkerhetskoder', body: 'Ange åtkomstkoder för säker ankomst till anläggningen och lastkoder för terminalupphämtning. Lastkoden förblir dold för föraren tills bokningen bekräftas — en inbyggd säkerhetsgrind.' },
+      { title: 'Granska offerter — avgifter synliga från start', body: 'Förarbud visas i din dashboard. Det totala plattformspåslaget på 12,5 % (10 % plattformsavgift + 2,5 % Stripe) visas i detta skede — full transparens, inga överraskningar vid betalning.' },
+      { title: 'Spåra i realtid', body: 'Live GPS-spårning ger dig full synlighet över framstegen. När leveransen bekräftas med dubbel signering frigörs betalningen från escrow automatiskt.' },
+    ],
+    driverBadge: 'För förare',
+    driverTitle: 'Hitta och slutför uppdrag',
+    driverSteps: [
+      { title: 'Bli verifierad en gång', body: 'Slutför dokumentverifiering — körkort, ADR-certifiering där det krävs, och YKB för de nordiska marknaderna. När du är aktiv är du redo att arbeta på plattformen.' },
+      { title: 'Bläddra och offerera', body: 'Hitta uppdrag efter avstånd, lastvikt och betalning i din lokala valuta — GBP, NOK eller SEK. Skicka din offert och vänta på att åkeriet accepterar.' },
+      { title: 'Genomför fordonskontrollen', body: 'En digital checklista före uppdraget låter dig dokumentera eventuell befintlig fordonskada — och skyddar dig från ansvar för tidigare repor eller slitage innan uppdraget börjar.' },
+      { title: 'Leverera och få betalt', body: 'Använd åtkomstkoden på leveransplatsen. Ta emot digital signatur och leveransbevis i appen. Bekräfta uppdraget — och betalningen frigörs till dig automatiskt.' },
+    ],
+
+    marketsEyebrow: 'Var vi verkar',
+    marketsTitle: 'Live nu. Växer snabbt.',
+    marketsLead: 'FlexiShift är för närvarande live i Storbritannien och Norge, med Sverige och övriga Norden som lanseras inom kort. Plattformen stöder utbetalningar i flera valutor med moms- och skatteefterlevnad hanterad vid kassan för varje jurisdiktion.',
+    markets: [
+      { flag: '🇬🇧', name: 'Storbritannien', status: 'Live nu', live: true, detail: 'Full plattform tillgänglig. UK GDPR- och HMRC-kompatibel.', currency: 'GBP £' },
+      { flag: '🇳🇴', name: 'Norge', status: 'Live nu', live: true, detail: 'Full plattform tillgänglig. Norsk MVA-skattekompatibel.', currency: 'NOK kr' },
+      { flag: '🇸🇪', name: 'Sverige & Norden', status: 'Lanseras snart', live: false, detail: 'Svensk MOMS och Skatteverket-kompatibel. YKB-certifiering stöds.', currency: 'SEK kr' },
+    ],
+
+    noticeTitle: 'Innan du registrerar dig — läs våra villkor.',
+    noticeP1: 'FlexiShift fungerar som en teknologisk marknadsplats och introduktionsplattform. Vi är inte ett åkeri, transportör eller arbetsgivare. Alla förare och åkerier är oberoende parter som avtalar direkt med varandra.',
+    noticeP2: 'Genom att skapa ett konto godkänner du att vara juridiskt bunden av våra villkor. Viktiga skyldigheter inkluderar din egen försäkring, efterlevnad av körkortsregler, momsregistrering och rapportering, samt laglig registrering för att verka i din jurisdiktion.',
+    noticeLink: 'Läs villkoren →',
+
+    ctaEyebrow: 'Kom igång',
+    ctaTitle: 'Redo att flytta gods smartare?',
+    ctaLead: 'Gå med åkerier och förare som redan använder FlexiShift i Storbritannien och Norge. Registreringen tar några minuter.',
+    ctaHaulier: 'Jag är åkeri — publicera ett uppdrag →',
+    ctaDriver: 'Jag är förare — ladda ner appen →',
+
+    footerCopy: '© 2026 AI Planning Ltd · FlexiShift är ett handelsnamn för AI Planning Ltd · Registrerat i England och Wales',
+    footerPrivacy: 'Integritetspolicy',
+    footerTerms: 'Villkor',
+    footerContact: 'Kontakt',
+  },
 };
