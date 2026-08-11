@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { homeContent } from '../content/homeContent';
+import AppStoreBadges from '../components/AppStoreBadges';
 
 interface HomePageProps { scrollTo?: string; }
 
@@ -31,25 +32,26 @@ export default function HomePage({ scrollTo }: HomePageProps) {
         position: 'relative', overflow: 'hidden',
       }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E")`, pointerEvents: 'none' }} />
-        <div style={{ maxWidth: 760, position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(0,168,150,0.15)', border: '1px solid rgba(0,168,150,0.3)', color: '#5DDDD2', fontSize: 12, fontWeight: 600, padding: '6px 14px', borderRadius: 20, marginBottom: 24, letterSpacing: '.04em', textTransform: 'uppercase' }}>
-            <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--teal)', display: 'inline-block' }} />
-            {t.heroBadge}
-          </div>
-          <h1 style={{ fontSize: 'clamp(32px, 5.5vw, 62px)', fontWeight: 800, lineHeight: 1.1, color: 'white', letterSpacing: '-1.5px', marginBottom: 20 }}>
+        <div style={{ maxWidth: 1120, width: '100%', margin: '0 auto', position: 'relative' }}>
+          <h1 style={{ fontSize: 'clamp(32px, 5.5vw, 62px)', fontWeight: 800, lineHeight: 1.1, color: 'white', letterSpacing: '-1.5px', marginBottom: 20, maxWidth: 720 }}>
             {t.heroH1_1}<em style={{ fontStyle: 'normal', color: 'var(--teal)' }}>{t.heroH1_em}</em>{t.heroH1_2}
+            <br />
+            {t.heroH1_line2}
+            <br />
+            {t.heroH1_line3}
           </h1>
-          <p style={{ fontSize: 'clamp(15px, 2vw, 19px)', color: 'rgba(255,255,255,0.75)', maxWidth: 560, marginBottom: 16, lineHeight: 1.65 }}>{t.heroSub}</p>
-          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', marginBottom: 36 }}>
-            <strong style={{ color: 'rgba(255,255,255,0.85)' }}>{t.heroMarkets.split(':')[0]}:</strong>
-            {' ' + t.heroMarkets.split(':')[1]}
-          </p>
+          <p style={{ fontSize: 'clamp(15px, 2vw, 19px)', color: 'rgba(255,255,255,0.75)', maxWidth: 560, marginBottom: 36, lineHeight: 1.65 }}>{t.heroSub}</p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-            <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--teal)', color: 'white', padding: 'clamp(12px,2vw,15px) clamp(20px,3vw,30px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', boxShadow: '0 4px 20px rgba(0,168,150,0.35)' }}>{t.heroCtaPrimary}</a>
+            <a href="https://dashboard.flexishift.io/login" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--teal)', color: 'white', padding: 'clamp(12px,2vw,15px) clamp(20px,3vw,30px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', boxShadow: '0 4px 20px rgba(0,168,150,0.35)' }}>{t.heroCtaPrimary}</a>
+            <Link to="/register" style={{ background: 'var(--teal)', color: 'white', padding: 'clamp(12px,2vw,15px) clamp(20px,3vw,30px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', boxShadow: '0 4px 20px rgba(0,168,150,0.35)' }}>{t.heroCtaDriver}</Link>
             <a href="https://youtube.com/shorts/bLNen-wmBPw" target="_blank" rel="noopener noreferrer" style={{ background: 'rgba(255,255,255,0.1)', color: 'white', padding: 'clamp(11px,2vw,14px) clamp(18px,2.5vw,28px)', borderRadius: 10, border: '1px solid rgba(255,255,255,0.2)', fontWeight: 600, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               <span style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, paddingLeft: 2 }}>▶</span>
               {t.heroCtaSecondary}
             </a>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginLeft: 'auto', alignItems: 'flex-start' }}>
+              <p style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.75)', margin: 0, letterSpacing: '0.01em' }}>{t.heroDriverApps}</p>
+              <AppStoreBadges height={40} />
+            </div>
           </div>
         </div>
       </section>
@@ -208,9 +210,13 @@ export default function HomePage({ scrollTo }: HomePageProps) {
           <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 12 }}>{t.ctaEyebrow}</div>
           <h2 style={{ fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 12 }}>{t.ctaTitle}</h2>
           <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'var(--muted)', maxWidth: 560, lineHeight: 1.7, margin: '0 auto clamp(32px,5vw,48px)', textAlign: 'center' }}>{t.ctaLead}</p>
-          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer" style={{ padding: 'clamp(13px,2vw,16px) clamp(20px,3vw,32px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(13px,1.4vw,15px)', textDecoration: 'none', background: 'var(--navy)', color: 'white', width: '100%', maxWidth: 280, textAlign: 'center', boxSizing: 'border-box' }}>{t.ctaHaulier}</a>
-            <a href="https://play.google.com/store/apps/details?id=io.flexishift" target="_blank" rel="noopener noreferrer" style={{ padding: 'clamp(13px,2vw,16px) clamp(20px,3vw,32px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(13px,1.4vw,15px)', textDecoration: 'none', background: 'var(--teal)', color: 'white', width: '100%', maxWidth: 280, textAlign: 'center', boxSizing: 'border-box' }}>{t.ctaDriver}</a>
+          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}>
+            <a href="https://dashboard.flexishift.io/login" target="_blank" rel="noopener noreferrer" style={{ padding: 'clamp(13px,2vw,16px) clamp(20px,3vw,32px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(13px,1.4vw,15px)', textDecoration: 'none', background: 'var(--navy)', color: 'white', width: '100%', maxWidth: 280, textAlign: 'center', boxSizing: 'border-box' }}>{t.ctaHaulier}</a>
+          </div>
+          <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+            <p style={{ fontSize: 14, fontWeight: 600, color: 'var(--dark)', margin: 0 }}>{t.ctaDriver}</p>
+            <p style={{ fontSize: 13, color: 'var(--muted)', margin: 0 }}>{t.ctaDriverApps}</p>
+            <AppStoreBadges height={44} style={{ justifyContent: 'center' }} />
           </div>
         </div>
       </section>

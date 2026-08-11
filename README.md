@@ -2,6 +2,18 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Driver registration (`/register`)
+
+The Register page posts to a Google Apps Script Web App that appends rows to Sheets and stores documents in Drive.
+
+1. Deploy the script in `docs/driver-registration/` (see `SETUP_INSTRUCTIONS.md`).
+2. Copy `.env.example` to `.env` and set:
+   - `VITE_GOOGLE_SHEETS_WEBHOOK_URL` — Apps Script `/exec` URL
+   - `VITE_SUBMIT_TOKEN` — optional; must match `SECRET_TOKEN` in the `.gs` file
+3. Restart the Vite dev server (or redeploy) after changing env vars.
+
+Passwords are collected in the UI only and are never sent to Sheets.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
