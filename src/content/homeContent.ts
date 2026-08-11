@@ -9,7 +9,7 @@ export const homeContent = {
     heroCtaPrimary: 'Register as Haulier',
     heroCtaDriver: 'Register as Driver',
     heroCtaSecondary: 'Watch the intro',
-    heroDriverApps: 'To register as a driver, download the app from',
+    heroDriverApps: 'Driver app after registration',
     heroScroll: 'Scroll to explore',
     youtubeEyebrow: 'See it in action',
     youtubeTitle: 'Watch FlexiShift work.',

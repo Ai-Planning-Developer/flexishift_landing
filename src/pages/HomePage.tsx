@@ -174,17 +174,16 @@ export default function HomePage({ scrollTo }: HomePageProps) {
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
           <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--teal)', marginBottom: 12 }}>{t.marketsEyebrow}</div>
           <h2 style={{ fontSize: 'clamp(24px,3.5vw,42px)', fontWeight: 800, color: 'var(--dark)', letterSpacing: '-0.8px', lineHeight: 1.2, marginBottom: 16 }}>{t.marketsTitle}</h2>
-          <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, marginBottom: 'clamp(32px,5vw,56px)' }}>{t.marketsLead}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 'clamp(14px,2.5vw,24px)', marginBottom: 40 }}>
-            {t.markets.map((m, i) => (
-              <div key={i} style={{ background: 'white', borderRadius: 'var(--radius)', padding: 'clamp(20px,3vw,32px)', border: '1px solid #E5ECF5', textAlign: 'center' }}>
-                <div style={{ fontSize: 36, marginBottom: 12 }}>{m.flag}</div>
-                <div style={{ fontSize: 'clamp(15px,1.5vw,18px)', fontWeight: 700, color: 'var(--dark)', marginBottom: 6 }}>{m.name}</div>
-                <span style={{ display: 'inline-block', fontSize: 12, fontWeight: 600, padding: '3px 10px', borderRadius: 20, marginBottom: 10, background: m.live ? 'rgba(0,168,150,0.12)' : 'var(--light)', color: m.live ? '#00766A' : 'var(--mid)' }}>{m.status}</span>
-                <div style={{ fontSize: 13, color: 'var(--muted)', marginBottom: 10 }}>{m.detail}</div>
-                <span style={{ fontSize: 12, fontWeight: 600, padding: '3px 10px', background: 'var(--pale)', borderRadius: 20, color: 'var(--navy)' }}>{m.currency}</span>
-              </div>
-            ))}
+          <p style={{ fontSize: 'clamp(15px,1.8vw,18px)', color: 'var(--muted)', maxWidth: 600, lineHeight: 1.7, marginBottom: 20 }}>{t.marketsLead}</p>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+            <span
+              className="pulse-dot"
+              aria-hidden
+              style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--teal)', display: 'inline-block', flexShrink: 0 }}
+            />
+            <span style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 700, color: 'var(--dark)', letterSpacing: '-0.2px', lineHeight: 1.3 }}>
+              Now Live in UK, Norway, and Sweden
+            </span>
           </div>
         </div>
       </section>
