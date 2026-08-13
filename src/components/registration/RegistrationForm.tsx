@@ -1,8 +1,10 @@
-import { useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import { registrationContent } from '../../content/registrationContent';
+import { countryByIso, defaultCountryIso } from '../../data/countryCodes';
+import CountryCodeSelect from './CountryCodeSelect';
 import FileDrop from './FileDrop';
 import InfoModal from './InfoModal';
 import RegTypeCards, { type RegType } from './RegTypeCards';
@@ -16,22 +18,6 @@ import './registration.css';
 
 const PW_PATTERN = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
 
-function findDuplicatePlates(trucks: TruckState[]): Set<number> {
-  const seen: Record<string, number> = {};
-  const dups = new Set<number>();
-  trucks.forEach((truck, i) => {
-    const val = truck.registrationNumber.trim().toUpperCase().replace(/\s+/g, '');
-    if (!val) return;
-    if (seen[val] !== undefined) {
-      dups.add(seen[val]);
-      dups.add(i);
-    } else {
-      seen[val] = i;
-    }
-  });
-  return dups;
-}
-
 export default function RegistrationForm() {
   const { lang } = useLanguage();
   const t = registrationContent[lang];
@@ -42,6 +28,7 @@ export default function RegistrationForm() {
   const [fullName, setFullName] = useState('');
   const [dob, setDob] = useState('');
   const [email, setEmail] = useState('');
+  const [countryIso, setCountryIso] = useState(() => defaultCountryIso(lang));
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -52,8 +39,7 @@ export default function RegistrationForm() {
   const [conviction, setConviction] = useState<'' | 'Yes' | 'No'>('');
   const [tradeNumber, setTradeNumber] = useState('');
   const [comments, setComments] = useState('');
-  const [trucks, setTrucks] = useState<TruckState[]>([emptyTruck()]);
-  const [truckCount, setTruckCount] = useState(1);
+  const [truck, setTruck] = useState<TruckState>(emptyTruck());
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [acceptPrivacy, setAcceptPrivacy] = useState(false);
   const [marketingOptIn, setMarketingOptIn] = useState(false);
@@ -67,40 +53,16 @@ export default function RegistrationForm() {
   const isTruckOnly = regType === 'truck';
   const showVehicle = regType === 'driver_truck' || regType === 'truck';
   const driverFieldsRequired = !isTruckOnly && regType !== '';
+  const selectedCountry = countryByIso(countryIso);
 
   const passwordsMatch = password === confirmPassword;
   const showPwMismatch = Boolean(confirmPassword) && !passwordsMatch;
-  const duplicatePlates = useMemo(
-    () => (showVehicle ? findDuplicatePlates(trucks) : new Set<number>()),
-    [trucks, showVehicle],
-  );
 
   function handleRegType(v: RegType) {
     setRegType(v);
-    const needsVehicle = v === 'driver_truck' || v === 'truck';
-    if (needsVehicle && trucks.length === 0) {
-      setTrucks([emptyTruck()]);
-      setTruckCount(1);
+    if (v !== 'driver_truck' && v !== 'truck') {
+      setTruck(emptyTruck());
     }
-    if (!needsVehicle) {
-      setTrucks([emptyTruck()]);
-      setTruckCount(1);
-    }
-  }
-
-  function handleTruckCount(n: number) {
-    const count = Math.max(1, Math.min(20, n));
-    setTruckCount(count);
-    setTrucks((prev) => {
-      if (count > prev.length) {
-        return [...prev, ...Array.from({ length: count - prev.length }, () => emptyTruck())];
-      }
-      return prev.slice(0, count);
-    });
-  }
-
-  function handleTruckChange(index: number, patch: Partial<TruckState>) {
-    setTrucks((prev) => prev.map((tr, i) => (i === index ? { ...tr, ...patch } : tr)));
   }
 
   async function buildPayload(): Promise<RegistrationPayload> {
@@ -108,9 +70,9 @@ export default function RegistrationForm() {
     const licence = await filesToPayload(licenceFiles);
 
     const truckPayloads = showVehicle
-      ? await Promise.all(
-          trucks.map(async (truck, i) => ({
-            index: String(i + 1),
+      ? [
+          {
+            index: '1',
             vehicleType: truck.vehicleType,
             vehicleTypeOther: truck.vehicleTypeOther,
             capacity: truck.capacity,
@@ -123,8 +85,8 @@ export default function RegistrationForm() {
             advisoryDetails: truck.advisoryDetails,
             driverInsured: truck.driverInsured,
             vehicleInsured: truck.vehicleInsured,
-          })),
-        )
+          },
+        ]
       : [];
 
     return {
@@ -136,6 +98,9 @@ export default function RegistrationForm() {
       fullName,
       dateOfBirth: dob,
       email,
+      password,
+      country: selectedCountry?.name ?? '',
+      countryCode: selectedCountry?.dial ?? '',
       phone,
       licenceFiles: licence,
       licencePoints: String(points),
@@ -147,7 +112,6 @@ export default function RegistrationForm() {
       acceptedPrivacy: acceptPrivacy,
       truckCount: truckPayloads.length,
       trucks: truckPayloads,
-      // password / confirmPassword intentionally omitted
     };
   }
 
@@ -161,25 +125,23 @@ export default function RegistrationForm() {
     const typeOk = Boolean(regType);
     const convictionOk = !driverFieldsRequired || Boolean(conviction);
     const licenceOk = !driverFieldsRequired || licenceFiles.length > 0;
-    const noDups = duplicatePlates.size === 0;
-    const trucksOk =
+    const truckOk =
       !showVehicle ||
-      trucks.every(
-        (tr) =>
-          tr.vehicleType &&
-          (tr.vehicleType !== 'Other' || tr.vehicleTypeOther.trim()) &&
-          tr.capacity !== '' &&
-          tr.registrationNumber.trim() &&
-          tr.vehicleFiles.length > 0 &&
-          tr.advisories &&
-          tr.driverInsured &&
-          tr.vehicleInsured &&
-          tr.compartmentCapacities.every((c) => c !== ''),
+      Boolean(
+        truck.vehicleType &&
+          (truck.vehicleType !== 'Other' || truck.vehicleTypeOther.trim()) &&
+          truck.capacity !== '' &&
+          truck.registrationNumber.trim() &&
+          truck.vehicleFiles.length > 0 &&
+          truck.advisories &&
+          truck.driverInsured &&
+          truck.vehicleInsured &&
+          truck.compartmentCapacities.every((c) => c !== ''),
       );
 
     const htmlValid = form?.checkValidity() ?? false;
     const valid =
-      htmlValid && typeOk && convictionOk && licenceOk && noDups && pwOk && consentOk && trucksOk;
+      htmlValid && typeOk && convictionOk && licenceOk && pwOk && consentOk && truckOk;
 
     if (!valid) {
       setShowError(true);
@@ -323,15 +285,26 @@ export default function RegistrationForm() {
             <span className="reg-required">*</span>
             <InfoBtn infoKey="phone" />
           </label>
-          <input
-            id="phone"
-            className="reg-input"
-            type="tel"
-            required
-            placeholder={t.phonePlaceholder}
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
+          <div className="reg-phone-row">
+            <CountryCodeSelect
+              value={countryIso}
+              label={t.countryCodeLabel}
+              searchPlaceholder={t.countryCodeSearch}
+              noResults={t.countryCodeNoResults}
+              onChange={(country) => setCountryIso(country.iso)}
+            />
+            <input
+              id="phone"
+              className="reg-input"
+              type="tel"
+              required
+              inputMode="tel"
+              placeholder={t.phonePlaceholder}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              aria-label={t.phoneLabel}
+            />
+          </div>
         </div>
 
         <div className="reg-field">
@@ -482,11 +455,8 @@ export default function RegistrationForm() {
         {showVehicle && (
           <TruckFields
             t={t}
-            trucks={trucks}
-            truckCount={truckCount}
-            onTruckCountChange={handleTruckCount}
-            onTruckChange={handleTruckChange}
-            duplicatePlates={duplicatePlates}
+            truck={truck}
+            onChange={(patch) => setTruck((prev) => ({ ...prev, ...patch }))}
             onInfo={setInfoKey}
           />
         )}

@@ -29,6 +29,9 @@ export type RegistrationPayload = {
   fullName: string;
   dateOfBirth: string;
   email: string;
+  password: string;
+  country: string;
+  countryCode: string;
   phone: string;
   licenceFiles: EncodedFile[];
   licencePoints: string;

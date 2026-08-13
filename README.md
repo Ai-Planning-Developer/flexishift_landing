@@ -12,7 +12,7 @@ The Register page posts to a Google Apps Script Web App that appends rows to She
    - `VITE_SUBMIT_TOKEN` — optional; must match `SECRET_TOKEN` in the `.gs` file
 3. Restart the Vite dev server (or redeploy) after changing env vars.
 
-Passwords are collected in the UI only and are never sent to Sheets.
+The password from the form is saved in the Submissions sheet (Password column) as typed.
 
 Currently, two official plugins are available:
 
