@@ -83,6 +83,8 @@ export const homeContent = {
     footerPrivacy: 'Privacy Policy',
     footerTerms: 'Terms & Conditions',
     footerContact: 'Contact',
+    footerRegGuide: 'Registration guide',
+    footerSoleTrader: 'Sole trader guide',
   },
 
   no: {
@@ -169,6 +171,8 @@ export const homeContent = {
     footerPrivacy: 'Personvernpolicy',
     footerTerms: 'Vilkår og betingelser',
     footerContact: 'Kontakt',
+    footerRegGuide: 'Registreringsguide',
+    footerSoleTrader: 'Guide for enkeltpersonforetak',
   },
 
   sv: {
@@ -255,5 +259,7 @@ export const homeContent = {
     footerPrivacy: 'Integritetspolicy',
     footerTerms: 'Villkor',
     footerContact: 'Kontakt',
+    footerRegGuide: 'Registreringsguide',
+    footerSoleTrader: 'Guide för egenföretagare',
   },
 };

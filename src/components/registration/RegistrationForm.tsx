@@ -436,6 +436,11 @@ export default function RegistrationForm() {
             onChange={(e) => setTradeNumber(e.target.value)}
           />
           <div className="reg-hint">{t.tradeHint}</div>
+          <div className="reg-hint" style={{ marginTop: 4 }}>
+            <Link to="/guides/sole-trader" style={{ color: 'var(--teal)', fontWeight: 600 }}>
+              {t.soleTraderGuideLink} →
+            </Link>
+          </div>
         </div>
 
         <div className="reg-field">

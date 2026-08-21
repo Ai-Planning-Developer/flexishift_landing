@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
@@ -7,6 +8,17 @@ import PrivacyPage from './pages/PrivacyPage';
 import ROPAPage from './pages/ROPAPage';
 import ContactPage from './pages/ContactPage';
 import RegisterPage from './pages/RegisterPage';
+
+const RegistrationGuidePage = lazy(() => import('./pages/RegistrationGuidePage'));
+const SoleTraderGuidePage = lazy(() => import('./pages/SoleTraderGuidePage'));
+
+function GuideFallback() {
+  return (
+    <div style={{ padding: '120px 24px', textAlign: 'center', color: 'var(--muted)' }}>
+      Loading guide…
+    </div>
+  );
+}
 
 export default function App() {
   return (
@@ -22,6 +34,22 @@ export default function App() {
           <Route path="/ropa"           element={<ROPAPage />} />
           <Route path="/contact"        element={<ContactPage />} />
           <Route path="/register"       element={<RegisterPage />} />
+          <Route
+            path="/guides/registration"
+            element={
+              <Suspense fallback={<GuideFallback />}>
+                <RegistrationGuidePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/guides/sole-trader"
+            element={
+              <Suspense fallback={<GuideFallback />}>
+                <SoleTraderGuidePage />
+              </Suspense>
+            }
+          />
           <Route path="*"               element={<HomePage />} />
         </Routes>
       </main>

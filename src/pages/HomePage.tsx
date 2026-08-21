@@ -226,7 +226,12 @@ export default function HomePage({ scrollTo }: HomePageProps) {
         <div style={{ maxWidth: 1080, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: 12 }}>{t.footerCopy}</span>
           <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-            {[{ label: t.footerPrivacy, path: '/privacy-policy' }, { label: t.footerTerms, path: '/terms' }].map(({ label, path }) => (
+            {[
+              { label: t.footerPrivacy, path: '/privacy-policy' },
+              { label: t.footerTerms, path: '/terms' },
+              { label: t.footerRegGuide, path: '/guides/registration' },
+              { label: t.footerSoleTrader, path: '/guides/sole-trader' },
+            ].map(({ label, path }) => (
               <button key={path} onClick={() => navigate(path)} style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, background: 'none', border: 'none', cursor: 'pointer' }}>{label}</button>
             ))}
             <button onClick={() => navigate('/contact')} style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, background: 'none', border: 'none', cursor: 'pointer' }}>{t.footerContact}</button>
