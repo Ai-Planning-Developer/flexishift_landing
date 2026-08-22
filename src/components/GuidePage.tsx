@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, type ReactNode } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import type { Lang } from '../context/LanguageContext';
 
@@ -16,17 +16,26 @@ type Props = {
   styles: string;
   html: string;
   related?: RelatedLink[];
+  banner?: ReactNode;
 };
 
 /** Shared shell for long-form guide pages (registration / sole trader). */
-export default function GuidePage({ styleId, styles, html, related }: Props) {
+export default function GuidePage({ styleId, styles, html, related, banner }: Props) {
   const { lang } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
   const t = chrome[lang];
 
   useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (hash) {
+      const t = window.setTimeout(() => {
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+      return () => window.clearTimeout(t);
+    }
     window.scrollTo(0, 0);
-  }, [html]);
+  }, [html, location.hash]);
 
   useEffect(() => {
     let el = document.getElementById(styleId) as HTMLStyleElement | null;
@@ -87,6 +96,9 @@ export default function GuidePage({ styleId, styles, html, related }: Props) {
       }
       .guide-document .wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
       .guide-document .jump-top { display: none; }
+      .guide-document .lang-divider { display: none; }
+      .guide-document .lang-section + .lang-section { margin-top: 0; border-top: none; padding-top: 10px; }
+      .guide-document #verification { scroll-margin-top: 88px; }
       ${scoped}
     `;
 
@@ -117,6 +129,8 @@ export default function GuidePage({ styleId, styles, html, related }: Props) {
           ← {t.home}
         </button>
       </div>
+
+      {banner}
 
       <div className="guide-document" dangerouslySetInnerHTML={{ __html: html }} />
 

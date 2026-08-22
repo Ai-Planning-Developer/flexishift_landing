@@ -212,19 +212,20 @@ export default function RegistrationForm() {
           <RegTypeCards t={t} value={regType} onChange={handleRegType} />
         </div>
 
-        <div className="reg-field">
+        <div className="reg-field reg-field-referral">
           <label className="reg-label" htmlFor="referralCode">
             {t.referralLabel}
             <InfoBtn infoKey="referral" />
           </label>
           <input
             id="referralCode"
-            className="reg-input"
+            className="reg-input reg-input-referral"
             type="text"
             placeholder={t.referralPlaceholder}
             value={referralCode}
             onChange={(e) => setReferralCode(e.target.value)}
           />
+          <p className="reg-hint">{t.referralHint}</p>
         </div>
 
         <div className="reg-field">

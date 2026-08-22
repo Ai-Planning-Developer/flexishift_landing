@@ -179,7 +179,7 @@ export const registrationGuideEnHTML = `<div class="guide-doc" id="top"><div cla
 </div>
 </div>
 
-  <div class="section-head">
+  <div class="section-head" id="verification">
     <div class="section-num" style="background:var(--green)">2</div>
     <h2>Verification & App Setup</h2>
   </div>
@@ -188,6 +188,7 @@ export const registrationGuideEnHTML = `<div class="guide-doc" id="top"><div cla
   <div class="icn" style="background:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg></div>
   <h3>5-Minute Video Verification</h3>
   <p>Book a short call to confirm your identity, qualifications, and work preferences.</p>
+  <p><a href="/contact" style="display:inline-block;margin-top:8px;background:var(--teal);color:#fff;padding:12px 20px;border-radius:10px;font-weight:700;text-decoration:none;">Book your 5-minute video verification</a></p>
 </div>
 
 <div class="card">
@@ -242,7 +243,7 @@ export const registrationGuideNoHTML = `<div class="guide-doc" id="top"><div cla
 </div>
 </div>
 
-  <div class="section-head">
+  <div class="section-head" id="verification">
     <div class="section-num" style="background:var(--green)">2</div>
     <h2>Verifisering og oppsett av app</h2>
   </div>
@@ -251,6 +252,7 @@ export const registrationGuideNoHTML = `<div class="guide-doc" id="top"><div cla
   <div class="icn" style="background:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg></div>
   <h3>5 minutters videoverifisering</h3>
   <p>Book en kort samtale for å bekrefte identitet, kvalifikasjoner og arbeidspreferanser.</p>
+  <p><a href="/contact" style="display:inline-block;margin-top:8px;background:var(--teal);color:#fff;padding:12px 20px;border-radius:10px;font-weight:700;text-decoration:none;">Book 5 minutters videoverifisering</a></p>
 </div>
 
 <div class="card">
@@ -305,7 +307,7 @@ export const registrationGuideSvHTML = `<div class="guide-doc" id="top"><div cla
 </div>
 </div>
 
-  <div class="section-head">
+  <div class="section-head" id="verification">
     <div class="section-num" style="background:var(--green)">2</div>
     <h2>Verifiering och appinstallation</h2>
   </div>
@@ -314,6 +316,7 @@ export const registrationGuideSvHTML = `<div class="guide-doc" id="top"><div cla
   <div class="icn" style="background:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg></div>
   <h3>5 minuters videoverifiering</h3>
   <p>Boka ett kort samtal för att bekräfta din identitet, dina kvalifikationer och dina arbetspreferenser.</p>
+  <p><a href="/contact" style="display:inline-block;margin-top:8px;background:var(--teal);color:#fff;padding:12px 20px;border-radius:10px;font-weight:700;text-decoration:none;">Boka 5 minuters videoverifiering</a></p>
 </div>
 
 <div class="card">

@@ -122,12 +122,9 @@ export const ${exportPrefix}SvHTML = \`${esc(parts.sv)}\`;
 
   const cleanHero = hero.replace(/<div class="crumbs">[\s\S]*?<\/div>/i, '');
 
-  // All three countries on one page (original design). Site language only
-  // affects the React chrome (back button). Order: UK → Norway → Sweden.
-  const allCountries = `${uk}${norway}${sweden}`;
   writeModule('soleTraderGuide', styles, {
-    en: `<div class="guide-doc" id="top">${cleanHero}${allCountries}</div>`,
-    no: `<div class="guide-doc" id="top">${cleanHero}${allCountries}</div>`,
-    sv: `<div class="guide-doc" id="top">${cleanHero}${allCountries}</div>`,
+    en: `<div class="guide-doc" id="top">${cleanHero}${uk}</div>`,
+    no: `<div class="guide-doc" id="top">${cleanHero}${norway}</div>`,
+    sv: `<div class="guide-doc" id="top">${cleanHero}${sweden}</div>`,
   });
 }

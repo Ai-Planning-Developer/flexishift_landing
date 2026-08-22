@@ -57,6 +57,24 @@
   font-size: 14.5px;
 }
 
+.reg-field-referral {
+  background: rgba(0, 168, 150, 0.08);
+  border: 1px solid rgba(0, 168, 150, 0.22);
+  border-left: 4px solid var(--teal, #00A896);
+  border-radius: 12px;
+  padding: 16px 16px 14px;
+}
+
+.reg-field-referral .reg-label {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.reg-input-referral {
+  min-height: 52px;
+  background: #fff;
+}
+
 .reg-required {
   color: #DC2626;
   margin-left: 2px;

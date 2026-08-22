@@ -1,20 +1,15 @@
 import { useLanguage } from '../context/LanguageContext';
 import GuidePage from '../components/GuidePage';
+import { guideDocForSection } from '../components/guideHtml';
 import {
   soleTraderGuideStyles,
   soleTraderGuideEnHTML,
-  soleTraderGuideNoHTML,
-  soleTraderGuideSvHTML,
 } from '../content/soleTraderGuideContent';
 
 export default function SoleTraderGuidePage() {
   const { lang } = useLanguage();
-  const html =
-    lang === 'no'
-      ? soleTraderGuideNoHTML
-      : lang === 'sv'
-        ? soleTraderGuideSvHTML
-        : soleTraderGuideEnHTML;
+  const sectionId = lang === 'no' ? 'norway' : lang === 'sv' ? 'sweden' : 'uk';
+  const html = guideDocForSection(soleTraderGuideEnHTML, sectionId);
 
   return (
     <GuidePage

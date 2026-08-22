@@ -34,23 +34,44 @@ export default function HomePage({ scrollTo }: HomePageProps) {
       }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E")`, pointerEvents: 'none' }} />
         <div style={{ maxWidth: 1120, width: '100%', margin: '0 auto', position: 'relative' }}>
-          <h1 style={{ fontSize: 'clamp(32px, 5.5vw, 62px)', fontWeight: 800, lineHeight: 1.1, color: 'white', letterSpacing: '-1.5px', marginBottom: 20, maxWidth: 720 }}>
-            {t.heroH1_1}<em style={{ fontStyle: 'normal', color: 'var(--teal)' }}>{t.heroH1_em}</em>{t.heroH1_2}
-            <br />
-            {t.heroH1_line2}
-            <br />
-            {t.heroH1_line3}
-          </h1>
-          <p style={{ fontSize: 'clamp(15px, 2vw, 19px)', color: 'rgba(255,255,255,0.75)', maxWidth: 560, marginBottom: 36, lineHeight: 1.65 }}>{t.heroSub}</p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-            <a href="https://dashboard.flexishift.io/login" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--teal)', color: 'white', padding: 'clamp(12px,2vw,15px) clamp(20px,3vw,30px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', boxShadow: '0 4px 20px rgba(0,168,150,0.35)' }}>{t.heroCtaPrimary}</a>
-            <Link to="/register" style={{ background: 'var(--teal)', color: 'white', padding: 'clamp(12px,2vw,15px) clamp(20px,3vw,30px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', boxShadow: '0 4px 20px rgba(0,168,150,0.35)' }}>{t.heroCtaDriver}</Link>
-            <a href="https://www.youtube.com/shorts/P8Yk483-BXo?feature=share" target="_blank" rel="noopener noreferrer" style={{ background: 'rgba(255,255,255,0.1)', color: 'white', padding: 'clamp(11px,2vw,14px) clamp(18px,2.5vw,28px)', borderRadius: 10, border: '1px solid rgba(255,255,255,0.2)', fontWeight: 600, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, paddingLeft: 2 }}>▶</span>
-              {t.heroCtaSecondary}
-            </a>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginLeft: 'auto', alignItems: 'flex-start' }}>
-              <p style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.75)', margin: 0, letterSpacing: '0.01em' }}>{t.heroDriverApps}</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px,4vw,48px)', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <div style={{ flex: '1 1 420px', minWidth: 280, maxWidth: 720 }}>
+              <h1 style={{ fontSize: 'clamp(32px, 5.5vw, 62px)', fontWeight: 800, lineHeight: 1.1, color: 'white', letterSpacing: '-1.5px', marginBottom: 20 }}>
+                {t.heroH1_1}<em style={{ fontStyle: 'normal', color: 'var(--teal)' }}>{t.heroH1_em}</em>{t.heroH1_2}
+                <br />
+                {t.heroH1_line2}
+                <br />
+                {t.heroH1_line3}
+              </h1>
+              <p style={{ fontSize: 'clamp(15px, 2vw, 19px)', color: 'rgba(255,255,255,0.75)', maxWidth: 560, marginBottom: 36, lineHeight: 1.65 }}>{t.heroSub}</p>
+              <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+                <a href="https://dashboard.flexishift.io/login" target="_blank" rel="noopener noreferrer" style={{ background: 'var(--teal)', color: 'white', padding: 'clamp(12px,2vw,15px) clamp(20px,3vw,30px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', boxShadow: '0 4px 20px rgba(0,168,150,0.35)' }}>{t.heroCtaPrimary}</a>
+                <Link to="/register" style={{ background: 'var(--teal)', color: 'white', padding: 'clamp(12px,2vw,15px) clamp(20px,3vw,30px)', borderRadius: 10, fontWeight: 700, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', boxShadow: '0 4px 20px rgba(0,168,150,0.35)' }}>{t.heroCtaDriver}</Link>
+                <a href="https://www.youtube.com/shorts/P8Yk483-BXo?feature=share" target="_blank" rel="noopener noreferrer" style={{ background: 'rgba(255,255,255,0.1)', color: 'white', padding: 'clamp(11px,2vw,14px) clamp(18px,2.5vw,28px)', borderRadius: 10, border: '1px solid rgba(255,255,255,0.2)', fontWeight: 600, fontSize: 'clamp(14px,1.5vw,16px)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, paddingLeft: 2 }}>▶</span>
+                  {t.heroCtaSecondary}
+                </a>
+              </div>
+            </div>
+
+            <div style={{
+              flex: '0 1 340px',
+              width: '100%',
+              maxWidth: 380,
+              background: 'rgba(255,255,255,0.08)',
+              border: '1px solid rgba(255,255,255,0.16)',
+              borderRadius: 16,
+              padding: 20,
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
+            }}>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
+                <Link to="/guides/registration" style={{ background: 'rgba(255,255,255,0.1)', color: 'white', padding: '8px 14px', borderRadius: 999, border: '1px solid rgba(255,255,255,0.22)', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>{t.heroCtaRegGuide}</Link>
+                <Link to="/guides/sole-trader" style={{ background: 'rgba(255,255,255,0.1)', color: 'white', padding: '8px 14px', borderRadius: 999, border: '1px solid rgba(255,255,255,0.22)', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>{t.heroCtaSoleTrader}</Link>
+              </div>
+              <Link to="/guides/registration#verification" style={{ display: 'block', textAlign: 'center', background: 'white', color: 'var(--navy)', padding: '14px 18px', borderRadius: 10, fontWeight: 700, fontSize: 15, textDecoration: 'none', boxShadow: '0 4px 20px rgba(255,255,255,0.18)' }}>{t.heroCtaVerify}</Link>
+              <div style={{ height: 1, background: 'rgba(255,255,255,0.14)', margin: '16px 0 14px' }} />
+              <p style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.75)', margin: '0 0 10px', letterSpacing: '0.01em' }}>{t.heroDriverApps}</p>
               <AppStoreBadges height={40} />
             </div>
           </div>
