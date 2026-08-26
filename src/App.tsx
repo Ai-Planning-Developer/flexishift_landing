@@ -11,6 +11,7 @@ import RegisterPage from './pages/RegisterPage';
 
 const RegistrationGuidePage = lazy(() => import('./pages/RegistrationGuidePage'));
 const SoleTraderGuidePage = lazy(() => import('./pages/SoleTraderGuidePage'));
+const DriversPage = lazy(() => import('./pages/DriversPage'));
 
 function GuideFallback() {
   return (
@@ -34,6 +35,14 @@ export default function App() {
           <Route path="/ropa"           element={<ROPAPage />} />
           <Route path="/contact"        element={<ContactPage />} />
           <Route path="/register"       element={<RegisterPage />} />
+          <Route
+            path="/drivers"
+            element={
+              <Suspense fallback={<GuideFallback />}>
+                <DriversPage />
+              </Suspense>
+            }
+          />
           <Route
             path="/guides/registration"
             element={
