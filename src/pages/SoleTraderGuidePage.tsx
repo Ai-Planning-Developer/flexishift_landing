@@ -18,6 +18,14 @@ export default function SoleTraderGuidePage() {
       html={html}
       related={[
         {
+          to: '/drivers',
+          label: {
+            en: 'Driver overview & earnings calculator →',
+            no: 'Sjåføroversikt og inntektskalkulator →',
+            sv: 'Föraröversikt och inkomstkalkylator →',
+          },
+        },
+        {
           to: '/guides/registration',
           label: {
             en: 'Driver registration guide →',

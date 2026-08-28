@@ -11,6 +11,7 @@ const navLabels = {
     privacy: 'Privacy Policy',
     ropa: 'ROPA',
     contact: 'Contact',
+    driverGuide: 'Driver Guide',
     getStarted: 'Get Started',
   },
   no: {
@@ -20,6 +21,7 @@ const navLabels = {
     privacy: 'Personvern',
     ropa: 'ROPA',
     contact: 'Kontakt',
+    driverGuide: 'Sjåførguide',
     getStarted: 'Kom i gang',
   },
   sv: {
@@ -29,6 +31,7 @@ const navLabels = {
     privacy: 'Integritet',
     ropa: 'ROPA',
     contact: 'Kontakt',
+    driverGuide: 'Förarguide',
     getStarted: 'Kom igång',
   },
 };
@@ -87,8 +90,8 @@ export default function Navbar() {
 
   const linkStyle = (active?: boolean): React.CSSProperties => ({
     background: 'none', border: 'none', cursor: 'pointer',
-    fontSize: 13, fontWeight: 500, padding: 0,
-    color: active ? 'white' : 'rgba(255,255,255,0.65)',
+    fontSize: 13, fontWeight: active ? 700 : 500, padding: '4px 0',
+    color: active ? 'var(--teal, #00A896)' : 'rgba(255,255,255,0.75)',
     transition: 'color 0.15s', whiteSpace: 'nowrap',
   });
 
@@ -126,6 +129,7 @@ export default function Navbar() {
           <button onClick={() => goPage('/privacy-policy')} style={linkStyle(isActive('/privacy-policy'))}>{t.privacy}</button>
           <button onClick={() => goPage('/ropa')} style={linkStyle(isActive('/ropa'))}>{t.ropa}</button>
           <button onClick={() => goPage('/contact')} style={linkStyle(isActive('/contact'))}>{t.contact}</button>
+          <button onClick={() => goPage('/drivers')} style={linkStyle(isActive('/drivers'))}>{t.driverGuide}</button>
         </div>
 
         {/* Right: lang + CTA + hamburger */}
@@ -185,6 +189,7 @@ export default function Navbar() {
           <button className="mobile-menu-link" onClick={() => goPage('/privacy-policy')}>{t.privacy}</button>
           <button className="mobile-menu-link" onClick={() => goPage('/ropa')}>{t.ropa}</button>
           <button className="mobile-menu-link" onClick={() => goPage('/contact')}>{t.contact}</button>
+          <button className="mobile-menu-link" onClick={() => goPage('/drivers')}>{t.driverGuide}</button>
           <div style={{ paddingTop: 20 }}>
             <a href="https://dashboard.flexishift.io" target="_blank" rel="noopener noreferrer"
               style={{ display: 'block', textAlign: 'center', padding: '14px', background: 'var(--teal)', borderRadius: 10, color: 'white', fontWeight: 700, fontSize: 16, textDecoration: 'none' }}

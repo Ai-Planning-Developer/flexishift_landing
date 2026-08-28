@@ -83,6 +83,7 @@ export const homeContent = {
     ctaDriverApps: 'Available on Google Play and the App Store',
 
     footerCopy: '© 2026 AI Planning Ltd · FlexiShift is a trading name of AI Planning Ltd · Registered in England & Wales',
+    footerDriverGuide: 'Driver guide',
     footerPrivacy: 'Privacy Policy',
     footerTerms: 'Terms & Conditions',
     footerContact: 'Contact',
@@ -174,6 +175,7 @@ export const homeContent = {
     ctaDriverApps: 'Tilgjengelig på Google Play og App Store',
 
     footerCopy: '© 2026 AI Planning Ltd · FlexiShift er et handelsnavn for AI Planning Ltd · Registrert i England og Wales',
+    footerDriverGuide: 'Sjåførguide',
     footerPrivacy: 'Personvernpolicy',
     footerTerms: 'Vilkår og betingelser',
     footerContact: 'Kontakt',
@@ -248,7 +250,7 @@ export const homeContent = {
     marketsLead: 'FlexiShift är för närvarande live i Storbritannien och Norge, med Sverige och övriga Norden som lanseras inom kort. Plattformen stöder utbetalningar i flera valutor med moms- och skatteefterlevnad hanterad vid kassan för varje jurisdiktion.',
     markets: [
       { flag: '🇬🇧', name: 'Storbritannien', status: 'Live nu', live: true, detail: 'Full plattform tillgänglig. UK GDPR- och HMRC-kompatibel.', currency: 'GBP £' },
-      { flag: '🇳🇴', name: 'Norge', status: 'Live nu', live: true, detail: 'Full plattform tillgänglig. Norsk MVA-skattekompatibel.', currency: 'NOK kr' },
+      { flag: '🇳🇴', name: 'Norge', status: 'Tilgjengelig nå', live: true, detail: 'Full plattform tillgänglig. Norsk MVA-skattekompatibel.', currency: 'NOK kr' },
       { flag: '🇸🇪', name: 'Sverige & Norden', status: 'Lanseras snart', live: false, detail: 'Svensk MOMS och Skatteverket-kompatibel. YKB-certifiering stöds.', currency: 'SEK kr' },
     ],
 
@@ -265,6 +267,7 @@ export const homeContent = {
     ctaDriverApps: 'Finns på Google Play och App Store',
 
     footerCopy: '© 2026 AI Planning Ltd · FlexiShift är ett handelsnamn för AI Planning Ltd · Registrerat i England och Wales',
+    footerDriverGuide: 'Förarguide',
     footerPrivacy: 'Integritetspolicy',
     footerTerms: 'Villkor',
     footerContact: 'Kontakt',

@@ -15,28 +15,134 @@ function formatEarnings(currency: string, total: number) {
   return `${currency}${formatted}`;
 }
 
+function DriversCalculator({ t }: { t: (typeof driversContent)[keyof typeof driversContent] }) {
+  const [rate, setRate] = useState(t.calcRateDefault);
+  const [hours, setHours] = useState(t.calcHoursDefault);
+  const weekly = (Number(rate) || 0) * (Number(hours) || 0);
+
+  return (
+    <div className="drivers-calc">
+      <div className="drivers-calc-title">{t.calcTitle}</div>
+      <div className="drivers-calc-sub">{t.calcSub}</div>
+
+      <div className="drivers-calc-row">
+        <label className="drivers-calc-label" htmlFor="drivers-rate">
+          {t.calcRateLabel}
+        </label>
+        <div className="drivers-calc-input-wrap">
+          <span className="drivers-calc-prefix">{t.currencySymbol}</span>
+          <input
+            id="drivers-rate"
+            type="number"
+            min={0}
+            step={0.5}
+            value={rate}
+            onChange={(e) => setRate(parseFloat(e.target.value) || 0)}
+          />
+        </div>
+      </div>
+
+      <div className="drivers-calc-row">
+        <label className="drivers-calc-label" htmlFor="drivers-hours">
+          {t.calcHoursLabel}
+        </label>
+        <div className="drivers-calc-input-wrap">
+          <input
+            id="drivers-hours"
+            type="number"
+            min={0}
+            step={1}
+            value={hours}
+            onChange={(e) => setHours(parseFloat(e.target.value) || 0)}
+          />
+          <span className="drivers-calc-suffix">{t.calcHoursSuffix}</span>
+        </div>
+      </div>
+
+      <div className="drivers-calc-result">
+        <div className="drivers-calc-result-label">{t.calcResultLabel}</div>
+        <div className="drivers-calc-result-value">
+          {formatEarnings(t.currencySymbol, weekly)}
+        </div>
+        <div className="drivers-calc-result-note">{t.calcResultNote}</div>
+      </div>
+
+      <div className="drivers-calc-fee">
+        <span aria-hidden>✓</span>
+        <p>{t.calcFeeNote}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function DriversPage() {
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const t = driversContent[lang];
 
-  const [rate, setRate] = useState(t.calcRateDefault);
-  const [hours, setHours] = useState(t.calcHoursDefault);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    setRate(t.calcRateDefault);
-    setHours(t.calcHoursDefault);
-  }, [lang, t.calcRateDefault, t.calcHoursDefault]);
-
-  const weekly = (Number(rate) || 0) * (Number(hours) || 0);
+  const subnavLabels = {
+    en: {
+      back: '← Back to home',
+      calc: 'Calculator',
+      shifts: 'Shift Types',
+      verify: 'Verification',
+      how: 'How It Works',
+      trust: 'Why FlexiShift',
+    },
+    no: {
+      back: '← Tilbake til hjem',
+      calc: 'Kalkulator',
+      shifts: 'Skiftkategorier',
+      verify: 'Verifisering',
+      how: 'Slik fungerer det',
+      trust: 'Hvorfor oss',
+    },
+    sv: {
+      back: '← Tillbaka till startsidan',
+      calc: 'Kalkylator',
+      shifts: 'Skiftkategorier',
+      verify: 'Verifiering',
+      how: 'Så fungerar det',
+      trust: 'Varför oss',
+    },
+  }[lang];
 
   return (
     <div className="drivers-page">
-      <section className="drivers-hero">
+      <nav className="drivers-subnav" aria-label="Drivers section navigation">
+        <div className="drivers-subnav-inner">
+          <button
+            type="button"
+            className="drivers-subnav-back"
+            onClick={() => navigate('/')}
+          >
+            {subnavLabels.back}
+          </button>
+          <div className="drivers-subnav-links">
+            <a href="#calculator" className="drivers-subnav-link">
+              {subnavLabels.calc}
+            </a>
+            <a href="#categories" className="drivers-subnav-link">
+              {subnavLabels.shifts}
+            </a>
+            <a href="#verify" className="drivers-subnav-link">
+              {subnavLabels.verify}
+            </a>
+            <a href="#how-it-works" className="drivers-subnav-link">
+              {subnavLabels.how}
+            </a>
+            <a href="#trust" className="drivers-subnav-link">
+              {subnavLabels.trust}
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <section className="drivers-hero" id="calculator">
         <div className="drivers-hero-grid">
           <div className="drivers-hero-left">
             <span className="drivers-hero-eyebrow">{t.heroEyebrow}</span>
@@ -86,57 +192,7 @@ export default function DriversPage() {
             </div>
           </div>
 
-          <div className="drivers-calc">
-            <div className="drivers-calc-title">{t.calcTitle}</div>
-            <div className="drivers-calc-sub">{t.calcSub}</div>
-
-            <div className="drivers-calc-row">
-              <label className="drivers-calc-label" htmlFor="drivers-rate">
-                {t.calcRateLabel}
-              </label>
-              <div className="drivers-calc-input-wrap">
-                <span className="drivers-calc-prefix">{t.currencySymbol}</span>
-                <input
-                  id="drivers-rate"
-                  type="number"
-                  min={0}
-                  step={0.5}
-                  value={rate}
-                  onChange={(e) => setRate(parseFloat(e.target.value) || 0)}
-                />
-              </div>
-            </div>
-
-            <div className="drivers-calc-row">
-              <label className="drivers-calc-label" htmlFor="drivers-hours">
-                {t.calcHoursLabel}
-              </label>
-              <div className="drivers-calc-input-wrap">
-                <input
-                  id="drivers-hours"
-                  type="number"
-                  min={0}
-                  step={1}
-                  value={hours}
-                  onChange={(e) => setHours(parseFloat(e.target.value) || 0)}
-                />
-                <span className="drivers-calc-suffix">{t.calcHoursSuffix}</span>
-              </div>
-            </div>
-
-            <div className="drivers-calc-result">
-              <div className="drivers-calc-result-label">{t.calcResultLabel}</div>
-              <div className="drivers-calc-result-value">
-                {formatEarnings(t.currencySymbol, weekly)}
-              </div>
-              <div className="drivers-calc-result-note">{t.calcResultNote}</div>
-            </div>
-
-            <div className="drivers-calc-fee">
-              <span aria-hidden>✓</span>
-              <p>{t.calcFeeNote}</p>
-            </div>
-          </div>
+          <DriversCalculator key={lang} t={t} />
         </div>
       </section>
 
@@ -263,7 +319,7 @@ export default function DriversPage() {
         </div>
       </section>
 
-      <section className="drivers-verify">
+      <section id="verify" className="drivers-verify">
         <div className="drivers-wrap">
           <div className="drivers-eyebrow">{t.verifyEyebrow}</div>
           <h2 className="drivers-section-title">{t.verifyTitle}</h2>
@@ -295,7 +351,7 @@ export default function DriversPage() {
         </div>
       </section>
 
-      <section>
+      <section id="how-it-works">
         <div className="drivers-wrap">
           <div className="drivers-eyebrow">{t.howEyebrow}</div>
           <h2 className="drivers-section-title">{t.howTitle}</h2>
@@ -335,7 +391,7 @@ export default function DriversPage() {
         </div>
       </section>
 
-      <section className="drivers-trust">
+      <section id="trust" className="drivers-trust">
         <div className="drivers-wrap">
           <div className="drivers-eyebrow">{t.trustEyebrow}</div>
           <h2 className="drivers-section-title">{t.trustTitle}</h2>

@@ -85,6 +85,14 @@ export default function RegistrationGuidePage() {
       }
       related={[
         {
+          to: '/drivers',
+          label: {
+            en: 'Driver overview & earnings calculator →',
+            no: 'Sjåføroversikt og inntektskalkulator →',
+            sv: 'Föraröversikt och inkomstkalkylator →',
+          },
+        },
+        {
           to: '/guides/sole-trader',
           label: {
             en: 'Sole trader / self-employed guide →',
