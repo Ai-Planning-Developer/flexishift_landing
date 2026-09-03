@@ -2,12 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { driversContent } from '../content/driversContent';
+import BookVerificationLink from '../components/verification/BookVerificationLink';
 import './drivers.css';
-
-const verifyHref =
-  (import.meta.env.VITE_DRIVER_VERIFY_URL as string | undefined)?.trim() ||
-  '/guides/registration#verification';
-const verifyExternal = /^https?:\/\//i.test(verifyHref);
 
 function formatEarnings(currency: string, total: number) {
   const formatted = total.toLocaleString(undefined, { maximumFractionDigits: 0 });
@@ -338,13 +334,7 @@ export default function DriversPage() {
                 />
               </div>
               <div className="drivers-verify-cta-wrap">
-                {verifyExternal ? (
-                  <a href={verifyHref} target="_blank" rel="noopener noreferrer">
-                    {t.verifyCta}
-                  </a>
-                ) : (
-                  <Link to={verifyHref}>{t.verifyCta}</Link>
-                )}
+                <BookVerificationLink>{t.verifyCta}</BookVerificationLink>
               </div>
             </div>
           </div>

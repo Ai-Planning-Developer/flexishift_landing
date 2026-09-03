@@ -10,7 +10,10 @@ The Register page posts to a Google Apps Script Web App that appends rows to She
 2. Copy `.env.example` to `.env` and set:
    - `VITE_GOOGLE_SHEETS_WEBHOOK_URL` — Apps Script `/exec` URL
    - `VITE_SUBMIT_TOKEN` — optional; must match `SECRET_TOKEN` in the `.gs` file
+   - `VITE_GOOGLE_VERIFICATION_BOOKING_URL` — Google Calendar Appointment Scheduling page URL
 3. Restart the Vite dev server (or redeploy) after changing env vars.
+
+Support records verification results at `/support/verification` (not linked in the public nav). Calendar ID and the support access code stay in Apps Script — never in the frontend.
 
 The password from the form is saved in the Submissions sheet (Password column) as typed.
 

@@ -12,6 +12,7 @@ import RegisterPage from './pages/RegisterPage';
 const RegistrationGuidePage = lazy(() => import('./pages/RegistrationGuidePage'));
 const SoleTraderGuidePage = lazy(() => import('./pages/SoleTraderGuidePage'));
 const DriversPage = lazy(() => import('./pages/DriversPage'));
+const SupportVerificationPage = lazy(() => import('./pages/SupportVerificationPage'));
 
 function GuideFallback() {
   return (
@@ -56,6 +57,14 @@ export default function App() {
             element={
               <Suspense fallback={<GuideFallback />}>
                 <SoleTraderGuidePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/support/verification"
+            element={
+              <Suspense fallback={<GuideFallback />}>
+                <SupportVerificationPage />
               </Suspense>
             }
           />

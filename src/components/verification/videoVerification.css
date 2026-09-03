@@ -1,0 +1,76 @@
+.fs-verify-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.fs-verify-btn {
+  display: inline-block;
+  background: var(--teal);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 4px 20px rgba(0, 168, 150, 0.35);
+}
+
+.fs-verify-btn.secondary {
+  background: #fff;
+  color: var(--navy);
+  border: 1px solid #E5ECF5;
+  box-shadow: none;
+}
+
+.fs-verify-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.fs-verify-meta {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--body, #374151);
+  line-height: 1.5;
+}
+
+.fs-verify-meta strong {
+  color: var(--navy, #0F3460);
+}
+
+.fs-verify-note {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted, #6B7280);
+  line-height: 1.45;
+}
+
+.fs-verify-lookup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.fs-verify-lookup input {
+  flex: 1;
+  min-width: 180px;
+  border: 1px solid #E5ECF5;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.fs-verify-lookup label {
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted, #6B7280);
+}

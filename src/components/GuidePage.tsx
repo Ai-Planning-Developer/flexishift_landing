@@ -17,10 +17,11 @@ type Props = {
   html: string;
   related?: RelatedLink[];
   banner?: ReactNode;
+  children?: ReactNode;
 };
 
 /** Shared shell for long-form guide pages (registration / sole trader). */
-export default function GuidePage({ styleId, styles, html, related, banner }: Props) {
+export default function GuidePage({ styleId, styles, html, related, banner, children }: Props) {
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
@@ -133,6 +134,7 @@ export default function GuidePage({ styleId, styles, html, related, banner }: Pr
       {banner}
 
       <div className="guide-document" dangerouslySetInnerHTML={{ __html: html }} />
+      {children}
 
       {related && related.length > 0 && (
         <div style={{ maxWidth: 1000, margin: '0 auto', padding: '8px 24px 40px' }}>

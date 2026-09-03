@@ -92,3 +92,24 @@ This isn't strong security (the token still travels in the public frontend bundl
 - **Changed the script but nothing's different**: you need to create a **new version** under Deploy → Manage deployments each time you edit `flexishift_sheets_backend.gs`, otherwise the live URL keeps running the old code.
 - **New columns look misaligned / old data in the wrong cells**: run **setupSheets** so row 1 matches the new headers. Old rows from the previous two-tab layout are not auto-migrated — keep them as historical data, or start a fresh sheet.
 - **Env not picking up**: Vite only reads `VITE_*` variables at build/dev-server start. Restart `npm run dev` (or redeploy) after changing `.env`.
+
+## Video verification (Google Calendar Appointment Scheduling)
+
+Do not build a custom calendar. Drivers book on Google; this app only stores verification status.
+
+1. In Google Calendar, create an **Appointment schedule** for 5-minute video verification.
+2. Turn on **Google Meet** video conferencing on that schedule so Meet links are attached automatically.
+3. Copy the public **booking page** URL (looks like `https://calendar.google.com/calendar/appointments/schedules/...`).
+4. In `.env` (and production env), set:
+   ```env
+   VITE_GOOGLE_VERIFICATION_BOOKING_URL=https://calendar.google.com/calendar/appointments/schedules/...
+   ```
+   Restart the Vite dev server. Do not put Calendar API keys, OAuth secrets, or service-account credentials in the frontend.
+5. Paste the updated `flexishift_sheets_backend.gs` into Apps Script, then:
+   - Set `SUPPORT_ACCESS_CODE` to a private PIN for `/support/verification`
+   - Set `VERIFICATION_CALENDAR_ID` to the calendar that receives those appointments (Calendar settings → Integrate calendar → Calendar ID)
+   - Optionally set `VERIFICATION_HOST_EMAIL` to the support agent address so that guest is not stored as a driver
+6. Run **setupSheets**, then **createVerificationCalendarTrigger** (syncs every 5 minutes).
+7. **Deploy → Manage deployments → Edit → New version → Deploy** (keep the same `/exec` URL).
+8. Drivers: Book Verification → Google booking page → pick a slot. Then on `/guides/registration#verification` they enter the booking email to see date, time, and **Join Verification** (Meet URL from Calendar).
+9. Support: open `/support/verification`, enter the access code, **Sync Google Calendar** if needed, then **Verified / Failed / Escalate**. Escalated cases appear under Senior review (Approve, Reject, Request more information).

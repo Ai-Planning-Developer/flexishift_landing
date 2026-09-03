@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import GuidePage from '../components/GuidePage';
+import BookVerificationLink from '../components/verification/BookVerificationLink';
+import VideoVerificationMount from '../components/verification/VideoVerificationMount';
 import {
   registrationGuideStyles,
   registrationGuideEnHTML,
@@ -22,9 +23,6 @@ const verifyCopy = {
     cta: 'Boka 5 minuters videoverifiering',
   },
 } as const;
-
-const verifyHref = (import.meta.env.VITE_DRIVER_VERIFY_URL as string | undefined)?.trim() || '/contact';
-const verifyExternal = /^https?:\/\//i.test(verifyHref);
 
 export default function RegistrationGuidePage() {
   const { lang } = useLanguage();
@@ -71,15 +69,7 @@ export default function RegistrationGuidePage() {
             <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--navy)', letterSpacing: '-0.3px' }}>
               {copy.kicker}
             </div>
-            {verifyExternal ? (
-              <a href={verifyHref} target="_blank" rel="noopener noreferrer" style={ctaStyle}>
-                {copy.cta}
-              </a>
-            ) : (
-              <Link to={verifyHref} style={ctaStyle}>
-                {copy.cta}
-              </Link>
-            )}
+            <BookVerificationLink style={ctaStyle}>{copy.cta}</BookVerificationLink>
           </div>
         </div>
       }
@@ -109,6 +99,8 @@ export default function RegistrationGuidePage() {
           },
         },
       ]}
-    />
+    >
+      <VideoVerificationMount />
+    </GuidePage>
   );
 }
