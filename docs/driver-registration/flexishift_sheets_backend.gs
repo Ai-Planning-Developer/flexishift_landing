@@ -134,7 +134,12 @@
     e = e || { parameter: {} };
     var params = e.parameter || {};
     if (params.kind === 'verification' || params.action || params.callback) {
-      var result = handleVerificationGet(params);
+      var result;
+      try {
+        result = handleVerificationGet(params);
+      } catch (err) {
+        result = { status: 'error', message: String(err) };
+      }
       var cb = params.callback;
       if (cb && /^[A-Za-z_][A-Za-z0-9_]*$/.test(cb)) {
         return ContentService
@@ -341,6 +346,9 @@
   function lookupBookingByEmail(email) {
     email = String(email || '').trim().toLowerCase();
     if (!email) return { status: 'ok', booking: null };
+    if (VERIFICATION_CALENDAR_ID) {
+      try { syncVerificationFromCalendar(); } catch (err) {}
+    }
     var rows = readBookings();
     var match = null;
     for (var i = 0; i < rows.length; i++) {

@@ -38,7 +38,7 @@ export const verificationCopy: Record<
     waitingMeet: 'Google Meet opens when Calendar attaches the conference link. Check status again after you receive the confirmation email.',
     missingUrl: 'Set VITE_GOOGLE_VERIFICATION_BOOKING_URL to your Google Calendar appointment page.',
     lookupError: 'Could not load booking status. You can still book via Google Calendar.',
-    notFound: 'No Calendar appointment found for this email yet. Book a slot, then check again in a minute.',
+    notFound: 'No Calendar appointment found for this email yet. After you book, wait for the Google confirmation, then check again.',
     statusLabel: 'Status',
     statuses: {
       NOT_BOOKED: 'Not booked',
@@ -65,7 +65,7 @@ export const verificationCopy: Record<
     waitingMeet: 'Google Meet-lenken vises når Calendar legger den til. Sjekk status igjen etter bekreftelseseposten.',
     missingUrl: 'Sett VITE_GOOGLE_VERIFICATION_BOOKING_URL til Google Calendar-bookingsiden.',
     lookupError: 'Kunne ikke hente bookingstatus. Du kan fortsatt booke via Google Calendar.',
-    notFound: 'Ingen Calendar-avtale funnet for denne e-posten ennå. Book et tidspunkt, og sjekk igjen om et minutt.',
+    notFound: 'Ingen Calendar-avtale funnet for denne e-posten ennå. Etter at du har booket, vent på Google-bekreftelsen og sjekk igjen.',
     statusLabel: 'Status',
     statuses: {
       NOT_BOOKED: 'Ikke booket',
@@ -92,7 +92,7 @@ export const verificationCopy: Record<
     waitingMeet: 'Google Meet-länken visas när Calendar bifogar den. Kontrollera status igen efter bekräftelsemejlet.',
     missingUrl: 'Sätt VITE_GOOGLE_VERIFICATION_BOOKING_URL till din Google Calendar-bokningssida.',
     lookupError: 'Kunde inte hämta bokningsstatus. Du kan fortfarande boka via Google Calendar.',
-    notFound: 'Ingen Calendar-tid hittades för den här e-posten ännu. Boka en tid och kontrollera igen om en minut.',
+    notFound: 'Ingen Calendar-tid hittades för den här e-posten ännu. Efter bokningen, vänta på Google-bekräftelsen och kontrollera igen.',
     statusLabel: 'Status',
     statuses: {
       NOT_BOOKED: 'Inte bokad',

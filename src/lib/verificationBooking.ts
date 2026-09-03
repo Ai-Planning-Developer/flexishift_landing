@@ -110,69 +110,59 @@ function submitToken(): string {
   return (import.meta.env.VITE_SUBMIT_TOKEN as string | undefined) ?? '';
 }
 
-function jsonp<T>(params: Record<string, string>): Promise<T> {
-  const base = getSheetsWebhookUrl();
-  if (!base) {
-    return Promise.reject(new Error('Verification backend is not configured.'));
+function parseVerificationPayload(text: string): VerificationApiResult {
+  const trimmed = text.trim();
+  if (trimmed.startsWith('{')) return JSON.parse(trimmed) as VerificationApiResult;
+  if (trimmed.includes('POST only') || trimmed.includes('registration endpoint')) {
+    return {
+      status: 'error',
+      message:
+        'Apps Script is still the registration-only version. Paste flexishift_sheets_backend.gs, run setupSheets, set VERIFICATION_CALENDAR_ID, and deploy a new version of the same web app.',
+    };
+  }
+  return {
+    status: 'error',
+    message: 'Could not load booking status. You can still book via Google Calendar.',
+  };
+}
+
+async function verificationGet(params: Record<string, string>): Promise<VerificationApiResult> {
+  const url = new URL('/api/verification', window.location.origin);
+  url.searchParams.set('kind', 'verification');
+  url.searchParams.set('token', submitToken());
+  for (const [key, value] of Object.entries(params)) {
+    if (value) url.searchParams.set(key, value);
   }
 
-  return new Promise((resolve, reject) => {
-    const callback = `fsVerify_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    const url = new URL(base);
-    url.searchParams.set('kind', 'verification');
-    url.searchParams.set('callback', callback);
-    url.searchParams.set('token', submitToken());
-    for (const [key, value] of Object.entries(params)) {
-      if (value !== undefined && value !== '') url.searchParams.set(key, value);
-    }
-
-    const script = document.createElement('script');
-    const timer = window.setTimeout(() => {
-      cleanup();
-      reject(new Error('Verification lookup timed out.'));
-    }, 15000);
-
-    function cleanup() {
-      window.clearTimeout(timer);
-      script.remove();
-      delete (window as unknown as Record<string, unknown>)[callback];
-    }
-
-    (window as unknown as Record<string, unknown>)[callback] = (data: T) => {
-      cleanup();
-      resolve(data);
+  const response = await fetch(url.toString(), { method: 'GET' });
+  const text = await response.text();
+  try {
+    return parseVerificationPayload(text);
+  } catch {
+    return {
+      status: 'error',
+      message: 'Could not load booking status. You can still book via Google Calendar.',
     };
-
-    script.onerror = () => {
-      cleanup();
-      reject(new Error('Verification lookup failed.'));
-    };
-    script.src = url.toString();
-    document.body.appendChild(script);
-  });
+  }
 }
 
 export function lookupVerification(email: string): Promise<VerificationApiResult> {
-  return jsonp<VerificationApiResult>({
+  return verificationGet({
     action: 'lookup',
     email: email.trim().toLowerCase(),
   });
 }
 
 export function listVerificationQueue(supportCode: string): Promise<VerificationApiResult> {
-  return jsonp<VerificationApiResult>({
+  return verificationGet({
     action: 'list',
     supportCode,
   });
 }
 
 export async function postVerificationAction(payload: Record<string, unknown>): Promise<void> {
-  const url = getSheetsWebhookUrl();
-  if (!url) throw new Error('Verification backend is not configured.');
-
-  await fetch(url, {
+  const response = await fetch('/api/verification', {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify({
       kind: 'verification',
@@ -180,4 +170,9 @@ export async function postVerificationAction(payload: Record<string, unknown>): 
       ...payload,
     }),
   });
+  const text = await response.text();
+  const result = parseVerificationPayload(text);
+  if (result.status === 'error') {
+    throw new Error(result.message || 'Verification update failed.');
+  }
 }

@@ -72,9 +72,9 @@ export default function VideoVerificationCard() {
       }
       setBooking(result.booking ?? null);
       if (!result.booking) setMessage(t.notFound);
-    } catch {
+    } catch (err) {
       setBooking(null);
-      setMessage(t.lookupError);
+      setMessage(err instanceof Error ? err.message : t.lookupError);
     } finally {
       setLoading(false);
     }

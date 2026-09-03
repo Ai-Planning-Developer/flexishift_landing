@@ -6,6 +6,43 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 8080;
 const DIST = join(__dirname, 'dist');
+const SHEETS_URL = (process.env.VITE_GOOGLE_SHEETS_WEBHOOK_URL || process.env.GOOGLE_SHEETS_WEBHOOK_URL || '').trim();
+
+function parseAppsScriptBody(text) {
+  const trimmed = text.trim();
+  if (trimmed.startsWith('{')) return JSON.parse(trimmed);
+  if (trimmed.includes('POST only') || trimmed.includes('registration endpoint')) {
+    return {
+      status: 'error',
+      message:
+        'Apps Script is still the registration-only version. Paste flexishift_sheets_backend.gs, run setupSheets, set VERIFICATION_CALENDAR_ID, and deploy a new version of the same web app.',
+    };
+  }
+  return { status: 'error', message: 'Could not read verification status from Apps Script.' };
+}
+
+app.all('/api/verification', express.raw({ type: '*/*', limit: '2mb' }), async (req, res) => {
+  if (!SHEETS_URL) {
+    res.status(500).json({ status: 'error', message: 'GOOGLE_SHEETS_WEBHOOK_URL is not set on the server.' });
+    return;
+  }
+  try {
+    const target = new URL(SHEETS_URL);
+    for (const [key, value] of Object.entries(req.query)) {
+      if (typeof value === 'string') target.searchParams.set(key, value);
+    }
+    const response = await fetch(target, {
+      method: req.method,
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: req.method === 'POST' ? req.body : undefined,
+      redirect: 'follow',
+    });
+    const text = await response.text();
+    res.status(200).json(parseAppsScriptBody(text));
+  } catch (err) {
+    res.status(502).json({ status: 'error', message: String(err) });
+  }
+});
 
 // Serve static assets with long-term caching
 app.use(
