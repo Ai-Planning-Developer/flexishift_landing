@@ -6,7 +6,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 8080;
 const DIST = join(__dirname, 'dist');
-const SHEETS_URL = (process.env.VITE_GOOGLE_SHEETS_WEBHOOK_URL || process.env.GOOGLE_SHEETS_WEBHOOK_URL || '').trim();
+const VERIFICATION_URL = (
+  process.env.VITE_GOOGLE_VERIFICATION_WEBHOOK_URL ||
+  process.env.GOOGLE_VERIFICATION_WEBHOOK_URL ||
+  ''
+).trim();
 
 function parseAppsScriptBody(text) {
   const trimmed = text.trim();
@@ -15,19 +19,19 @@ function parseAppsScriptBody(text) {
     return {
       status: 'error',
       message:
-        'Apps Script is still the registration-only version. Paste flexishift_sheets_backend.gs, run setupSheets, set VERIFICATION_CALENDAR_ID, and deploy a new version of the same web app.',
+        'The verification Apps Script is still registration-only. In the booking /exec project, paste flexishift_sheets_backend.gs, set SCRIPT_ROLE to verification, run setupSheets, and deploy a new version.',
     };
   }
   return { status: 'error', message: 'Could not read verification status from Apps Script.' };
 }
 
 app.all('/api/verification', express.raw({ type: '*/*', limit: '2mb' }), async (req, res) => {
-  if (!SHEETS_URL) {
-    res.status(500).json({ status: 'error', message: 'GOOGLE_SHEETS_WEBHOOK_URL is not set on the server.' });
+  if (!VERIFICATION_URL) {
+    res.status(500).json({ status: 'error', message: 'VITE_GOOGLE_VERIFICATION_WEBHOOK_URL is not set on the server.' });
     return;
   }
   try {
-    const target = new URL(SHEETS_URL);
+    const target = new URL(VERIFICATION_URL);
     for (const [key, value] of Object.entries(req.query)) {
       if (typeof value === 'string') target.searchParams.set(key, value);
     }

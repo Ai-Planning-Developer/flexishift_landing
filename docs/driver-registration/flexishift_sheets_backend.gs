@@ -26,6 +26,11 @@
   // hitting your endpoint, not a substitute for keeping the URL private.
   var SECRET_TOKEN = '';
 
+  // Two Google Sheets / two web apps — do not mix tabs on one spreadsheet.
+  // 'registration' = bound to the driver registration sheet (first /exec URL).
+  // 'verification' = bound to the booking/verification sheet (second /exec URL).
+  var SCRIPT_ROLE = 'registration';
+
   var DOCS_ROOT_FOLDER_NAME = 'FlexiShift Driver Documents';
 
   // Full header row for Submissions. Truck fields are on THIS same tab
@@ -49,7 +54,20 @@
       var payload = JSON.parse(e.postData.contents);
 
       if (payload.kind === 'verification') {
+        if (SCRIPT_ROLE === 'registration') {
+          return jsonResponse({
+            status: 'error',
+            message: 'This web app is registration-only. Point VITE_GOOGLE_VERIFICATION_WEBHOOK_URL at the verification /exec URL.'
+          });
+        }
         return jsonResponse(handleVerificationPost(payload));
+      }
+
+      if (SCRIPT_ROLE === 'verification') {
+        return jsonResponse({
+          status: 'error',
+          message: 'This web app is verification-only. POST registrations to VITE_GOOGLE_SHEETS_WEBHOOK_URL.'
+        });
       }
 
       if (SECRET_TOKEN && payload.token !== SECRET_TOKEN) {
@@ -136,7 +154,14 @@
     if (params.kind === 'verification' || params.action || params.callback) {
       var result;
       try {
-        result = handleVerificationGet(params);
+        if (SCRIPT_ROLE === 'registration') {
+          result = {
+            status: 'error',
+            message: 'This web app is registration-only. Point VITE_GOOGLE_VERIFICATION_WEBHOOK_URL at the verification /exec URL.'
+          };
+        } else {
+          result = handleVerificationGet(params);
+        }
       } catch (err) {
         result = { status: 'error', message: String(err) };
       }
@@ -147,6 +172,9 @@
           .setMimeType(ContentService.MimeType.JAVASCRIPT);
       }
       return jsonResponse(result);
+    }
+    if (SCRIPT_ROLE === 'verification') {
+      return ContentService.createTextOutput('FlexiShift driver verification endpoint is running.');
     }
     return ContentService.createTextOutput('FlexiShift driver registration endpoint is running. POST only.');
   }
@@ -198,16 +226,24 @@
   */
   function setupSheets() {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var submissionsSheet = ss.getSheetByName('Submissions');
-    if (!submissionsSheet) {
-      submissionsSheet = createSubmissionsSheet(ss);
-    } else {
-      applySubmissionsHeaders(submissionsSheet);
+    if (SCRIPT_ROLE !== 'verification') {
+      var submissionsSheet = ss.getSheetByName('Submissions');
+      if (!submissionsSheet) {
+        submissionsSheet = createSubmissionsSheet(ss);
+      } else {
+        applySubmissionsHeaders(submissionsSheet);
+      }
+      Logger.log('Ready: ' + submissionsSheet.getName() + ' — headers: ' + SUBMISSIONS_HEADERS.length);
+      Logger.log('Truck columns start at: Vehicle Type (column ' + (SUBMISSIONS_HEADERS.indexOf('Vehicle Type') + 1) + ')');
     }
-    Logger.log('Ready: ' + submissionsSheet.getName() + ' — headers: ' + SUBMISSIONS_HEADERS.length);
-    Logger.log('Truck columns start at: Vehicle Type (column ' + (SUBMISSIONS_HEADERS.indexOf('Vehicle Type') + 1) + ')');
-    setupVerificationSheets();
-    Logger.log('VerificationBookings + VerificationEscalations ready');
+    if (SCRIPT_ROLE !== 'registration') {
+      var verificationSs = setupVerificationSheets();
+      if (verificationSs) {
+        Logger.log('Verification spreadsheet ready: ' + verificationSs.getName());
+      } else {
+        Logger.log('Skipped verification tabs — set SCRIPT_ROLE to verification or set VERIFICATION_SPREADSHEET_ID.');
+      }
+    }
   }
 
   function createSubmissionsSheet(ss) {
@@ -255,15 +291,18 @@
 
   // ---------------------------------------------------------------------------
   // Video verification — Google Calendar Appointment Scheduling + Meet
-  // Calendar creates the appointment and Meet link. This sheet stores status.
-  // Set VERIFICATION_CALENDAR_ID and SUPPORT_ACCESS_CODE below, then run
-  // setupSheets and createVerificationCalendarTrigger.
+  // Prefer a second Apps Script project bound to the verification sheet
+  // (SCRIPT_ROLE = 'verification'). VERIFICATION_SPREADSHEET_ID is only
+  // needed if one script writes to another spreadsheet.
   // ---------------------------------------------------------------------------
 
   var SUPPORT_ACCESS_CODE = '';
-  var VERIFICATION_CALENDAR_ID = ''; // calendar ID that receives appointment bookings
+  var VERIFICATION_SPREADSHEET_ID = ''; // other Google Sheet, not the registration file
+  // Calendar ID only — looks like  you@gmail.com  or  xxx@group.calendar.google.com
+  // NOT the booking page (calendar.app.google / calendar.google.com/calendar/appointments).
+  var VERIFICATION_CALENDAR_ID = '';
   var VERIFICATION_HOST_EMAIL = ''; // skip this guest when mapping invitees
-  var VERIFICATION_EVENT_TITLE_FILTER = ''; // empty = all events on that calendar
+  var VERIFICATION_EVENT_TITLE_FILTER = ''; // empty = all events; do not put an email here
 
   var BOOKING_HEADERS = [
     'Booking ID', 'Driver ID', 'Driver Email', 'Driver Name', 'Status',
@@ -276,10 +315,25 @@
     'priority', 'created_by', 'created_at', 'status'
   ];
 
+  function verificationSpreadsheet() {
+    if (SCRIPT_ROLE === 'verification') {
+      return SpreadsheetApp.getActiveSpreadsheet();
+    }
+    var id = String(VERIFICATION_SPREADSHEET_ID || '').trim();
+    if (!id) return null;
+    var registrationId = SpreadsheetApp.getActiveSpreadsheet().getId();
+    if (id === registrationId) {
+      throw new Error('VERIFICATION_SPREADSHEET_ID must be a different Google Sheet from driver registration.');
+    }
+    return SpreadsheetApp.openById(id);
+  }
+
   function setupVerificationSheets() {
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var ss = verificationSpreadsheet();
+    if (!ss) return null;
     ensureNamedSheet(ss, 'VerificationBookings', BOOKING_HEADERS);
     ensureNamedSheet(ss, 'VerificationEscalations', ESCALATION_HEADERS);
+    return ss;
   }
 
   function ensureNamedSheet(ss, name, headers) {
@@ -291,13 +345,15 @@
   }
 
   function bookingsSheet() {
-    setupVerificationSheets();
-    return SpreadsheetApp.getActiveSpreadsheet().getSheetByName('VerificationBookings');
+    var ss = setupVerificationSheets();
+    if (!ss) throw new Error('VERIFICATION_SPREADSHEET_ID is not set. Use a separate Google Sheet for driver verification.');
+    return ss.getSheetByName('VerificationBookings');
   }
 
   function escalationsSheet() {
-    setupVerificationSheets();
-    return SpreadsheetApp.getActiveSpreadsheet().getSheetByName('VerificationEscalations');
+    var ss = setupVerificationSheets();
+    if (!ss) throw new Error('VERIFICATION_SPREADSHEET_ID is not set. Use a separate Google Sheet for driver verification.');
+    return ss.getSheetByName('VerificationEscalations');
   }
 
   function requireSupport(code) {
@@ -419,14 +475,28 @@
     return -1;
   }
 
+  function resolveCalendarId() {
+    var raw = String(VERIFICATION_CALENDAR_ID || '').trim();
+    if (!raw) {
+      return { error: 'VERIFICATION_CALENDAR_ID is not set in Apps Script.' };
+    }
+    if (/^https?:\/\//i.test(raw) || raw.indexOf('calendar.app.google') !== -1 || raw.indexOf('/appointments') !== -1) {
+      return {
+        error: 'VERIFICATION_CALENDAR_ID must be the Calendar ID (email-like), not the booking page URL. Open Calendar settings → the calendar that receives bookings → Integrate calendar → Calendar ID.'
+      };
+    }
+    return { id: raw };
+  }
+
   function extractMeetUrl(event) {
     var text = [event.getDescription(), event.getLocation(), event.getTitle()].join(' ');
     var match = String(text).match(/https:\/\/meet\.google\.com\/[a-zA-Z0-9\-]+/);
     if (match) return match[0];
     try {
-      if (typeof Calendar !== 'undefined' && VERIFICATION_CALENDAR_ID) {
+      var resolved = resolveCalendarId();
+      if (typeof Calendar !== 'undefined' && resolved.id) {
         var id = String(event.getId()).replace(/@google\.com$/, '');
-        var advanced = Calendar.Events.get(VERIFICATION_CALENDAR_ID, id.split('@')[0]);
+        var advanced = Calendar.Events.get(resolved.id, id.split('@')[0]);
         if (advanced && advanced.hangoutLink) return advanced.hangoutLink;
       }
     } catch (err) {}
@@ -434,10 +504,9 @@
   }
 
   function syncVerificationFromCalendar() {
-    if (!VERIFICATION_CALENDAR_ID) {
-      return { status: 'error', message: 'VERIFICATION_CALENDAR_ID is not set in Apps Script.' };
-    }
-    var cal = CalendarApp.getCalendarById(VERIFICATION_CALENDAR_ID);
+    var resolved = resolveCalendarId();
+    if (resolved.error) return { status: 'error', message: resolved.error };
+    var cal = CalendarApp.getCalendarById(resolved.id);
     if (!cal) return { status: 'error', message: 'Calendar not found. Check VERIFICATION_CALENDAR_ID.' };
 
     var now = new Date();

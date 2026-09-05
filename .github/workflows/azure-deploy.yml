@@ -23,8 +23,20 @@ jobs:
       - name: Install all dependencies (dev + prod for build)
         run: npm install
 
+      # GitHub secrets override .env when set. Empty secrets are not exported,
+      # so a committed .env still works until secrets are added.
       - name: Build Vite SPA
-        run: npm run build
+        env:
+          SECRET_SHEETS_URL: ${{ secrets.VITE_GOOGLE_SHEETS_WEBHOOK_URL }}
+          SECRET_VERIFICATION_URL: ${{ secrets.VITE_GOOGLE_VERIFICATION_WEBHOOK_URL }}
+          SECRET_SUBMIT_TOKEN: ${{ secrets.VITE_SUBMIT_TOKEN }}
+          SECRET_BOOKING_URL: ${{ secrets.VITE_GOOGLE_VERIFICATION_BOOKING_URL }}
+        run: |
+          if [ -n "$SECRET_SHEETS_URL" ]; then export VITE_GOOGLE_SHEETS_WEBHOOK_URL="$SECRET_SHEETS_URL"; fi
+          if [ -n "$SECRET_VERIFICATION_URL" ]; then export VITE_GOOGLE_VERIFICATION_WEBHOOK_URL="$SECRET_VERIFICATION_URL"; fi
+          if [ -n "$SECRET_SUBMIT_TOKEN" ]; then export VITE_SUBMIT_TOKEN="$SECRET_SUBMIT_TOKEN"; fi
+          if [ -n "$SECRET_BOOKING_URL" ]; then export VITE_GOOGLE_VERIFICATION_BOOKING_URL="$SECRET_BOOKING_URL"; fi
+          npm run build
 
       - name: Install production dependencies only
         run: npm install --omit=dev

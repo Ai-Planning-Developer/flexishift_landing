@@ -80,8 +80,13 @@ export function getVerificationBookingUrl(): { href: string; external: boolean }
   return { href: '/contact', external: false };
 }
 
+export function getVerificationWebhookUrl(): string {
+  return ((import.meta.env.VITE_GOOGLE_VERIFICATION_WEBHOOK_URL as string | undefined) || '').trim();
+}
+
+/** @deprecated Use getVerificationWebhookUrl for Check status. */
 export function getSheetsWebhookUrl(): string {
-  return ((import.meta.env.VITE_GOOGLE_SHEETS_WEBHOOK_URL as string | undefined) || '').trim();
+  return getVerificationWebhookUrl();
 }
 
 export function rememberBookingIntent(): void {
@@ -117,7 +122,7 @@ function parseVerificationPayload(text: string): VerificationApiResult {
     return {
       status: 'error',
       message:
-        'Apps Script is still the registration-only version. Paste flexishift_sheets_backend.gs, run setupSheets, set VERIFICATION_CALENDAR_ID, and deploy a new version of the same web app.',
+        'The verification Apps Script is still registration-only. In the booking /exec project, paste flexishift_sheets_backend.gs, set SCRIPT_ROLE to verification, run setupSheets, and deploy a new version.',
     };
   }
   return {

@@ -8,7 +8,8 @@ The Register page posts to a Google Apps Script Web App that appends rows to She
 
 1. Deploy the script in `docs/driver-registration/` (see `SETUP_INSTRUCTIONS.md`).
 2. Copy `.env.example` to `.env` and set:
-   - `VITE_GOOGLE_SHEETS_WEBHOOK_URL` — Apps Script `/exec` URL
+   - `VITE_GOOGLE_SHEETS_WEBHOOK_URL` — registration Apps Script `/exec` URL
+   - `VITE_GOOGLE_VERIFICATION_WEBHOOK_URL` — verification/booking Apps Script `/exec` URL (separate sheet)
    - `VITE_SUBMIT_TOKEN` — optional; must match `SECRET_TOKEN` in the `.gs` file
    - `VITE_GOOGLE_VERIFICATION_BOOKING_URL` — Google Calendar Appointment Scheduling page URL
 3. Restart the Vite dev server (or redeploy) after changing env vars.

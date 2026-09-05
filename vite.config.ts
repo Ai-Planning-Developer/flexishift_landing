@@ -12,7 +12,7 @@ function parseAppsScriptBody(text: string): Record<string, unknown> {
     return {
       status: 'error',
       message:
-        'Apps Script is still the registration-only version. Paste flexishift_sheets_backend.gs, run setupSheets, set VERIFICATION_CALENDAR_ID, and deploy a new version of the same web app.',
+        'The verification Apps Script is still registration-only. In the booking /exec project, paste flexishift_sheets_backend.gs, set SCRIPT_ROLE to verification, run setupSheets, and deploy a new version.',
     }
   }
   return { status: 'error', message: 'Could not read verification status from Apps Script.' }
@@ -74,13 +74,13 @@ function verificationProxy(sheetsUrl: string): Plugin {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const sheetsUrl = env.VITE_GOOGLE_SHEETS_WEBHOOK_URL?.trim()
+  const verificationUrl = (env.VITE_GOOGLE_VERIFICATION_WEBHOOK_URL || '').trim()
 
   return {
     plugins: [
       tailwindcss(),
       react(),
-      ...(sheetsUrl ? [verificationProxy(sheetsUrl)] : []),
+      ...(verificationUrl ? [verificationProxy(verificationUrl)] : []),
     ],
   }
 })

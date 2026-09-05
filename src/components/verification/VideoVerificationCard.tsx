@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import {
   getRememberedEmail,
-  getSheetsWebhookUrl,
+  getVerificationWebhookUrl,
   getVerificationBookingUrl,
   isAllowedMeetUrl,
   isSafeHttpUrl,
@@ -35,7 +35,7 @@ export default function VideoVerificationCard() {
   const { lang } = useLanguage();
   const t = verificationCopy[lang];
   const bookingPage = getVerificationBookingUrl();
-  const backendReady = Boolean(getSheetsWebhookUrl());
+  const backendReady = Boolean(getVerificationWebhookUrl());
 
   const [email, setEmail] = useState(getRememberedEmail);
   const [booking, setBooking] = useState<VerificationBooking | null>(null);

@@ -51,6 +51,7 @@ The form only accepts **one truck**. Driver-only submissions leave the vehicle c
 
     ```env
     VITE_GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/AKfycb.../exec
+    VITE_GOOGLE_VERIFICATION_WEBHOOK_URL=https://script.google.com/macros/s/AKfycb.../exec
     VITE_SUBMIT_TOKEN=
     ```
 
@@ -105,11 +106,12 @@ Do not build a custom calendar. Drivers book on Google; this app only stores ver
    VITE_GOOGLE_VERIFICATION_BOOKING_URL=https://calendar.google.com/calendar/appointments/schedules/...
    ```
    Restart the Vite dev server. Do not put Calendar API keys, OAuth secrets, or service-account credentials in the frontend.
-5. Paste the updated `flexishift_sheets_backend.gs` into Apps Script, then:
-   - Set `SUPPORT_ACCESS_CODE` to a private PIN for `/support/verification`
-   - Set `VERIFICATION_CALENDAR_ID` to the calendar that receives those appointments (Calendar settings → Integrate calendar → Calendar ID)
-   - Optionally set `VERIFICATION_HOST_EMAIL` to the support agent address so that guest is not stored as a driver
-6. Run **setupSheets**, then **createVerificationCalendarTrigger** (syncs every 5 minutes).
-7. **Deploy → Manage deployments → Edit → New version → Deploy** (keep the same `/exec` URL).
-8. Drivers: Book Verification → Google booking page → pick a slot. Then on `/guides/registration#verification` they enter the booking email to see date, time, and **Join Verification** (Meet URL from Calendar).
-9. Support: open `/support/verification`, enter the access code, **Sync Google Calendar** if needed, then **Verified / Failed / Escalate**. Escalated cases appear under Senior review (Approve, Reject, Request more information).
+5. Create a **second** Google Sheet for video verification only. Create a **second** Apps Script project bound to that sheet (do not add verification tabs to the registration spreadsheet).
+6. Paste `flexishift_sheets_backend.gs` into **each** project, then:
+   - Registration project: `var SCRIPT_ROLE = 'registration';` — keep this as the registration `/exec` URL (`VITE_GOOGLE_SHEETS_WEBHOOK_URL`)
+   - Verification project: `var SCRIPT_ROLE = 'verification';` set `SUPPORT_ACCESS_CODE`, `VERIFICATION_CALENDAR_ID`, and optionally `VERIFICATION_HOST_EMAIL`. Deploy this as the booking `/exec` URL (`VITE_GOOGLE_VERIFICATION_WEBHOOK_URL`)
+7. In the verification project, run **setupSheets**, then **createVerificationCalendarTrigger** (syncs every 5 minutes). That creates **VerificationBookings** and **VerificationEscalations** only on the verification spreadsheet.
+8. **Deploy → Manage deployments → Edit → New version → Deploy** on **each** web app (keep each existing `/exec` URL).
+9. On Azure App Service, set `VITE_GOOGLE_VERIFICATION_WEBHOOK_URL` to the booking `/exec` URL (runtime proxy). Also add the same `VITE_*` values as GitHub Actions secrets so the next Azure build bakes them into the frontend.
+10. Drivers: Book Verification → Google booking page → pick a slot. Then on `/guides/registration#verification` they enter the booking email to see date, time, and **Join Verification** (Meet URL from Calendar).
+11. Support: open `/support/verification`, enter the access code, **Sync Google Calendar** if needed, then **Verified / Failed / Escalate**. Escalated cases appear under Senior review (Approve, Reject, Request more information).
